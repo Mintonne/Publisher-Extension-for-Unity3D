@@ -1,0 +1,28 @@
+#settings-section>.input-group {
+    width: 85%;
+    padding: 20px 0 0 0;
+}
+
+#settings-section .btn-toolbar {
+    width: 85%;
+}
+
+#settings-section .btn-toolbar>.btn-group {
+    width: 100%;
+}
+
+#settings-section #frequency-setting .btn {
+    width: calc(105% / 6);
+}
+
+#settings-section #sidebar-setting .btn {
+    width: calc(105% / 2);
+}
+
+#settings-section h8 {
+    font-size: 15px;
+}
+
+#settings-section #fetch-pubId {
+    width: 100px;
+}

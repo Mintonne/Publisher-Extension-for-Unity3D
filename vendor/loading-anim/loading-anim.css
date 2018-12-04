@@ -1,0 +1,282 @@
+.animation-overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    overflow-y: auto;
+    background-color: rgba(44, 62, 80, 0.75);
+    z-index: 10000;
+    opacity: 0;
+    transition: all .5s;
+
+    pointer-events: none;
+}
+
+.animation-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.animation-overlay>.anim-body {
+    top: 45%;
+    left: 50%;
+}
+
+.animation-overlay>h5 {
+    color: white;
+    position: absolute;
+    top: 55%;
+    width: 100%;
+    padding-left: 60px;
+}
+
+.animation-overlay>p {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #eee;
+    font-size: 12px;
+}
+
+.anim-body {
+    position: absolute;
+    margin-left: -49px;
+    left: 50%;
+    animation: speeder 0.46s linear infinite;
+}
+
+.anim-body>span {
+    height: 5px;
+    width: 34px;
+    background: #ff7070;
+    position: absolute;
+    top: -19px;
+    left: 58px;
+    border-radius: 2px 10px 1px 0;
+}
+
+.anim-base span {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-right: 97px solid #fff;
+    border-bottom: 6px solid transparent;
+}
+
+.anim-base span:after {
+    content: "";
+    height: 21px;
+    width: 21px;
+    border-radius: 50%;
+    background: #fff;
+    position: absolute;
+    right: -107px;
+    top: -16px;
+}
+
+.anim-base span:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 0 solid transparent;
+    border-right: 54px solid #fff;
+    border-bottom: 16px solid transparent;
+    top: -16px;
+    right: -96px;
+}
+
+.anim-face {
+    position: absolute;
+    height: 12px;
+    width: 19px;
+    background: #fff;
+    border-radius: 19px 19px 0 0;
+    transform: rotate(-40deg);
+    right: -122px;
+    top: -15px;
+}
+
+.anim-face:after {
+    content: "";
+    height: 12px;
+    width: 12px;
+    background: #fff;
+    right: 4px;
+    top: 7px;
+    position: absolute;
+    border-radius: 0 0 0 2px;
+    transform: rotate(40deg);
+    transform-origin: 50% 50%;
+}
+
+.anim-body>span>span:nth-child(1),
+.anim-body>span>span:nth-child(2),
+.anim-body>span>span:nth-child(3),
+.anim-body>span>span:nth-child(4) {
+    width: 29px;
+    height: 1px;
+    background: #ff7070;
+    position: absolute;
+    animation: fazer1 0.23s linear infinite;
+}
+
+.anim-body>span>span:nth-child(2) {
+    top: 3px;
+    animation: fazer2 0.46s linear infinite;
+}
+
+.anim-body>span>span:nth-child(3) {
+    top: 1px;
+    animation: fazer3 0.46s linear infinite;
+    animation-delay: -1.15s;
+}
+
+.anim-body>span>span:nth-child(4) {
+    top: 4px;
+    animation: fazer4 1.15s linear infinite;
+    animation-delay: -1.15s;
+}
+
+.anim-longfazers {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.anim-longfazers span {
+    position: absolute;
+    height: 1px;
+    width: 20%;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.anim-longfazers span:nth-child(1) {
+    top: 20%;
+    animation: anim-lf 0.25s linear infinite;
+    animation-delay: -8.75s;
+}
+
+.anim-longfazers span:nth-child(2) {
+    top: 40%;
+    animation: anim-lf 0.15s linear infinite;
+    animation-delay: -4.15s;
+}
+
+.anim-longfazers span:nth-child(3) {
+    top: 60%;
+    animation: anim-lf 0.30s linear infinite;
+}
+
+.anim-longfazers span:nth-child(4) {
+    top: 80%;
+    animation: anim-lf 0.15s linear infinite;
+    animation-delay: -1.45s;
+}
+
+@keyframes fazer1 {
+    0% {
+        left: 0;
+    }
+
+    100% {
+        left: -78px;
+        opacity: 0;
+    }
+}
+
+@keyframes fazer2 {
+    0% {
+        left: 0;
+    }
+
+    100% {
+        left: -97px;
+        opacity: 0;
+    }
+}
+
+@keyframes fazer3 {
+    0% {
+        left: 0;
+    }
+
+    100% {
+        left: -49px;
+        opacity: 0;
+    }
+}
+
+@keyframes fazer4 {
+    0% {
+        left: 0;
+    }
+
+    100% {
+        left: -146px;
+        opacity: 0;
+    }
+}
+
+
+@keyframes speeder {
+    0% {
+        transform: translate(2px, 1px) rotate(0deg);
+    }
+
+    10% {
+        transform: translate(-1px, -3px) rotate(-1deg);
+    }
+
+    20% {
+        transform: translate(-2px, 0px) rotate(1deg);
+    }
+
+    30% {
+        transform: translate(1px, 2px) rotate(0deg);
+    }
+
+    40% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+
+    50% {
+        transform: translate(-1px, 3px) rotate(-1deg);
+    }
+
+    60% {
+        transform: translate(-1px, 1px) rotate(0deg);
+    }
+
+    70% {
+        transform: translate(3px, 1px) rotate(-1deg);
+    }
+
+    80% {
+        transform: translate(-2px, -1px) rotate(1deg);
+    }
+
+    90% {
+        transform: translate(2px, 1px) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(1px, -2px) rotate(-1deg);
+    }
+}
+
+@keyframes anim-lf {
+    0% {
+        left: 80%;
+    }
+
+    100% {
+        left: 0%;
+        opacity: 0;
+    }
+}

@@ -1,0 +1,99 @@
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 16px;
+}
+
+html,
+body {
+    width: 800px;
+    height: 580px;
+}
+
+body {
+    overflow: auto;
+}
+
+body>#bodyContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+hr {
+    width: 85%;
+    border: 0;
+    height: 1px;
+    background: #E9ECEF;
+}
+
+.section {
+    width: 740px;
+    height: 100%;
+    margin-left: 60px;
+    display: none;
+    overflow: hidden;
+}
+
+.section.active {
+    display: block;
+}
+
+.section .nav-link {
+    pointer-events: none;
+}
+
+.section .card {
+    box-shadow: 0px 0px 5px 1px rgba(204, 204, 204, 0.5);
+    border: 0;
+    border-radius: 12px;
+}
+
+.section a[class^="carousel-control-"] {
+    background-color: #4A4C4F;
+    opacity: 0;
+    transition: opacity 300ms;
+}
+
+.section a[class^="carousel-control-"]:hover {
+    opacity: 0.05;
+}
+
+/* #region Divider */
+
+div.divider {
+    display: none;
+    flex-basis: 100%;
+    align-items: center;
+    width: 90%;
+    font-size: 15px;
+}
+
+div.divider.active {
+    display: flex;
+}
+
+div.divider::before,
+div.divider::after {
+    content: "";
+    flex-grow: 1;
+    height: 1px;
+    font-size: 0px;
+    line-height: 0px;
+    margin: 0px 10px;
+}
+
+div.divider::before {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+}
+
+div.divider::after {
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+}
+
+/* #endregion */

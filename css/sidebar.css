@@ -1,0 +1,73 @@
+#sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 100%;
+    background: #4A4C4F;
+    color: #fff;
+    transition: all 300ms ease-in-out;
+    z-index: 100;
+    box-shadow: 0px 0px 10px #333;
+    overflow: hidden;
+
+    white-space: nowrap;
+}
+
+#sidebar:hover {
+    width: 200px;
+    transition-delay: 100ms;
+}
+
+#sidebar.static:hover {
+    width: 60px;
+    transition: none;
+}
+
+#sidebar>ul {
+    display: table;
+    width: 200px;
+}
+
+#sidebar>ul>li {
+    display: table-row;
+    cursor: pointer;
+
+    width: 100%;
+}
+
+#sidebar>ul>li:hover {
+    background-color: #339AF0;
+}
+
+#sidebar>ul>li.active {
+    color: #339AF0;
+    background-color: #fff;
+}
+
+#sidebar>ul>li>* {
+    height: 60px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#sidebar>ul>li>i {
+    width: 60px;
+    text-align: center;
+}
+
+#sidebar>ul>li>p {
+    text-align: left;
+}
+
+#sidebar>ul>li#support-button {
+    position: absolute;
+    bottom: 60px;
+    width: 200px;
+}
+
+#sidebar>ul>li#donate-button {
+    position: absolute;
+    bottom: 0;
+    width: 200px;
+}

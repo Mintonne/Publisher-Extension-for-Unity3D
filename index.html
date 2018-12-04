@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Vendor styleshets -->
+    <link rel="stylesheet" href="./vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./vendor/material-icons/material-icons.min.css">
+    <link rel="stylesheet" href="./vendor/font-awesome/style.css">
+    <link rel="stylesheet" href="./vendor/bootstrap-datepicker/bootstrap-datepicker3.min.css">
+    <link rel="stylesheet" href="./vendor/loading-anim/loading-anim.css">
+    <link rel="stylesheet" href="./vendor/perfect-scrollbar/perfect-scrollbar.css">
+
+    <!-- Custom stylesheets -->
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/sidebar.css">
+    <link rel="stylesheet" href="./css/dashboard.css">
+    <link rel="stylesheet" href="./css/sales.css">
+    <link rel="stylesheet" href="./css/downloads.css">
+    <link rel="stylesheet" href="./css/revenue.css">
+    <link rel="stylesheet" href="./css/verification.css">
+    <link rel="stylesheet" href="./css/settings.css">
+</head>
+
+<body>
+    <div id="bodyContainer">
+        <!-- Loading Animation - https://codepen.io/mr_alien/ -->
+        <div class="animation-overlay">
+            <div class="anim-body">
+                <span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+                <div class="anim-base">
+                    <span></span>
+                    <div class="anim-face"></div>
+                </div>
+            </div>
+            <div class="anim-longfazers">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <h5>This is a test</h5>
+            <p class="p-2 m-0">@mr_alien</a>
+        </div>
+
+        <!-- Sidebar -->
+        <div id="sidebar">
+            <ul id="sidebar-parent">
+                <li id="dashboard-button" class="sidebarBtn active">
+                    <i class="material-icons">dashboard</i>
+                    <p>Dashboard</p>
+                </li>
+                <li id="sales-button" class="sidebarBtn">
+                    <i class="material-icons">attach_money</i>
+                    <p>Sales</p>
+                </li>
+                <li id="downloads-button" class="sidebarBtn">
+                    <i class="material-icons">get_app</i>
+                    <p>Downloads</p>
+                </li>
+                <li id="revenue-button" class="sidebarBtn">
+                    <i class="material-icons">credit_card</i>
+                    <p>Revenue</p>
+                </li>
+                <li id="verify-button" class="sidebarBtn">
+                    <i class="material-icons">verified_user</i>
+                    <p>Verify Invoice</p>
+                </li>
+                <li id="settings-button" class="sidebarBtn">
+                    <i class="material-icons">settings</i>
+                    <p>Settings</p>
+                </li>
+                <li id="support-button">
+                    <i class="myicons icon-envelope"></i>
+                    <p>Support</p>
+                </li>
+                <li id="donate-button">
+                    <i class="myicons icon-paypal"></i>
+                    <p>Donate</p>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Dashboard -->
+        <div id="dashboard-section" class="section active">
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link disabled">Dashboard</a>
+                </li>
+            </ul>
+
+            <div class="input-group mx-auto">
+                <input type="text" id="dash-search-input" class="form-control text-dark" placeholder="Search" value="">
+            </div>
+
+            <div id="dash-cards" class="row mx-auto">
+                <div id="dash-sales" class="col-sm-3 p-2">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <i class="material-icons">attach_money</i>
+                            <p>Sales</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="dash-downloads" class="col-sm-3 p-2">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <i class="material-icons">get_app</i>
+                            <p>Downloads</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="dash-revenue" class="col-sm-3 p-2">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <i class="material-icons">credit_card</i>
+                            <p>Revenue</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="dash-verify" class="col-sm-3 p-2">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <i class="material-icons">verified_user</i>
+                            <p>Verify Invoice</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="dash-settings" class="col-sm-3 p-2">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <i class="material-icons">settings</i>
+                            <p>Settings</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Sales -->
+        <div id="sales-section" class="section">
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link disabled">Sales</a>
+                </li>
+            </ul>
+
+            <div class="input-group mx-auto">
+                <input type="text" id="package-search-input" class="form-control text-dark" placeholder="Search for package" value="">
+                <div class="input-group-append">
+                    <button id="month-picker" class="btn btn-outline-primary" type="button" data-provide="datepicker"><i class="myicons icon-calendar"></i></button>
+                    <button id="sort-toggle" class="btn btn-outline-primary" type="button"><i class="myicons icon-sort-amount-up icon-sort-amount-down"></i></button>
+                    <button id="sort-dropdown" class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort by </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#" value="0">Name</a>
+                        <a class="dropdown-item" href="#" value="1">Price</a>
+                        <a class="dropdown-item" href="#" value="5">Revenue</a>
+                        <a class="dropdown-item" href="#" value="2">Quantity</a>
+                        <a class="dropdown-item" href="#" value="3">Refunds</a>
+                        <a class="dropdown-item" href="#" value="4">Chargebacks</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#" value="6">First Sale Date</a>
+                        <a class="dropdown-item" href="#" value="7">Last Sale Date</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="sales-info-cards" class="carousel slide mx-auto mb-2" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row mx-auto text-center p-1">
+                            <!-- First Card -->
+                            <div class="col-sm-4 pl-0 pr-2">
+                                <div class="card">
+                                    <div class="card-body p-3">
+                                        <p class="card-title text-dark">Net Revenue</p>
+                                        <h4 id="card-revenue" class="card-text text-primary">$999,999</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Second Card -->
+                            <div class="col-sm-4 pl-2 pr-2">
+                                <div class="card">
+                                    <div class="card-body p-3">
+                                        <p class="card-title text-dark">Total Sales</p>
+                                        <h4 id="card-sales" class="card-text text-info">85,000</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Third Card -->
+                            <div class="col-sm-4 pl-2 pr-0">
+                                <div class="card">
+                                    <div class="card-body p-3">
+                                        <p class="card-title text-dark">Refunds</p>
+                                        <h4 id="card-refunds" class="card-text text-danger">500</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="row mx-auto text-center p-1">
+                            <!-- Fourth Card -->
+                            <div class="col-sm-4 pl-0 pr-2">
+                                <div class="card">
+                                    <div class="card-body p-3">
+                                        <p class="card-title text-dark">Commission</p>
+                                        <h4 id="card-commission" class="card-text text-primary">$500</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Five Card -->
+                            <div class="col-sm-4 pl-2 pr-2">
+                                <div class="card">
+                                    <div class="card-body p-3">
+                                        <p class="card-title text-dark">Vouchers</p>
+                                        <h4 id="card-vouchers" class="card-text text-info">500</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Sixth Card -->
+                            <div class="col-sm-4 pl-2 pr-0">
+                                <div class="card">
+                                    <div class="card-body p-3">
+                                        <p class="card-title text-dark">Chargebacks</p>
+                                        <h4 id="card-chargebacks" class="card-text text-danger">500</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a class="carousel-control-prev" href="#sales-info-cards" role="button" data-slide="prev">
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#sales-info-cards" role="button" data-slide="next">
+                        <span class="sr-only">Next</span>
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="divider mx-auto text-dark">Packages&nbsp;<span></span></div>
+
+            <div id="package-cards" class="row mx-auto mt-2 text-center"></div>
+        </div>
+
+        <!-- Downloads -->
+        <div id="downloads-section" class="section">
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link disabled">Free Downloads</a>
+                </li>
+            </ul>
+
+            <div class="input-group mx-auto">
+                <input type="text" id="downloads-package-search-input" class="form-control text-dark" placeholder="Search for package" value="">
+                <div class="input-group-append">
+                    <button id="downloads-month-picker" class="btn btn-outline-primary" type="button" data-provide="datepicker"><i class="myicons icon-calendar"></i></button>
+                    <button id="downloads-sort-toggle" class="btn btn-outline-primary" type="button"><i class="myicons icon-sort-amount-up icon-sort-amount-down"></i></button>
+                    <button id="downloads-sort-dropdown" class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort by </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#" value="0">Name</a>
+                        <a class="dropdown-item" href="#" value="1">Downloads</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#" value="2">First Date</a>
+                        <a class="dropdown-item" href="#" value="3">Last Date</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="downloads-info-cards" class="row mx-auto text-center mb-2 p-1">
+                <!-- First Card -->
+                <div class="col-sm-12 pl-0 pr-2">
+                    <div class="card">
+                        <div class="card-body p-3">
+                            <p class="card-title text-dark">Total Downloads</p>
+                            <h4 id="card-total-downloads" class="card-text text-primary">1500</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider mx-auto text-dark">Packages&nbsp;<span></span></div>
+
+            <div id="downloads-package-cards" class="row mx-auto mt-2 text-center"></div>
+
+        </div>
+
+        <!-- Revenue -->
+        <div id="revenue-section" class="section">
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link disabled">Revenue</a>
+                </li>
+            </ul>
+
+            <div id="revenue-info-cards" class="carousel slide mx-auto" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row mx-auto text-center p-1">
+                            <!-- First Card -->
+                            <div class="col-sm-4 pl-0 pr-2">
+                                <div class="card">
+                                    <div class="card-body p-3">
+                                        <p class="card-title text-dark">Current Balance</p>
+                                        <h4 id="card-current-balance" class="card-text text-primary">$50,000</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Second Card -->
+                            <div class="col-sm-4 pl-2 pr-2">
+                                <div class="card">
+                                    <div class="card-body p-3">
+                                        <p class="card-title text-dark">Net Revenue</p>
+                                        <h4 id="card-net-revenue" class="card-text text-info">$250,000</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Third Card -->
+                            <div class="col-sm-4 pl-2 pr-0">
+                                <div class="card">
+                                    <div class="card-body p-3">
+                                        <p class="card-title text-dark">Total Payout</p>
+                                        <h4 id="card-total-payout" class="card-text text-danger">$200,000</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="row mx-auto text-center p-1">
+                            <!-- Fourth Card -->
+                            <div class="col-sm-4 pl-0 pr-2">
+                                <div class="card">
+                                    <div class="card-body p-3">
+                                        <p class="card-title text-dark">Total Commission</p>
+                                        <h4 id="card-total-commission" class="card-text text-primary">$200,000</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Five Card -->
+                            <div class="col-sm-4 pl-2 pr-2">
+                                <div class="card">
+                                    <div class="card-body p-3">
+                                        <p class="card-title text-dark">Average Revenue</p>
+                                        <h4 id="card-average-revenue" class="card-text text-info">$200,000</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 pl-2 pr-0">
+                                <div class="card">
+                                    <div class="card-body p-3">
+                                        <p class="card-title text-dark">Total Months</p>
+                                        <h4 id="card-total-months" class="card-text text-danger">35</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a class="carousel-control-prev" href="#revenue-info-cards" role="button" data-slide="prev">
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#revenue-info-cards" role="button" data-slide="next">
+                        <span class="sr-only">Next</span>
+                    </a>
+
+                </div>
+            </div>
+
+            <canvas id="revenueChart" class="mx-auto" height="300"></canvas>
+
+            <p class="mb-2 text-center text-dark footnote">* Excluding current month's sales.</p>
+        </div>
+
+        <!-- Verification -->
+        <div id="verification-section" class="section">
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link disabled">Verify Invoice</a>
+                </li>
+            </ul>
+            <div class="input-group mx-auto">
+                <input type="text" class="form-control" placeholder="Invoice Number" id="invoice-number-input">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="button" id="verify-invoice">Verify</button>
+                </div>
+            </div>
+            <div id="invoice-results">
+                <h3 id="package-name" class="text-center mt-5 mb-4 text-dark">A Nice Asset</h3>
+                <h6 class="text-center font-weight-bold text-dark">Purchased On</h6>
+                <p id="purchase-date" class="text-center mb-2 text-dark">2018-09-30</p>
+                <h6 class="text-center font-weight-bold text-dark">Price (Excl. VAT)</h6>
+                <p id="purchase-price" class="text-center mb-2 text-dark">50.00 USD</p>
+                <h6 class="text-center font-weight-bold text-dark">Quantity</h6>
+                <p id="purchase-licenses" class="text-center mb-2 text-dark">5 Licenses</p>
+                <h6 class="text-center font-weight-bold text-dark">Status</h6>
+                <p id="purchase-status" class="text-center mb-2">Refunded</p>
+            </div>
+        </div>
+
+        <!-- Settings -->
+        <div id="settings-section" class="section">
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link disabled">Settings</a>
+                </li>
+            </ul>
+
+            <div class="input-group mx-auto">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Publisher ID</span>
+                </div>
+                <input id="pubId-input" type="text" class="form-control" value="" readonly>
+                <div class="input-group-append">
+                    <button id="fetch-pubId" class="btn btn-outline-primary" type="button">Fetch ID</button>
+                </div>
+            </div>
+
+            <hr class="mx-auto mt-4">
+
+            <div id="frequency-setting" class="btn-toolbar mx-auto">
+                <h8 class="ml-2 mb-3 text-secondary">Sales Update Frequency</h8>
+
+                <div class="btn-group">
+                    <button type="button" class="btn btn-outline-primary" value="0">Disabled</button>
+                    <button type="button" class="btn btn-outline-primary" value="1">5 mins</button>
+                    <button type="button" class="btn btn-outline-primary" value="2">10 mins</button>
+                    <button type="button" class="btn btn-outline-primary" value="3">15 mins</button>
+                    <button type="button" class="btn btn-outline-primary" value="4">30 mins</button>
+                    <button type="button" class="btn btn-outline-primary" value="5">60 mins</button>
+                </div>
+            </div>
+
+            <hr class="mx-auto mt-4">
+
+            <div id="sidebar-setting" class="btn-toolbar mx-auto">
+                <h8 class="ml-2 mb-3 text-secondary">Sidebar Animation</h8>
+
+                <div class="btn-group">
+                    <button type="button" class="btn btn-outline-primary" value="1">Animated</button>
+                    <button type="button" class="btn btn-outline-primary" value="0">Static</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="./vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="./vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="./vendor/sweetalert/sweetalert.min.js"></script>
+    <script type="text/javascript" src="./vendor/loading-anim/loading-anim.js"></script>
+    <script type="text/javascript" src="./vendor/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="./vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script type="text/javascript" src="./vendor/chart.js/Chart.min.js"></script>
+
+    <script type="text/javascript" src="./js/keys.js"></script>
+    <script type="text/javascript" src="./js/vars.js"></script>
+
+    <script type="text/javascript" src="./js/main.js"></script>
+    <script type="text/javascript" src="./js/sidebar.js"></script>
+    <script type="text/javascript" src="./js/dashboard.js"></script>
+    <script type="text/javascript" src="./js/sales.js"></script>
+    <script type="text/javascript" src="./js/downloads.js"></script>
+    <script type="text/javascript" src="./js/revenue.js"></script>
+    <script type="text/javascript" src="./js/verification.js"></script>
+    <script type="text/javascript" src="./js/settings.js"></script>
+</body>
+
+</html>
