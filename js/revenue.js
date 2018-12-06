@@ -10,7 +10,6 @@ const revenueInfoCards = elemByID("revenue-info-cards"),
 
 const ctx = elemByID("revenueChart").getContext('2d');
 
-const monthsAbbreviations = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
 let data = [],
     labels = [];
 

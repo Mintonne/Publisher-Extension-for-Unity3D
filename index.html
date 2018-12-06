@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Publisher Dashboard for Unity3D</title>
 
     <!-- Vendor styleshets -->
     <link rel="stylesheet" href="./vendor/bootstrap/css/bootstrap.min.css">
@@ -54,7 +55,7 @@
         <!-- Sidebar -->
         <div id="sidebar">
             <ul id="sidebar-parent">
-                <li id="dashboard-button" class="sidebarBtn active">
+                <li id="dashboard-button" class="sidebarBtn">
                     <i class="material-icons">dashboard</i>
                     <p>Dashboard</p>
                 </li>
@@ -90,7 +91,7 @@
         </div>
 
         <!-- Dashboard -->
-        <div id="dashboard-section" class="section active">
+        <div id="dashboard-section" class="section">
             <ul class="nav justify-content-center">
                 <li class="nav-item">
                     <a class="nav-link disabled">Dashboard</a>
@@ -123,6 +124,14 @@
                         <div class="card-body text-center">
                             <i class="material-icons">credit_card</i>
                             <p>Revenue</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="dash-trend-analysis" class="col-sm-3 p-2">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <i class="material-icons">trending_up</i>
+                            <p>Trend Analysis</p>
                         </div>
                     </div>
                 </div>
@@ -467,6 +476,7 @@
 
     <script type="text/javascript" src="./js/keys.js"></script>
     <script type="text/javascript" src="./js/vars.js"></script>
+    <script type="text/javascript" src="./js/functions.js"></script>
 
     <script type="text/javascript" src="./js/main.js"></script>
     <script type="text/javascript" src="./js/sidebar.js"></script>

@@ -4,6 +4,7 @@ const dashSearchInput = elemByID("dash-search-input"),
     dashSalesButton = elemByID("dash-sales"),
     dashDownloadsButton = elemByID("dash-downloads"),
     dashRevenueButton = elemByID("dash-revenue"),
+    dashTrendButton = elemByID("dash-trend-analysis"),
     dashVerifyButton = elemByID("dash-verify"),
     dashSettingsButton = elemByID("dash-settings");
 
@@ -23,6 +24,10 @@ dashDownloadsButton.addEventListener("click", () => {
 
 dashRevenueButton.addEventListener("click", () => {
     OpenRevenue();
+});
+
+dashTrendButton.addEventListener("click", () => {
+    OpenLink("../pages/trend-analysis.html", true);
 });
 
 dashVerifyButton.addEventListener("click", () => {

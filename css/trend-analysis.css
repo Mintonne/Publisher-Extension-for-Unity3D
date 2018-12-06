@@ -1,0 +1,13 @@
+#save-chart-button {
+    position: fixed;
+    top: 5px;
+    right: 20px;
+    padding: 5px;
+    font-size: 30px;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 25%;
+    color: #666;
+    cursor: pointer;
+}

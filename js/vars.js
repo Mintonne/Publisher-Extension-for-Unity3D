@@ -1,4 +1,7 @@
 'use strict';
+const monthsNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const monthsAbbreviations = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
+const chartColors = ["#F15854", "#5DA5DA", "#FAA43A", "#60BD68", "#F17CB0", "#B2912F", "#B276B2", "#DECF3F", "#4E49D8", "#4D4D4D"];
 
 const doc = document;
 
@@ -29,6 +32,7 @@ let xhr = new XMLHttpRequest(),
     salesData,
     downloadsData,
     revenueData,
+    trendData,
     salesSortOrder = 0,
     downloadsSortOrder = 1,
     salesReverseOrder = false,
