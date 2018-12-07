@@ -1,7 +1,7 @@
   {
       "name": "Publisher Dashboard for Unity3D",
       "short_name": "Publisher Dashboard",
-      "version": "0.6",
+      "version": "0.7",
       "description": "Access your Unity3D publisher information in a click.",
       "author": "Mintonne",
       "manifest_version": 2,
@@ -20,8 +20,7 @@
           "notifications",
           "cookies",
           "storage",
-          "contextMenus",
-          "tabs"
+          "contextMenus"
       ],
       "background": {
           "scripts": ["./js/keys.js", "./js/background.js"]
