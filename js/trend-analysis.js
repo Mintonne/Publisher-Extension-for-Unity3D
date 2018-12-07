@@ -9,6 +9,9 @@ let myChart,
     labels = [];
 
 saveChartBtn.addEventListener("click", () => {
+    if (myChart == null)
+        return;
+
     swal({
         icon: "info",
         title: "Save Chart",
@@ -82,22 +85,30 @@ function PopulateTrend() {
     });
 
     let Debit,
-        entryDate;
+        Description,
+        entryDate,
+        curYear,
+        curMonth;
 
     if (trendData.aaData.length > 0) {
         trendData.aaData.forEach((item) => {
             Debit = Number(item[2].replace("$", ""));
 
-            if (item[1].toLowerCase().includes("revenue for") && !item[1].toLowerCase().includes("fixing")) {
-                entryDate = new Date("01 " + item[1].toLowerCase().replace("sale", "").replace("revenue", "").replace("for", "").trim());
+            Description = item[1].toLowerCase();
 
-                if (!yearsData.includes(entryDate.getFullYear(), 0))
-                    yearsData.push(entryDate.getFullYear());
+            if (Description.includes("revenue for") && !Description.includes("fixing")) {
+                entryDate = new Date("01 " + Description.replace(/sale|revenue|for/g, "").trim());
 
-                if (data[yearsData.indexOf(entryDate.getFullYear())] == null)
-                    data[yearsData.indexOf(entryDate.getFullYear())] = [];
+                curYear = entryDate.getFullYear();
+                curMonth = entryDate.getMonth();
 
-                data[yearsData.indexOf(entryDate.getFullYear())][entryDate.getMonth()] = Debit.toFixed(2);
+                if (curYear != null && !yearsData.includes(curYear, 0))
+                    yearsData.push(curYear);
+
+                if (data[yearsData.indexOf(curYear)] == null)
+                    data[yearsData.indexOf(curYear)] = [];
+
+                data[yearsData.indexOf(curYear)][curMonth] = Debit.toFixed(2);
             }
         });
     }
@@ -119,7 +130,7 @@ function PopulateTrend() {
             responsive: true,
             title: {
                 display: true,
-                text: `Revenue Trend Analysis ${yearsData.length>1? `(${yearsData[0]} - ${yearsData[yearsData.length-1]})` : `(${yearsData[0]})`}`,
+                text: `Revenue Trend Analysis ${yearsData.length > 1 ? `(${yearsData[0]} - ${yearsData[yearsData.length-1]})` : `(${yearsData[0]})`}`,
                 fontSize: 20,
                 padding: 20
             },

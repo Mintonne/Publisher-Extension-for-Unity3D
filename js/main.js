@@ -10,12 +10,18 @@ const sidebar = elemByID("sidebar"),
     verificationSection = elemByID("verification-section"),
     settingsSection = elemByID("settings-section");
 
-window.onload = () => {
-    Init();
+windowURL = new URL(window.location.href);
+
+if (windowURL.searchParams.has("resize")) {
+    window.addEventListener("resize", () => {
+        localStorage[popupWindowHeightKey] = window.outerHeight;
+        localStorage[popupWindowWidthKey] = window.outerWidth;
+        localStorage[popupWindowTopPosKey] = window.screenTop;
+        localStorage[popupWindowLeftPosKey] = window.screenLeft;
+    });
 }
 
-function Init() {
-    CheckLoginState(OpenDashboard);
+window.onload = () => {
     GetData([pubIDKey, payoutKey, currentMonthsKey, lastRefresh, animateSidebar], Setup, true);
 }
 
@@ -33,4 +39,9 @@ function Setup(value) {
             [currentMonthsKey]: value[currentMonthsKey],
             [lastRefresh]: value[lastRefresh]
         });
+
+    if (windowURL.searchParams.has("inv"))
+        CheckLoginState(OpenVerification());
+    else
+        CheckLoginState(OpenDashboard());
 }

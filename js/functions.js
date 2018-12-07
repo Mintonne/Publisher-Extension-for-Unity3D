@@ -32,7 +32,7 @@ function CheckLoginState(callback) {
                 }
             });
         } else {
-            callback();
+            callback;
         }
     });
 }

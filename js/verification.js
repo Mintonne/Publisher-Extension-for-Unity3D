@@ -28,6 +28,14 @@ function OpenVerification() {
     if (pubID == null)
         return RedirectToSettings();
 
+    windowURL = new URL(window.location.href);
+
+    if (windowURL.searchParams.has("inv")) {
+        let paramValue = windowURL.searchParams.get("inv");
+        invoiceInput.value = paramValue;
+        verifyBtn.click();
+    }
+
     if (verifyButton.classList.contains("active"))
         return;
 

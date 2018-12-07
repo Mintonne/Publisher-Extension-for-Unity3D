@@ -22,6 +22,7 @@ let elemQuerySelectorAll = (mySelector) => {
 }
 
 let xhr = new XMLHttpRequest(),
+    windowURL,
     retryData,
     pubID,
     payoutRate,
