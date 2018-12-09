@@ -77,7 +77,7 @@ function FetchDownloads(data) {
 function PopulateDownloads() {
     let formattedDate = InsertCharacter(downloadsCurrentPeriod.toString(), 4, "-");
     $("#downloads-month-picker").datepicker("update", formattedDate);
-    downloadsTitle.innerHTML = new Date(formattedDate).toLocaleString(navigator.language, {
+    downloadsTitle.innerText = new Date(formattedDate).toLocaleString(navigator.language, {
         month: "long",
         year: "numeric"
     });

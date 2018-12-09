@@ -82,7 +82,7 @@ function FetchSales(data) {
 function PopulateSales() {
     let formattedDate = InsertCharacter(salesCurrentPeriod.toString(), 4, "-");
     $("#month-picker").datepicker("update", formattedDate);
-    salesTitle.innerHTML = new Date(formattedDate).toLocaleString(navigator.language, {
+    salesTitle.innerText = new Date(formattedDate).toLocaleString(navigator.language, {
         month: "long",
         year: "numeric"
     });

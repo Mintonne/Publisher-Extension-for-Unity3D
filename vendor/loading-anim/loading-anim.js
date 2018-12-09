@@ -4,10 +4,10 @@ const animationOverlay = document.querySelector(".animation-overlay"),
 let Anim = {
     ShowAnimation(text = "Loading...") {
         animationOverlay.classList.add("active");
-        loadingText.innerHTML = text;
+        loadingText.innerText = text;
     },
     UpdateText(text) {
-        loadingText.innerHTML = text;
+        loadingText.innerText = text;
     },
     CloseAnimation() {
         animationOverlay.classList.remove("active");

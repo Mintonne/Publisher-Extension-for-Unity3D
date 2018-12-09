@@ -55,11 +55,11 @@ function InvoiceResult() {
 
     if (data.aaData.length > 0) {
         resultsSection.classList.add("active");
-        packageName.innerHTML = data.aaData[0][1];
-        purchaseDate.innerHTML = new Date(data.aaData[0][4]).toLocaleDateString(navigator.language, dateOptions);
-        purchasePrice.innerHTML = data.aaData[0][3];
-        purchaseLicenses.innerHTML = FormatLicenseValue(data.aaData[0][2]);
-        purchaseStatus.innerHTML = FormatStatusValue(data.aaData[0][5]);
+        packageName.innerText = data.aaData[0][1];
+        purchaseDate.innerText = new Date(data.aaData[0][4]).toLocaleDateString(navigator.language, dateOptions);
+        purchasePrice.innerText = data.aaData[0][3];
+        purchaseLicenses.innerText = FormatLicenseValue(data.aaData[0][2]);
+        purchaseStatus.innerText = FormatStatusValue(data.aaData[0][5]);
     } else {
         resultsSection.classList.remove("active");
         swal("Error", "No record found", "error");
