@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 0.8
+### Fixed
+- A bug that reset the saved sales data to zero if the data array from the server is empty.
+
 ## 0.7
 ### Removed
 - Tabs permission.

@@ -148,6 +148,9 @@ function HandleStateChange() {
         if (xhr.status === 200) {
             let data = JSON.parse(xhr.responseText);
 
+            if (data.aaData.length == 0)
+                return;
+
             let qty = 0,
                 refunds = 0,
                 chargebacks = 0;
