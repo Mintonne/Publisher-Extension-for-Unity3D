@@ -1,7 +1,7 @@
 function CheckLoginState(callback) {
   chrome.cookies.get(
     {
-      url: links().dashboard,
+      url: Links().dashboard,
       name: 'kharma_session'
     },
     cookie => {
@@ -24,7 +24,7 @@ function CheckLoginState(callback) {
         }).then(value => {
           switch (value) {
             case 'btn1':
-              OpenLink(links().dashboard);
+              OpenLink(Links().dashboard);
               break;
 
             case 'btn2':

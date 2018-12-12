@@ -1,5 +1,3 @@
-'use strict';
-
 const pubIDKey = 'pubID',
   pubNameKey = 'pubName',
   payoutKey = 'payoutRate',
@@ -8,7 +6,7 @@ const pubIDKey = 'pubID',
   currentMonthsKey = 'curMonth',
   lastRefresh = 'lastRefresh',
   salesSortOrderKey = 'salesSortOrder',
-  salesInfo = 'salesInfo',
+  salesInfoKey = 'salesInfo',
   animateSidebar = 'animateSidebar',
   openAsPopupKey = 'openAsPopup',
   popupWindowWidthKey = 'popupWindowWidth',

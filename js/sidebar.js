@@ -35,11 +35,11 @@ settingsButton.addEventListener('click', () => {
 });
 
 supportButton.addEventListener('click', () => {
-  OpenLink(links().support);
+  OpenLink(Links().support);
 });
 
 donateButton.addEventListener('click', () => {
-  OpenLink(links().donate);
+  OpenLink(Links().donate);
 });
 
 function SetActiveButton(element) {

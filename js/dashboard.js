@@ -1,5 +1,3 @@
-'use strict';
-
 const dashSearchInput = elemByID('dash-search-input'),
   dashSalesButton = elemByID('dash-sales'),
   dashDownloadsButton = elemByID('dash-downloads'),
@@ -8,7 +6,7 @@ const dashSearchInput = elemByID('dash-search-input'),
   dashVerifyButton = elemByID('dash-verify'),
   dashSettingsButton = elemByID('dash-settings');
 
-const dashCards = elemQuerySelectorAll("#dash-cards [id^='dash-']");
+const dashCards = elemQuerySelectorAll('#dash-cards [id^="dash-"]');
 
 dashSearchInput.addEventListener('input', () => {
   SearchCards();
@@ -69,7 +67,7 @@ function CheckMonthsData(value) {
   let curDate = new Date();
 
   if (preDate.getMonth() < curDate.getMonth() && curDate.getTime() - value[lastRefresh] >= 3600000)
-    xhrRequest(links().months, UpdateMonthsData, 'Refreshing months data');
+    xhrRequest(Links().months, UpdateMonthsData, 'Refreshing months data');
 }
 
 function UpdateMonthsData() {

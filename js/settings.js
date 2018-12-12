@@ -10,7 +10,7 @@ fetchIdBtn.addEventListener('click', () => {
     CacheMonthsData();
     return;
   }
-  xhrRequest(links().publisherInfo, SavePublisherInfo, 'Fetching your publisher information');
+  xhrRequest(Links().publisherInfo, SavePublisherInfo, 'Fetching your publisher information');
 });
 
 frequencySettings.forEach(item => {
@@ -86,7 +86,7 @@ function SavePublisherInfo() {
 }
 
 function CacheMonthsData() {
-  xhrRequest(links().months, SaveMonthsData, 'Caching months data');
+  xhrRequest(Links().months, SaveMonthsData, 'Caching months data');
 }
 
 function SaveMonthsData() {

@@ -55,7 +55,7 @@ $('#month-picker')
     selectedPeriod < firstPeriod ? (salesCurrentPeriod = firstPeriod) : (salesCurrentPeriod = selectedPeriod);
 
     $('#month-picker').datepicker('update', '');
-    xhrRequest(links().sales, PopulateSales, 'Fetching sales information', true);
+    xhrRequest(Links().sales, PopulateSales, 'Fetching sales information', true);
   });
 
 function OpenSales() {
@@ -75,7 +75,7 @@ function FetchSales(data) {
 
   data[salesSortOrderKey] == null ? (salesSortOrder = 0) : (salesSortOrder = Number(data[salesSortOrderKey]));
 
-  xhrRequest(links().sales, PopulateSales, 'Fetching sales information', true);
+  xhrRequest(Links().sales, PopulateSales, 'Fetching sales information', true);
 }
 
 function PopulateSales() {

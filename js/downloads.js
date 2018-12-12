@@ -50,7 +50,7 @@ $('#downloads-month-picker')
     selectedPeriod < firstPeriod ? (downloadsCurrentPeriod = firstPeriod) : (downloadsCurrentPeriod = selectedPeriod);
 
     $('#downloads-month-picker').datepicker('update', '');
-    xhrRequest(links().downloads, PopulateDownloads, 'Fetching downloads information', true);
+    xhrRequest(Links().downloads, PopulateDownloads, 'Fetching downloads information', true);
   });
 
 function OpenDownloads() {
@@ -69,7 +69,7 @@ function FetchDownloads(data) {
 
   if (firstPeriod == null) firstPeriod = Number(data[firstMonthsKey].replace('-', ''));
 
-  xhrRequest(links().downloads, PopulateDownloads, 'Fetching downloads information', true);
+  xhrRequest(Links().downloads, PopulateDownloads, 'Fetching downloads information', true);
 }
 
 function PopulateDownloads() {

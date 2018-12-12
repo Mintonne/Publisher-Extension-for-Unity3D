@@ -64,7 +64,7 @@ function Setup(value) {
 }
 
 function FetchTrendData() {
-  if (trendData == null) xhrRequest(links().revenue, PopulateTrend, 'Fetching revenue information', true);
+  if (trendData == null) xhrRequest(Links().revenue, PopulateTrend, 'Fetching revenue information', true);
 }
 
 function PopulateTrend() {

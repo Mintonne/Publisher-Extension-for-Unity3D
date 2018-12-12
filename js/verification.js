@@ -20,7 +20,7 @@ verifyBtn.addEventListener('click', () => {
 
   invoiceNumber = inputValue;
 
-  xhrRequest(links().verify, InvoiceResult, 'Fetching invoice data');
+  xhrRequest(Links().verify, InvoiceResult, 'Fetching invoice data');
 });
 
 function OpenVerification() {

@@ -1,32 +1,24 @@
-'use strict';
+const xhttp = new XMLHttpRequest();
 
-let xhr = new XMLHttpRequest(),
-  intervalID,
-  interval = 0,
-  pubID,
-  currentPeriod,
-  OpenAsPopupState = true,
-  curWindow,
-  lastLink;
-
-let saleIcon = '../img/notification/icons8-cash-in-hand-96.png',
+const saleIcon = '../img/notification/icons8-cash-in-hand-96.png',
   refundIcon = '../img/notification/icons8-refund-96.png',
   chargebackIcon = '../img/notification/icons8-fraud-96.png';
 
-let frequency = {
-  0: 0,
-  1: 5,
-  2: 10,
-  3: 15,
-  4: 30,
-  5: 60
-};
+const frequency = { 0: 0, 1: 5, 2: 10, 3: 15, 4: 30, 5: 60 };
+
+let intervalID,
+  interval = 0,
+  pubID,
+  currentPeriod,
+  OpenAsPopupState,
+  curWindow,
+  lastLink;
 
 function salesLink() {
   return `https://publisher.assetstore.unity3d.com/api/publisher-info/sales/${pubID}/${currentPeriod}.json`;
 }
 
-localStorage[openAsPopupKey] == null ? (OpenAsPopupState = true) : (OpenAsPopupState = parseBool(localStorage[openAsPopupKey]));
+OpenAsPopupState = localStorage[openAsPopupKey] == null ? true : parseBool(localStorage[openAsPopupKey]);
 
 StartChecker();
 SetupBrowserAction();
@@ -76,7 +68,7 @@ chrome.contextMenus.create({
 function OpenAs(data) {
   let menuItemId = data.menuItemId;
 
-  menuItemId == 'asPopup' ? (OpenAsPopupState = true) : (OpenAsPopupState = false);
+  OpenAsPopupState = menuItemId == 'asPopup' ? true : false;
 
   localStorage[openAsPopupKey] = OpenAsPopupState;
   SetupBrowserAction();
@@ -129,16 +121,16 @@ function DataRequest() {
     return;
   }
 
-  xhr.onreadystatechange = HandleStateChange;
-  xhr.open('GET', salesLink(), true);
-  xhr.timeout = 15000;
-  xhr.send();
+  xhttp.onreadystatechange = HandleStateChange;
+  xhttp.open('GET', salesLink(), true);
+  xhttp.timeout = 15000;
+  xhttp.send();
 }
 
 function HandleStateChange() {
-  if (xhr.readyState === 4) {
-    if (xhr.status === 200) {
-      let data = JSON.parse(xhr.responseText);
+  if (xhttp.readyState === 4) {
+    if (xhttp.status === 200) {
+      let data = JSON.parse(xhttp.responseText);
 
       if (data.aaData.length == 0) return;
 
@@ -159,10 +151,10 @@ function HandleStateChange() {
         Refreshed: Date.now()
       };
 
-      let previousData = localStorage[salesInfo];
+      let previousData = localStorage[salesInfoKey];
 
       if (previousData == null) {
-        localStorage[salesInfo] = JSON.stringify(newData);
+        localStorage[salesInfoKey] = JSON.stringify(newData);
       } else {
         previousData = JSON.parse(previousData);
 
@@ -181,7 +173,7 @@ function HandleStateChange() {
           SendNotification(`You have ${diff > 1 ? diff + ' new chargebacks.' : 'a new chargeback.'}`, chargebackIcon);
         }
 
-        localStorage.setItem(salesInfo, JSON.stringify(newData));
+        localStorage.setItem(salesInfoKey, JSON.stringify(newData));
       }
     } else {
       console.log('Error');
@@ -212,11 +204,11 @@ function VerifyInvoice(data) {
 function OpenWindow(link) {
   let width, height, top, left;
 
-  localStorage[popupWindowWidthKey] != null ? (width = Number(localStorage[popupWindowWidthKey])) : (width = 820);
-  localStorage[popupWindowHeightKey] != null ? (height = Number(localStorage[popupWindowHeightKey])) : (height = 620);
+  width = localStorage[popupWindowWidthKey] != null ? Number(localStorage[popupWindowWidthKey]) : 820;
+  height = localStorage[popupWindowHeightKey] != null ? Number(localStorage[popupWindowHeightKey]) : 620;
 
-  localStorage[popupWindowTopPosKey] != null ? (top = Number(localStorage[popupWindowTopPosKey])) : (top = null);
-  localStorage[popupWindowLeftPosKey] != null ? (left = Number(localStorage[popupWindowLeftPosKey])) : (left = null);
+  top = localStorage[popupWindowTopPosKey] != null ? Number(localStorage[popupWindowTopPosKey]) : null;
+  left = localStorage[popupWindowLeftPosKey] != null ? Number(localStorage[popupWindowLeftPosKey]) : null;
 
   if (curWindow == null) {
     chrome.windows.create(

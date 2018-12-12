@@ -25,7 +25,7 @@ function OpenRevenue() {
 }
 
 function FetchRevenueData() {
-  xhrRequest(links().revenue, PopulateRevenue, 'Fetching revenue information', true);
+  xhrRequest(Links().revenue, PopulateRevenue, 'Fetching revenue information', true);
 }
 
 function PopulateRevenue() {

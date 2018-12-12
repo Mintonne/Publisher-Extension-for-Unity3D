@@ -1,28 +1,28 @@
-'use strict';
 const monthsNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const monthsAbbreviations = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
 const chartColors = ['#F15854', '#5DA5DA', '#FAA43A', '#60BD68', '#F17CB0', '#B2912F', '#B276B2', '#DECF3F', '#4E49D8', '#4D4D4D'];
 
 const doc = document;
 
-let elemByID = myId => {
+const elemByID = myId => {
   return doc.getElementById(myId);
 };
 
-let elemByClass = myClass => {
+const elemByClass = myClass => {
   return doc.getElementsByClassName(myClass);
 };
 
-let elemQuerySelector = mySelector => {
+const elemQuerySelector = mySelector => {
   return doc.querySelector(mySelector);
 };
 
-let elemQuerySelectorAll = mySelector => {
+const elemQuerySelectorAll = mySelector => {
   return doc.querySelectorAll(mySelector);
 };
 
-let xhr = new XMLHttpRequest(),
-  windowURL,
+const xhr = new XMLHttpRequest();
+
+let windowURL,
   retryData,
   pubID,
   payoutRate,
@@ -39,7 +39,7 @@ let xhr = new XMLHttpRequest(),
   salesReverseOrder = false,
   downloadsReverseOrder = false;
 
-function links() {
+function Links() {
   return {
     dashboard: 'https://publisher.assetstore.unity3d.com',
     userInfo: 'https://publisher.assetstore.unity3d.com/api/publisher/user.json',
