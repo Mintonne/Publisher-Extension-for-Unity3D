@@ -1,16 +1,16 @@
-#verification-section>.input-group {
-    width: 85%;
-    padding: 20px 0;
+#verification-section > .input-group {
+  width: 85%;
+  padding: 20px 0;
 }
 
 #verification-section #verify-invoice {
-    width: 100px;
+  width: 100px;
 }
 
-#verification-section>#invoice-results {
-    display: none;
+#verification-section > #invoice-results {
+  display: none;
 }
 
-#verification-section>#invoice-results.active {
-    display: block;
+#verification-section > #invoice-results.active {
+  display: block;
 }

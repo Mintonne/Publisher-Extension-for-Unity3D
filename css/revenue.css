@@ -1,22 +1,22 @@
-#revenue-section>#revenue-info-cards {
-    width: 85%;
-    padding: 20px 0;
-    display: none;
+#revenue-section > #revenue-info-cards {
+  width: 85%;
+  padding: 20px 0;
+  display: none;
 }
 
-#revenue-section>#revenue-info-cards.active {
-    display: flex;
+#revenue-section > #revenue-info-cards.active {
+  display: flex;
 }
 
-#revenue-section>canvas {
-    width: 90% !important;
+#revenue-section > canvas {
+  width: 90% !important;
 }
 
-#revenue-section>p.footnote {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 92.5%;
-    font-size: 14px;
-    font-weight: 500;
+#revenue-section > p.footnote {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 92.5%;
+  font-size: 14px;
+  font-weight: 500;
 }

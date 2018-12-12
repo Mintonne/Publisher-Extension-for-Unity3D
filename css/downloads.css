@@ -1,82 +1,82 @@
-#downloads-section>.input-group {
-    width: 85%;
-    padding: 20px 0;
+#downloads-section > .input-group {
+  width: 85%;
+  padding: 20px 0;
 }
 
 #downloads-section #downloads-sort-dropdown {
-    width: 100px;
+  width: 100px;
 }
 
-#downloads-section>#downloads-info-cards {
-    width: 85%;
-    display: none;
+#downloads-section > #downloads-info-cards {
+  width: 85%;
+  display: none;
 }
 
-#downloads-section>#downloads-info-cards.active {
-    display: block;
+#downloads-section > #downloads-info-cards.active {
+  display: block;
 }
 
-#downloads-section>#downloads-package-cards {
-    display: none;
-    position: relative;
-    width: 90%;
-    overflow: hidden;
-    max-height: 320px;
+#downloads-section > #downloads-package-cards {
+  display: none;
+  position: relative;
+  width: 90%;
+  overflow: hidden;
+  max-height: 320px;
 }
 
-#downloads-section>#downloads-package-cards.active {
-    display: flex;
+#downloads-section > #downloads-package-cards.active {
+  display: flex;
 }
 
-#downloads-section>#downloads-package-cards>div {
-    height: 140px;
-    padding: 10px 18px;
+#downloads-section > #downloads-package-cards > div {
+  height: 140px;
+  padding: 10px 18px;
 }
 
-#downloads-section>#downloads-package-cards>div:nth-child(3n+1) {
-    padding-right: 5px;
+#downloads-section > #downloads-package-cards > div:nth-child(3n + 1) {
+  padding-right: 5px;
 }
 
-#downloads-section>#downloads-package-cards>div:nth-child(3n+2) {
-    padding-left: 11.5px;
-    padding-right: 11.5px;
+#downloads-section > #downloads-package-cards > div:nth-child(3n + 2) {
+  padding-left: 11.5px;
+  padding-right: 11.5px;
 }
 
-#downloads-section>#downloads-package-cards>div:nth-child(3n) {
-    padding-left: 5px;
+#downloads-section > #downloads-package-cards > div:nth-child(3n) {
+  padding-left: 5px;
 }
 
-#downloads-section>#downloads-package-cards .card {
-    height: 100%;
-    width: 100%;
+#downloads-section > #downloads-package-cards .card {
+  height: 100%;
+  width: 100%;
 }
 
-#downloads-section>#downloads-package-cards .card .card-title {
-    text-overflow: ellipsis;
-    word-wrap: break-word;
-    overflow: hidden;
+#downloads-section > #downloads-package-cards .card .card-title {
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
 
-    line-height: 1.3em;
-    height: 3.9em;
+  line-height: 1.3em;
+  height: 3.9em;
 }
 
-#downloads-section>#downloads-package-cards .card .bubble {
-    background: #17a2b8;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    padding-top: 3px;
-    font-size: 12px;
-    color: #fff;
-    border-radius: 12px 0 12px 0;
-    width: 32px;
-    height: 25px;
-    font-weight: 500;
-    opacity: 0;
-    transition: all 500ms;
+#downloads-section > #downloads-package-cards .card .bubble {
+  background: #17a2b8;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding-top: 3px;
+  font-size: 12px;
+  color: #fff;
+  border-radius: 12px 0 12px 0;
+  width: 32px;
+  height: 25px;
+  font-weight: 500;
+  opacity: 0;
+  transition: all 500ms;
 }
 
-#downloads-section>#downloads-package-cards .card .bubble.active {
-    opacity: 1;
-    transition: all 500ms;
+#downloads-section > #downloads-package-cards .card .bubble.active {
+  opacity: 1;
+  transition: all 500ms;
 }

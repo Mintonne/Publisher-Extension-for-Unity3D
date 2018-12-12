@@ -1,35 +1,35 @@
-#dashboard-section>.input-group {
-    width: 85%;
-    padding: 20px 0;
+#dashboard-section > .input-group {
+  width: 85%;
+  padding: 20px 0;
 }
 
-#dashboard-section>#dash-cards {
-    width: 85%;
+#dashboard-section > #dash-cards {
+  width: 85%;
 }
 
 #dashboard-section .card {
-    height: 140px;
-    cursor: pointer;
-    transition: all .2s ease-in-out;
+  height: 140px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
 #dashboard-section .card:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 #dashboard-section .card-body p {
-    color: #4A4C4F;
-    font-weight: 600;
+  color: #4a4c4f;
+  font-weight: 600;
 }
 
 #dashboard-section .card-body i,
 #dashboard-section .card-body i::before {
-    font-size: 40px;
-    color: #ccc;
-    margin-bottom: 20px;
+  font-size: 40px;
+  color: #ccc;
+  margin-bottom: 20px;
 }
 
 #dashboard-section .card-body:hover *,
 #dashboard-section .card-body:hover *::before {
-    color: #339AF0;
+  color: #339af0;
 }
