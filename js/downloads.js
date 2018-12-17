@@ -54,20 +54,24 @@ $('#downloads-month-picker')
   });
 
 function OpenDownloads() {
-  if (pubID == null) return RedirectToSettings();
+  if (pubID == null)
+    return RedirectToSettings();
 
-  if (downloadsButton.classList.contains('active')) return;
+  if (downloadsButton.classList.contains('active'))
+    return;
 
   SetActiveButton(downloadsButton);
   SetActiveSection(downloadsSection);
 
-  if (downloadsData == null) GetData([firstMonthsKey, currentMonthsKey], FetchDownloads, true);
+  if (downloadsData == null)
+    GetData([firstMonthsKey, currentMonthsKey], FetchDownloads, true);
 }
 
 function FetchDownloads(data) {
   downloadsCurrentPeriod = Number(data[currentMonthsKey].replace('-', ''));
 
-  if (firstPeriod == null) firstPeriod = Number(data[firstMonthsKey].replace('-', ''));
+  if (firstPeriod == null)
+    firstPeriod = Number(data[firstMonthsKey].replace('-', ''));
 
   xhrRequest(Links().downloads, PopulateDownloads, 'Fetching downloads information', true);
 }
@@ -105,14 +109,18 @@ function PopulateDownloads() {
 function SortDownloadsPackages(order) {
   downloadsSortOrder = order;
 
-  if (downloadsData.aaData.length === 0) return;
+  if (downloadsData.aaData.length === 0)
+    return;
 
   downloadsData.aaData.sort((a, b) => {
-    if (downloadsSortOrder == 1) return Number(a[downloadsSortOrder]) < Number(b[downloadsSortOrder]) ? 1 : -1;
-    else return a[downloadsSortOrder] < b[downloadsSortOrder] ? 1 : -1;
+    if (downloadsSortOrder == 1)
+      return Number(a[downloadsSortOrder]) < Number(b[downloadsSortOrder]) ? 1 : -1;
+    else
+      return a[downloadsSortOrder] < b[downloadsSortOrder] ? 1 : -1;
   });
 
-  if (downloadsReverseOrder) downloadsData.aaData.reverse();
+  if (downloadsReverseOrder)
+    downloadsData.aaData.reverse();
 
   SetupDownloadsPackages(downloadsSortOrder);
 }
@@ -122,7 +130,8 @@ function SetupDownloadsPackages(pos) {
     downloadsPackageCards.removeChild(downloadsPackageCards.firstChild);
   }
 
-  if (pos === 0) pos = 1;
+  if (pos === 0)
+    pos = 1;
 
   downloadsData.aaData.forEach(item => {
     let PackageName = item[0];
@@ -142,7 +151,8 @@ function SetupDownloadsPackages(pos) {
 }
 
 function SearchDownloadsPackages() {
-  if (downloadsSearchNodes == null || downloadsSearchNodes.length <= 0) return;
+  if (downloadsSearchNodes == null || downloadsSearchNodes.length <= 0)
+    return;
 
   let term = downloadsPackageSearch.value.toLowerCase();
 
@@ -152,8 +162,10 @@ function SearchDownloadsPackages() {
     });
   } else {
     downloadsSearchNodes.forEach(elem => {
-      if (elem.textContent.toLowerCase().includes(term)) elem.style.display = 'block';
-      else elem.style.display = 'none';
+      if (elem.textContent.toLowerCase().includes(term))
+        elem.style.display = 'block';
+      else
+        elem.style.display = 'none';
     });
   }
 

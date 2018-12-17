@@ -1,6 +1,5 @@
 function CheckLoginState(callback) {
-  chrome.cookies.get(
-    {
+  chrome.cookies.get({
       url: Links().dashboard,
       name: 'kharma_session'
     },
@@ -61,20 +60,22 @@ function InsertCharacter(string, pos, char) {
 
 function xhrRequest(link, callback, loadingText = 'Loading...', retry = false, type = 'text') {
   if (!CheckNetworkState()) {
-    swal('Error', 'You seem to be offline!', 'error');
+    swal('Error', 'You seem to be offline!', 'error').then(() => {
+      if (retry && typeof OpenDashboard === 'function')
+        OpenDashboard();
+    });
   } else {
-    retry
-      ? (retryData = {
-          link: link,
-          callback: callback,
-          loadingText: loadingText,
-          retry: retry,
-          type: type
-        })
-      : (retryData = null);
+    retryData = retry ? {
+      link: link,
+      callback: callback,
+      loadingText: loadingText,
+      retry: retry,
+      type: type
+    } : null;
     xhr.onreadystatechange = () => {
       if (xhr.readyState === 4) {
-        if (xhr.status === 200) callback();
+        if (xhr.status === 200)
+          callback();
         else if (retry) {
           swal({
             icon: 'error',
@@ -131,30 +132,33 @@ function SendMessage(value) {
 }
 
 function SaveData(saveKey, saveValue, showDialog = false) {
-  chrome.storage.local.set(
-    {
+  chrome.storage.local.set({
       [saveKey]: saveValue
     },
     () => {
-      if (showDialog) swal('Success', 'Saved', 'success');
+      if (showDialog)
+        swal('Success', 'Saved', 'success');
     }
   );
 }
 
 function GetData(key, callback, full = false) {
   chrome.storage.local.get(key, result => {
-    if (full) callback(result);
-    else callback(result[key]);
+    if (full)
+      callback(result);
+    else
+      callback(result[key]);
   });
 }
 
-function RedirectToSettings() {
-  swal('Error', "We couldn't find your Publisher ID.", 'error');
+function RedirectToSettings(idError = true) {
+  swal('Error', `We couldn\'t find your ${idError ? 'Publisher ID.' : 'API Key.'} `, 'error');
   OpenSettings();
 }
 
 function OpenLink(link, requireID = false) {
-  if (requireID && pubID == null) return RedirectToSettings();
+  if (requireID && pubID == null)
+    return RedirectToSettings();
 
   chrome.tabs.create({
     url: link

@@ -3,6 +3,7 @@ const dashSearchInput = elemByID('dash-search-input'),
   dashDownloadsButton = elemByID('dash-downloads'),
   dashRevenueButton = elemByID('dash-revenue'),
   dashTrendButton = elemByID('dash-trend-analysis'),
+  dashReviewsButton = elemByID('dash-reviews'),
   dashVerifyButton = elemByID('dash-verify'),
   dashSettingsButton = elemByID('dash-settings');
 
@@ -28,6 +29,10 @@ dashTrendButton.addEventListener('click', () => {
   OpenLink('../pages/trend-analysis.html', true);
 });
 
+dashReviewsButton.addEventListener('click', () => {
+  OpenReviews();
+});
+
 dashVerifyButton.addEventListener('click', () => {
   OpenVerification();
 });
@@ -37,7 +42,8 @@ dashSettingsButton.addEventListener('click', () => {
 });
 
 function OpenDashboard() {
-  if (dashboardButton.classList.contains('active')) return;
+  if (dashboardButton.classList.contains('active'))
+    return;
 
   dashSearchInput.value = '';
 
@@ -46,7 +52,8 @@ function OpenDashboard() {
 }
 
 function SearchCards() {
-  if (dashCards == null || dashCards.length <= 0) return;
+  if (dashCards == null || dashCards.length <= 0)
+    return;
 
   let term = dashSearchInput.value.toLowerCase();
 
@@ -54,14 +61,17 @@ function SearchCards() {
     dashCards.forEach(elem => (elem.style.display = 'block'));
   } else {
     dashCards.forEach(elem => {
-      if (elem.textContent.toLowerCase().includes(term)) elem.style.display = 'block';
-      else elem.style.display = 'none';
+      if (elem.textContent.toLowerCase().includes(term))
+        elem.style.display = 'block';
+      else
+        elem.style.display = 'none';
     });
   }
 }
 
 function CheckMonthsData(value) {
-  if (value == null || value[currentMonthsKey] == null || value[lastRefresh] == null) return;
+  if (value == null || value[currentMonthsKey] == null || value[lastRefresh] == null)
+    return;
 
   let preDate = new Date(value[currentMonthsKey]);
   let curDate = new Date();

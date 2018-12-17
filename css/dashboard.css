@@ -1,9 +1,13 @@
-#dashboard-section > .input-group {
+#dashboard-section {
+  user-select: none;
+}
+
+#dashboard-section>.input-group {
   width: 85%;
   padding: 20px 0;
 }
 
-#dashboard-section > #dash-cards {
+#dashboard-section>#dash-cards {
   width: 85%;
 }
 

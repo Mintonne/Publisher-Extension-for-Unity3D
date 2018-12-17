@@ -9,7 +9,8 @@ let myChart,
   labels = [];
 
 saveChartBtn.addEventListener('click', () => {
-  if (myChart == null) return;
+  if (myChart == null)
+    return;
 
   swal({
     icon: 'info',
@@ -53,25 +54,30 @@ function Init() {
 }
 
 function Setup(value) {
-  if (value == null) return;
+  if (value == null)
+    return;
 
-  if (value[pubIDKey] != null) pubID = value[pubIDKey];
-  else return swal('Error', 'Publisher ID not found.', 'error');
+  if (value[pubIDKey] != null)
+    pubID = value[pubIDKey];
+  else
+    return swal('Error', 'Publisher ID not found.', 'error');
 
-  if (value[payoutKey] != null) payoutRate = value[payoutKey];
+  if (value[payoutKey] != null)
+    payoutRate = value[payoutKey];
 
   FetchTrendData();
 }
 
 function FetchTrendData() {
-  if (trendData == null) xhrRequest(Links().revenue, PopulateTrend, 'Fetching revenue information', true);
+  if (trendData == null)
+    xhrRequest(Links().revenue, PopulateTrend, 'Fetching revenue information', true);
 }
 
 function PopulateTrend() {
   trendData = JSON.parse(xhr.responseText);
 
   Chart.plugins.register({
-    beforeDraw: function(c) {
+    beforeDraw: function (c) {
       let ctx = c.chart.ctx;
       ctx.fillStyle = 'white';
       ctx.fillRect(0, 0, c.chart.width, c.chart.height);
@@ -92,9 +98,11 @@ function PopulateTrend() {
         curYear = entryDate.getFullYear();
         curMonth = entryDate.getMonth();
 
-        if (curYear != null && !yearsData.includes(curYear, 0)) yearsData.push(curYear);
+        if (curYear != null && !yearsData.includes(curYear, 0))
+          yearsData.push(curYear);
 
-        if (data[yearsData.indexOf(curYear)] == null) data[yearsData.indexOf(curYear)] = [];
+        if (data[yearsData.indexOf(curYear)] == null)
+          data[yearsData.indexOf(curYear)] = [];
 
         data[yearsData.indexOf(curYear)][curMonth] = Debit.toFixed(2);
       }
@@ -102,7 +110,9 @@ function PopulateTrend() {
   }
 
   data.forEach(item => {
-    for (let x = 0; x < 12; x++) if (item[x] == null) item[x] = '0';
+    for (let x = 0; x < 12; x++)
+      if (item[x] == null)
+        item[x] = '0';
   });
 
   myChart = new Chart(ctx, {
@@ -143,28 +153,24 @@ function PopulateTrend() {
         }
       },
       scales: {
-        xAxes: [
-          {
-            ticks: {
-              fontSize: 15,
-              fontStyle: 'bold'
+        xAxes: [{
+          ticks: {
+            fontSize: 15,
+            fontStyle: 'bold'
+          }
+        }],
+        yAxes: [{
+          offset: true,
+          ticks: {
+            display: true,
+            beginAtZero: true,
+            fontSize: 15,
+            fontStyle: 'bold',
+            callback: value => {
+              return value;
             }
           }
-        ],
-        yAxes: [
-          {
-            offset: true,
-            ticks: {
-              display: true,
-              beginAtZero: true,
-              fontSize: 15,
-              fontStyle: 'bold',
-              callback: value => {
-                return value;
-              }
-            }
-          }
-        ]
+        }]
       }
     }
   });
@@ -181,7 +187,7 @@ function PopulateTrend() {
 }
 
 const showZeroPlugin = {
-  beforeRender: function(chartInstance) {
+  beforeRender: function (chartInstance) {
     let datasets = chartInstance.config.data.datasets;
 
     for (let i = 0; i < datasets.length; i++) {

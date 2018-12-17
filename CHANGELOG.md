@@ -1,6 +1,17 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 0.9
+###Added
+- Reviews section and notifications.
+- Gulp build system.
+
+### Changed
+- Minor code formatting.
+
+### Fixed
+- The sidebar and dashboard are no longer user selectable.
+
 ## 0.8
 ### Fixed
 - A bug that reset the saved sales data to zero if the data array from the server is empty.

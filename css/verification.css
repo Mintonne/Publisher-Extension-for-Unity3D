@@ -1,4 +1,4 @@
-#verification-section > .input-group {
+#verification-section>.input-group {
   width: 85%;
   padding: 20px 0;
 }
@@ -7,10 +7,10 @@
   width: 100px;
 }
 
-#verification-section > #invoice-results {
+#verification-section>#invoice-results {
   display: none;
 }
 
-#verification-section > #invoice-results.active {
+#verification-section>#invoice-results.active {
   display: block;
 }

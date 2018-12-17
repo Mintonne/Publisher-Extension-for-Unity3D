@@ -33,7 +33,8 @@ sidebarAnimationSettings.forEach(item => {
 });
 
 function OpenSettings() {
-  if (settingsButton.classList.contains('active')) return;
+  if (settingsButton.classList.contains('active'))
+    return;
 
   SetActiveButton(settingsButton);
   SetActiveSection(settingsSection);
@@ -45,8 +46,10 @@ function SetUpdateFrequency(value) {
   value == null ? (value = 0) : (value = Number(value));
 
   frequencySettings.forEach(item => {
-    if (Number(item.getAttribute('value')) === value) item.classList.add('active');
-    else item.classList.remove('active');
+    if (Number(item.getAttribute('value')) === value)
+      item.classList.add('active');
+    else
+      item.classList.remove('active');
   });
 }
 
@@ -54,16 +57,19 @@ function SetSidebarAnimation(value) {
   value == null ? (value = 1) : (value = Number(value));
 
   sidebarAnimationSettings.forEach(item => {
-    if (Number(item.getAttribute('value')) === value) item.classList.add('active');
-    else item.classList.remove('active');
+    if (Number(item.getAttribute('value')) === value)
+      item.classList.add('active');
+    else
+      item.classList.remove('active');
   });
 
   value === 0 ? sidebar.classList.add('static') : sidebar.classList.remove('static');
 }
 
-function SetupPublisherInfo(value) {
-  pubIdInput.value = value;
-  pubID = value;
+function SetupPublisherInfo(id, name) {
+  pubIdInput.value = id;
+  pubID = id;
+  pubName = name;
 }
 
 function SavePublisherInfo() {
@@ -73,7 +79,7 @@ function SavePublisherInfo() {
   let name = data.overview.name;
   let cut = Number(data.overview.payout_cut);
 
-  SetupPublisherInfo(id);
+  SetupPublisherInfo(id, name);
 
   pubID = id;
   payoutRate = cut;
@@ -95,4 +101,43 @@ function SaveMonthsData() {
   SaveData(firstMonthsKey, InsertCharacter(data.periods[data.periods.length - 1].value, 4, '-'));
   SaveData(currentMonthsKey, InsertCharacter(data.periods[0].value, 4, '-'));
   SaveData(lastRefresh, Date.now());
+
+  GetAPIKey();
+}
+
+function GetAPIKey() {
+  swal({
+    icon: 'info',
+    title: "Reviews API Key?",
+    text: 'Do you want the extension to retrieve and save your API Key?',
+    buttons: {
+      btn1: {
+        text: 'Get API Key',
+        value: 'btn1'
+      },
+      btn2: {
+        text: 'Skip',
+        value: 'btn2'
+      }
+    }
+  }).then(value => {
+    switch (value) {
+      case 'btn1':
+        xhrRequest(Links().apiKey, SaveApiKey, "Fetching API Key", true);
+        break;
+
+      case 'btn2':
+        swal.close();
+        break;
+    }
+  });
+}
+
+function SaveApiKey() {
+  let data = JSON.parse(xhr.responseText);
+  let key = data.api_key;
+
+  apiKey = key;
+
+  SaveData(apiKeyKey, key);
 }

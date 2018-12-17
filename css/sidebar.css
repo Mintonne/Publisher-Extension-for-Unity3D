@@ -12,6 +12,8 @@
   overflow: hidden;
 
   white-space: nowrap;
+
+  user-select: none;
 }
 
 #sidebar:hover {
@@ -24,49 +26,49 @@
   transition: none;
 }
 
-#sidebar > ul {
+#sidebar>ul {
   display: table;
   width: 200px;
 }
 
-#sidebar > ul > li {
+#sidebar>ul>li {
   display: table-row;
   cursor: pointer;
 
   width: 100%;
 }
 
-#sidebar > ul > li:hover {
+#sidebar>ul>li:hover {
   background-color: #339af0;
 }
 
-#sidebar > ul > li.active {
+#sidebar>ul>li.active {
   color: #339af0;
   background-color: #fff;
 }
 
-#sidebar > ul > li > * {
+#sidebar>ul>li>* {
   height: 60px;
   display: table-cell;
   vertical-align: middle;
 }
 
-#sidebar > ul > li > i {
+#sidebar>ul>li>i {
   width: 60px;
   text-align: center;
 }
 
-#sidebar > ul > li > p {
+#sidebar>ul>li>p {
   text-align: left;
 }
 
-#sidebar > ul > li#support-button {
+#sidebar>ul>li#support-button {
   position: absolute;
   bottom: 60px;
   width: 200px;
 }
 
-#sidebar > ul > li#donate-button {
+#sidebar>ul>li#donate-button {
   position: absolute;
   bottom: 0;
   width: 200px;

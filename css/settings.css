@@ -1,13 +1,13 @@
-#settings-section > .input-group {
+#settings-section>.input-group {
   width: 85%;
   padding: 20px 0 0 0;
 }
 
-#settings-section .btn-toolbar {
+#settings-section>.btn-toolbar {
   width: 85%;
 }
 
-#settings-section .btn-toolbar > .btn-group {
+#settings-section .btn-toolbar>.btn-group {
   width: 100%;
 }
 

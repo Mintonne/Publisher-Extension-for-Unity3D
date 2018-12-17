@@ -7,6 +7,7 @@ const sidebar = elemByID('sidebar'),
   salesSection = elemByID('sales-section'),
   downloadsSection = elemByID('downloads-section'),
   revenueSection = elemByID('revenue-section'),
+  reviewsSection = elemByID('reviews-section'),
   verificationSection = elemByID('verification-section'),
   settingsSection = elemByID('settings-section');
 
@@ -22,15 +23,19 @@ if (windowURL.searchParams.has('resize')) {
 }
 
 window.onload = () => {
-  GetData([pubIDKey, payoutKey, currentMonthsKey, lastRefresh, animateSidebar], Setup, true);
+  GetData([pubIDKey, pubNameKey, apiKeyKey, payoutKey, currentMonthsKey, lastRefresh, animateSidebar], Setup, true);
 };
 
 function Setup(value) {
   SetSidebarAnimation(value[animateSidebar]);
 
-  if (value[pubIDKey] != null) SetupPublisherInfo(value[pubIDKey]);
+  if (value[pubIDKey] != null && value[pubNameKey] != null)
+    SetupPublisherInfo(value[pubIDKey], value[pubNameKey]);
 
-  if (value[payoutKey] != null) payoutRate = value[payoutKey];
+  if (value[payoutKey] != null)
+    payoutRate = value[payoutKey];
+
+  apiKey = value[apiKeyKey] == null ? null : value[apiKeyKey];
 
   if (value[currentMonthsKey] != null && value[lastRefresh] != null)
     CheckMonthsData({
@@ -38,6 +43,8 @@ function Setup(value) {
       [lastRefresh]: value[lastRefresh]
     });
 
-  if (windowURL.searchParams.has('inv')) CheckLoginState(OpenVerification());
-  else CheckLoginState(OpenDashboard());
+  if (windowURL.searchParams.has('inv'))
+    CheckLoginState(OpenVerification());
+  else
+    CheckLoginState(OpenDashboard());
 }

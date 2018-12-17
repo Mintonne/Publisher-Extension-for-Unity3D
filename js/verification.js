@@ -24,7 +24,8 @@ verifyBtn.addEventListener('click', () => {
 });
 
 function OpenVerification() {
-  if (pubID == null) return RedirectToSettings();
+  if (pubID == null)
+    return RedirectToSettings();
 
   windowURL = new URL(window.location.href);
 
@@ -34,7 +35,8 @@ function OpenVerification() {
     verifyBtn.click();
   }
 
-  if (verifyButton.classList.contains('active')) return;
+  if (verifyButton.classList.contains('active'))
+    return;
 
   SetActiveButton(verifyButton);
   SetActiveSection(verificationSection);
@@ -42,13 +44,6 @@ function OpenVerification() {
 
 function InvoiceResult() {
   let data = JSON.parse(xhr.responseText);
-
-  let dateOptions = {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  };
 
   if (data.aaData.length > 0) {
     resultsSection.classList.add('active');
@@ -66,8 +61,10 @@ function InvoiceResult() {
 function FormatLicenseValue(value) {
   value = Number(value);
 
-  if (value > 1) return value + ' Licenses';
-  else return '1 License';
+  if (value > 1)
+    return value + ' Licenses';
+  else
+    return '1 License';
 }
 
 function FormatStatusValue(value) {

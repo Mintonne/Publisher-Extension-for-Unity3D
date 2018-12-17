@@ -1,7 +1,7 @@
 {
   "name": "Publisher Dashboard for Unity3D",
   "short_name": "Publisher Dashboard",
-  "version": "0.8",
+  "version": "0.9",
   "description": "Access your Unity3D publisher information in a click.",
   "homepage_url": "https://github.com/Mintonne/Publisher-Extension-for-Unity3D",
   "author": "Mintonne",
@@ -16,9 +16,15 @@
     "96": "./img/icons/icon96.png",
     "128": "./img/icons/icon128.png"
   },
-  "permissions": ["https://publisher.assetstore.unity3d.com/", "notifications", "cookies", "storage", "contextMenus"],
+  "permissions": [
+    "https://publisher.assetstore.unity3d.com/",
+    "notifications",
+    "cookies",
+    "storage",
+    "contextMenus"
+  ],
   "background": {
-    "scripts": ["./js/keys.js", "./js/background.js"]
+    "scripts": ["./js/keys.js", "./vendor/x2js/xml2json.min.js", "./js/background.js"]
   },
   "browser_action": {
     "default_popup": "./index.html"

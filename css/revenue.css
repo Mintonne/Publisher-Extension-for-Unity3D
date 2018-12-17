@@ -1,18 +1,18 @@
-#revenue-section > #revenue-info-cards {
+#revenue-section>#revenue-info-cards {
   width: 85%;
   padding: 20px 0;
   display: none;
 }
 
-#revenue-section > #revenue-info-cards.active {
+#revenue-section>#revenue-info-cards.active {
   display: flex;
 }
 
-#revenue-section > canvas {
+#revenue-section>canvas {
   width: 90% !important;
 }
 
-#revenue-section > p.footnote {
+#revenue-section>p.footnote {
   position: absolute;
   bottom: 0;
   right: 0;

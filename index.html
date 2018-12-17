@@ -17,13 +17,6 @@
 
   <!-- Custom stylesheets -->
   <link rel="stylesheet" href="./css/main.css">
-  <link rel="stylesheet" href="./css/sidebar.css">
-  <link rel="stylesheet" href="./css/dashboard.css">
-  <link rel="stylesheet" href="./css/sales.css">
-  <link rel="stylesheet" href="./css/downloads.css">
-  <link rel="stylesheet" href="./css/revenue.css">
-  <link rel="stylesheet" href="./css/verification.css">
-  <link rel="stylesheet" href="./css/settings.css">
 </head>
 
 <body>
@@ -132,6 +125,14 @@
             <div class="card-body text-center">
               <i class="material-icons">trending_up</i>
               <p>Trend Analysis</p>
+            </div>
+          </div>
+        </div>
+        <div id="dash-reviews" class="col-sm-3 p-2">
+          <div class="card">
+            <div class="card-body text-center">
+              <i class="material-icons">rate_review</i>
+              <p>Reviews</p>
             </div>
           </div>
         </div>
@@ -394,6 +395,24 @@
       <p class="mb-2 text-center text-dark footnote">* Excluding current month's sales.</p>
     </div>
 
+    <!-- Reviews -->
+    <div id="reviews-section" class="section">
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link disabled">Reviews</a>
+        </li>
+      </ul>
+
+      <div class="input-group mx-auto">
+        <select id="package-selection" class="form-control">
+          <option selected>Choose an asset</option>
+        </select>
+      </div>
+
+      <ul id="reviews-accordion"> </ul>
+
+    </div>
+
     <!-- Verification -->
     <div id="verification-section" class="section">
       <ul class="nav justify-content-center">
@@ -473,19 +492,13 @@
   <script type="text/javascript" src="./vendor/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
   <script type="text/javascript" src="./vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
   <script type="text/javascript" src="./vendor/chart.js/Chart.min.js"></script>
+  <script type="text/javascript" src="./vendor/x2js/xml2json.min.js"></script>
+  <script type="text/javascript" src="./vendor/humanized-time-span/humanized_time_span.min.js"></script>
 
   <script type="text/javascript" src="./js/keys.js"></script>
   <script type="text/javascript" src="./js/vars.js"></script>
   <script type="text/javascript" src="./js/functions.js"></script>
-
   <script type="text/javascript" src="./js/main.js"></script>
-  <script type="text/javascript" src="./js/sidebar.js"></script>
-  <script type="text/javascript" src="./js/dashboard.js"></script>
-  <script type="text/javascript" src="./js/sales.js"></script>
-  <script type="text/javascript" src="./js/downloads.js"></script>
-  <script type="text/javascript" src="./js/revenue.js"></script>
-  <script type="text/javascript" src="./js/verification.js"></script>
-  <script type="text/javascript" src="./js/settings.js"></script>
 </body>
 
 </html>

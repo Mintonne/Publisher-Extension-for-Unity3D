@@ -59,14 +59,17 @@ $('#month-picker')
   });
 
 function OpenSales() {
-  if (pubID == null) return RedirectToSettings();
+  if (pubID == null)
+    return RedirectToSettings();
 
-  if (salesButton.classList.contains('active')) return;
+  if (salesButton.classList.contains('active'))
+    return;
 
   SetActiveButton(salesButton);
   SetActiveSection(salesSection);
 
-  if (salesData == null) GetData([firstMonthsKey, currentMonthsKey, salesSortOrderKey], FetchSales, true);
+  if (salesData == null)
+    GetData([firstMonthsKey, currentMonthsKey, salesSortOrderKey], FetchSales, true);
 }
 
 function FetchSales(data) {
@@ -102,7 +105,8 @@ function PopulateSales() {
     salesData.aaData.forEach(item => {
       let gross = Number(item[5].replace('$', ''));
       let qty = Number(item[2]);
-      if (gross === 0) vouchers += qty;
+      if (gross === 0)
+        vouchers += qty;
 
       grossRevenue += gross;
       totalSales += qty;
@@ -133,15 +137,18 @@ function SortSalesPackages(order = 5) {
   SaveData(salesSortOrderKey, order);
   salesSortOrder = order;
 
-  if (salesData.aaData.length === 0) return;
+  if (salesData.aaData.length === 0)
+    return;
 
   salesData.aaData.sort((a, b) => {
     if (salesSortOrder > 0 && salesSortOrder <= 5)
       return Number(a[salesSortOrder].replace('$', '')) < Number(b[salesSortOrder].replace('$', '')) ? 1 : -1;
-    else return a[salesSortOrder] < b[salesSortOrder] ? 1 : -1;
+    else
+      return a[salesSortOrder] < b[salesSortOrder] ? 1 : -1;
   });
 
-  if (salesReverseOrder) salesData.aaData.reverse();
+  if (salesReverseOrder)
+    salesData.aaData.reverse();
 
   SetupSalesPackages(salesSortOrder);
 }
@@ -151,30 +158,29 @@ function SetupSalesPackages(pos) {
     packageCards.removeChild(packageCards.firstChild);
   }
 
-  if (pos === 0) pos = 1;
+  if (pos === 0)
+    pos = 1;
 
   salesData.aaData.forEach(item => {
     let PackageName = item[0];
     let Qty = item[2];
     let Value;
 
-    if (pos === 5) Value = `$${(Number(item[pos].replace('$', '')) * payoutRate).toFixed(2)}`;
-    else Value = item[pos];
+    if (pos === 5)
+      Value = `$${(Number(item[pos].replace('$', '')) * payoutRate).toFixed(2)}`;
+    else
+      Value = item[pos];
 
-    packageCards.insertAdjacentHTML(
-      'beforeend',
-      `<div class="package col-sm-4"><div class="card"><div class="card-body p-2"><p class="card-title text-dark">${PackageName}</p><h4 class="card-text text-primary">${Value.replace(
-        ' ',
-        ''
-      )}</h4></div><span class="bubble" title="${Qty} sale(s)">${Qty > 999 ? '999+' : Qty}</span></div></div>`
-    );
+    packageCards.insertAdjacentHTML('beforeend', `<div class="package col-sm-4"><div class="card"><div class="card-body p-2"><p class="card-title text-dark">${PackageName}</p><h4 class="card-text text-primary">${Value.replace(' ','')}</h4></div><span class="bubble" title="${Qty} sale(s)">${Qty > 999 ? '999+' : Qty}</span></div></div>`);
   });
 
   qtyBubbles = packageCards.querySelectorAll('.package .bubble');
 
   qtyBubbles.forEach(item => {
-    if (salesSortOrder === 0 || salesSortOrder === 1 || salesSortOrder >= 5) item.classList.add('active');
-    else item.classList.remove('active');
+    if (salesSortOrder === 0 || salesSortOrder === 1 || salesSortOrder >= 5)
+      item.classList.add('active');
+    else
+      item.classList.remove('active');
   });
 
   searchNodes = packageCards.querySelectorAll('#package-cards .package');
@@ -185,7 +191,8 @@ function SetupSalesPackages(pos) {
 }
 
 function SearchSalesPackages() {
-  if (searchNodes == null || searchNodes.length <= 0) return;
+  if (searchNodes == null || searchNodes.length <= 0)
+    return;
 
   let term = packageSearch.value.toLowerCase();
 
@@ -195,8 +202,10 @@ function SearchSalesPackages() {
     });
   } else {
     searchNodes.forEach(elem => {
-      if (elem.textContent.toLowerCase().includes(term)) elem.style.display = 'block';
-      else elem.style.display = 'none';
+      if (elem.textContent.toLowerCase().includes(term))
+        elem.style.display = 'block';
+      else
+        elem.style.display = 'none';
     });
   }
 

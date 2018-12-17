@@ -19,7 +19,7 @@ body {
   overflow: auto;
 }
 
-body > #bodyContainer {
+body>#bodyContainer {
   width: 100%;
   height: 100%;
 }
@@ -88,19 +88,15 @@ div.divider::after {
 }
 
 div.divider::before {
-  background-image: linear-gradient(
-    to right,
+  background-image: linear-gradient(to right,
     rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0.2)
-  );
+    rgba(0, 0, 0, 0.2));
 }
 
 div.divider::after {
-  background-image: linear-gradient(
-    to left,
+  background-image: linear-gradient(to left,
     rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0.2)
-  );
+    rgba(0, 0, 0, 0.2));
 }
 
 /* #endregion */

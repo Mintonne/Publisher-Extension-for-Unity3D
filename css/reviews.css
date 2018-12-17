@@ -1,0 +1,93 @@
+#reviews-section {
+  overflow: auto;
+}
+
+#reviews-section>.input-group {
+  width: 85%;
+  /* padding: 20px 0; */
+}
+
+#reviews-section #toggle-review-updates {
+  width: 100px;
+}
+
+#reviews-section #reviews-accordion {
+  width: 85%;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+#reviews-section #reviews-accordion li {
+  border-bottom: 1px solid #ddd;
+  position: relative;
+  list-style-type: none;
+}
+
+#reviews-section #reviews-accordion h5 {
+  display: block;
+  cursor: pointer;
+  margin: 0;
+  padding: 0 25px 0 5px;
+  font-size: inherit;
+  line-height: 3;
+  text-indent: 5px;
+  user-select: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
+
+#reviews-section #reviews-accordion h5:before {
+  width: 3px;
+  height: 100%;
+  background-color: palegreen;
+  position: absolute;
+  left: 0;
+  content: " ";
+}
+
+#reviews-section #reviews-accordion h5.update:before {
+  background-color: #FF9800;
+}
+
+#reviews-section #reviews-accordion h5:after {
+  width: 8px;
+  height: 8px;
+  border-right: 1px solid #4a4c4f;
+  border-bottom: 1px solid #4a4c4f;
+  position: absolute;
+  right: 10px;
+  content: " ";
+  top: 17px;
+  transform: rotate(-45deg);
+  transition: all 0.1s ease;
+}
+
+#reviews-section #reviews-accordion h5.active:after {
+  transform: rotate(45deg);
+  transition: all 0.1s ease;
+}
+
+#reviews-section #reviews-accordion h5~* {
+  display: none;
+}
+
+#reviews-section #reviews-accordion h5.active~* {
+  display: block;
+}
+
+#reviews-section #reviews-accordion li p {
+  font-size: 15px;
+  line-height: 2;
+  padding: 0 10px;
+}
+
+#reviews-section #reviews-accordion li p.justify-right {
+  line-height: 1.5;
+  text-align: right;
+}
+
+#reviews-section #reviews-accordion li span {
+  color: #FF9800;
+}

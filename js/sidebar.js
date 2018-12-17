@@ -47,5 +47,6 @@ function SetActiveButton(element) {
     item.classList.remove('active');
   });
 
-  element.classList.add('active');
+  if (element != null)
+    element.classList.add('active');
 }

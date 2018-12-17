@@ -14,14 +14,17 @@ let data = [],
   labels = [];
 
 function OpenRevenue() {
-  if (pubID == null) return RedirectToSettings();
+  if (pubID == null)
+    return RedirectToSettings();
 
-  if (revenueButton.classList.contains('active')) return;
+  if (revenueButton.classList.contains('active'))
+    return;
 
   SetActiveButton(revenueButton);
   SetActiveSection(revenueSection);
 
-  if (revenueData == null) FetchRevenueData();
+  if (revenueData == null)
+    FetchRevenueData();
 }
 
 function FetchRevenueData() {
@@ -51,22 +54,16 @@ function PopulateRevenue() {
         if (!item[1].toLowerCase().includes('fixing')) {
           totalMonths++;
 
-          entryDate = new Date(
-            '01 ' +
-              item[1]
-                .toLowerCase()
-                .replace('sale', '')
-                .replace('revenue', '')
-                .replace('for', '')
-                .trim()
-          );
+          entryDate = new Date('01 ' + item[1].toLowerCase().replace('sale', '').replace('revenue', '').replace('for', '').trim());
 
           data.push(Debit.toFixed(2));
           labels.push(monthsAbbreviations[entryDate.getMonth()] + ' ' + entryDate.getFullYear());
 
-          if (data.length > 6) data.shift();
+          if (data.length > 6)
+            data.shift();
 
-          if (labels.length > 6) labels.shift();
+          if (labels.length > 6)
+            labels.shift();
         }
       }
 
@@ -92,18 +89,16 @@ function PopulateRevenue() {
     new Chart(ctx, {
       type: 'line',
       data: {
-        datasets: [
-          {
-            data: data,
-            fill: false,
-            pointBackgroundColor: '#339AF0',
-            borderColor: '#339AF0',
-            pointHitRadius: 20,
-            pointRadius: 5,
-            pointStyle: 'circle',
-            cubicInterpolationMode: 'monotone'
-          }
-        ],
+        datasets: [{
+          data: data,
+          fill: false,
+          pointBackgroundColor: '#339AF0',
+          borderColor: '#339AF0',
+          pointHitRadius: 20,
+          pointRadius: 5,
+          pointStyle: 'circle',
+          cubicInterpolationMode: 'monotone'
+        }],
         labels: labels
       },
       options: {
@@ -125,13 +120,11 @@ function PopulateRevenue() {
           }
         },
         scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true
-              }
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
             }
-          ]
+          }]
         }
       }
     });

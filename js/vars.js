@@ -2,6 +2,13 @@ const monthsNames = ['January', 'February', 'March', 'April', 'May', 'June', 'Ju
 const monthsAbbreviations = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
 const chartColors = ['#F15854', '#5DA5DA', '#FAA43A', '#60BD68', '#F17CB0', '#B2912F', '#B276B2', '#DECF3F', '#4E49D8', '#4D4D4D'];
 
+const dateOptions = {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+};
+
 const doc = document;
 
 const elemByID = myId => {
@@ -25,6 +32,8 @@ const xhr = new XMLHttpRequest();
 let windowURL,
   retryData,
   pubID,
+  pubName,
+  apiKey,
   payoutRate,
   invoiceNumber,
   firstPeriod,
@@ -33,6 +42,7 @@ let windowURL,
   salesData,
   downloadsData,
   revenueData,
+  reviewsData,
   trendData,
   salesSortOrder = 0,
   downloadsSortOrder = 1,
@@ -48,8 +58,10 @@ function Links() {
     sales: `https://publisher.assetstore.unity3d.com/api/publisher-info/sales/${pubID}/${salesCurrentPeriod}.json`,
     downloads: `https://publisher.assetstore.unity3d.com/api/publisher-info/downloads/${pubID}/${downloadsCurrentPeriod}.json`,
     revenue: `https://publisher.assetstore.unity3d.com/api/publisher-info/revenue/${pubID}.json`,
+    apiKey: `https://publisher.assetstore.unity3d.com/api/publisher-info/api-key/${pubID}.json`,
     verify: `https://publisher.assetstore.unity3d.com/api/publisher-info/verify-invoice/${pubID}/${invoiceNumber}.json`,
+    reviews: `https://publisher.assetstore.unity3d.com/feed/${pubName}/${apiKey}/activity.rss`,
     support: 'mailto:mintonne@gmail.com',
-    donate: 'https://paypal.me/mintonne'
+    donate: 'https://paypal.me/mintonne/10'
   };
 }
