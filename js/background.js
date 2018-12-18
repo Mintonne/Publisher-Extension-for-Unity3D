@@ -189,6 +189,8 @@ function HandleStateChange() {
 
         previousData = JSON.parse(previousData);
 
+        FetchReviewData();
+
         if (newData.Qty > previousData.Qty) {
           let diff = newData.Qty - previousData.Qty;
           SendNotification(`You have ${diff > 1 ? diff + ' new sales.' : 'a new sale.'}`, saleIcon);
@@ -210,8 +212,6 @@ function HandleStateChange() {
           SendNotification(`You have ${diff > 1 ? diff + ' new chargebacks.' : 'a new chargeback.'}`, chargebackIcon);
         }
       }
-
-      FetchReviewData();
     }
   }
 }
@@ -222,7 +222,6 @@ function FetchReviewData() {
 
   xhttp.onreadystatechange = HandleReviewStateChange;
   xhttp.open('GET', Links().reviews, true);
-  xhttp.setRequestHeader('cache-control', 'max-age=0, no-store');
   xhttp.timeout = 15000;
   xhttp.send();
 }

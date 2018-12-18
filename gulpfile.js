@@ -112,13 +112,13 @@ gulp.task('clean', function () {
 gulp.task('build-chrome', function () {
   return gulp.src('dist/chrome/**/*')
     .pipe(zip('chrome-ext.zip'))
-    .pipe(gulp.dest('./zipped'))
+    .pipe(gulp.dest('../'))
 });
 
 gulp.task('build-firefox', function () {
   return gulp.src('dist/firefox/**/*')
     .pipe(zip('firefox-ext.zip'))
-    .pipe(gulp.dest('./zipped'))
+    .pipe(gulp.dest('../'))
 });
 
 gulp.task('compile-chrome', gulp.series('concat-js', 'concat-css', 'strip-firefox', 'chrome-manifest', 'copy-files', 'clean'));
