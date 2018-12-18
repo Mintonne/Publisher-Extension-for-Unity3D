@@ -14,7 +14,7 @@ function OpenReviews() {
   if (pubID == null)
     return RedirectToSettings();
 
-  if (apiKey == null)
+  if (reviewsFeed == null)
     return RedirectToSettings(false);
 
   SetActiveSection(reviewsSection);
@@ -25,7 +25,7 @@ function OpenReviews() {
 }
 
 function FetchReviewsData() {
-  xhrRequest(Links().reviews, PopulateReviews, 'Fetching reviews', true);
+  xhrRequest(reviewsFeed, PopulateReviews, 'Fetching reviews', true);
 }
 
 function PopulateReviews() {

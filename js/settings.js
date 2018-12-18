@@ -66,10 +66,9 @@ function SetSidebarAnimation(value) {
   value === 0 ? sidebar.classList.add('static') : sidebar.classList.remove('static');
 }
 
-function SetupPublisherInfo(id, name) {
+function SetupPublisherInfo(id) {
   pubIdInput.value = id;
   pubID = id;
-  pubName = name;
 }
 
 function SavePublisherInfo() {
@@ -79,7 +78,7 @@ function SavePublisherInfo() {
   let name = data.overview.name;
   let cut = Number(data.overview.payout_cut);
 
-  SetupPublisherInfo(id, name);
+  SetupPublisherInfo(id);
 
   pubID = id;
   payoutRate = cut;
@@ -102,17 +101,17 @@ function SaveMonthsData() {
   SaveData(currentMonthsKey, InsertCharacter(data.periods[0].value, 4, '-'));
   SaveData(lastRefresh, Date.now());
 
-  GetAPIKey();
+  GetReviewsFeed();
 }
 
-function GetAPIKey() {
+function GetReviewsFeed() {
   swal({
     icon: 'info',
-    title: "Reviews API Key?",
-    text: 'Do you want the extension to retrieve and save your API Key?',
+    title: "Get Reviews Link?",
+    text: 'Do you want the extension to retrieve and save your reviews link?',
     buttons: {
       btn1: {
-        text: 'Get API Key',
+        text: 'Get Reviews Link',
         value: 'btn1'
       },
       btn2: {
@@ -123,7 +122,7 @@ function GetAPIKey() {
   }).then(value => {
     switch (value) {
       case 'btn1':
-        xhrRequest(Links().apiKey, SaveApiKey, "Fetching API Key", true);
+        xhrRequest(Links().reviewsLink, SaveReviewsLink, "Fetching Reviews Link", true);
         break;
 
       case 'btn2':
@@ -133,11 +132,15 @@ function GetAPIKey() {
   });
 }
 
-function SaveApiKey() {
+function SaveReviewsLink() {
   let data = JSON.parse(xhr.responseText);
-  let key = data.api_key;
+  let link = ConvertToSecure(data.result.publisher.activity_url);
 
-  apiKey = key;
+  reviewsFeed = link;
 
-  SaveData(apiKeyKey, key);
+  SaveData(reviewsFeedKey, link);
+}
+
+function ConvertToSecure(link) {
+  return link.replace(/http/g, 'https');
 }

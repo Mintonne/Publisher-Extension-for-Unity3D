@@ -32,8 +32,7 @@ const xhr = new XMLHttpRequest();
 let windowURL,
   retryData,
   pubID,
-  pubName,
-  apiKey,
+  reviewsFeed,
   payoutRate,
   invoiceNumber,
   firstPeriod,
@@ -60,7 +59,7 @@ function Links() {
     revenue: `https://publisher.assetstore.unity3d.com/api/publisher-info/revenue/${pubID}.json`,
     apiKey: `https://publisher.assetstore.unity3d.com/api/publisher-info/api-key/${pubID}.json`,
     verify: `https://publisher.assetstore.unity3d.com/api/publisher-info/verify-invoice/${pubID}/${invoiceNumber}.json`,
-    reviews: `https://publisher.assetstore.unity3d.com/feed/${pubName}/${apiKey}/activity.rss`,
+    reviewsLink: `https://publisher.assetstore.unity3d.com/api/management/publisher/info/${pubID}.json`,
     support: 'mailto:mintonne@gmail.com',
     donate: 'https://paypal.me/mintonne/10'
   };

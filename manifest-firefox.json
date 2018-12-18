@@ -1,7 +1,7 @@
 {
   "name": "Publisher Dashboard for Unity3D",
   "short_name": "Publisher Dashboard",
-  "version": "0.9",
+  "version": "0.9.1",
   "description": "Access your Unity3D publisher information in a click.",
   "homepage_url": "https://github.com/Mintonne/Publisher-Extension-for-Unity3D",
   "author": "Mintonne",

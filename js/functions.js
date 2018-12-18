@@ -151,8 +151,12 @@ function GetData(key, callback, full = false) {
   });
 }
 
+function DeleteData(key) {
+  chrome.storage.local.remove(key);
+}
+
 function RedirectToSettings(idError = true) {
-  swal('Error', `We couldn\'t find your ${idError ? 'Publisher ID.' : 'API Key.'} `, 'error');
+  swal('Error', `We couldn\'t find your ${idError ? 'Publisher ID.' : 'reviews link.'} `, 'error');
   OpenSettings();
 }
 

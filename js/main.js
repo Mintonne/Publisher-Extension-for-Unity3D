@@ -23,19 +23,22 @@ if (windowURL.searchParams.has('resize')) {
 }
 
 window.onload = () => {
-  GetData([pubIDKey, pubNameKey, apiKeyKey, payoutKey, currentMonthsKey, lastRefresh, animateSidebar], Setup, true);
+  GetData([pubIDKey, apiKeyKey, reviewsFeedKey, payoutKey, currentMonthsKey, lastRefresh, animateSidebar], Setup, true);
 };
 
 function Setup(value) {
   SetSidebarAnimation(value[animateSidebar]);
 
-  if (value[pubIDKey] != null && value[pubNameKey] != null)
-    SetupPublisherInfo(value[pubIDKey], value[pubNameKey]);
+  if (value[pubIDKey] != null)
+    SetupPublisherInfo(value[pubIDKey]);
+
+  if (value[apiKeyKey] != null)
+    DeleteData(apiKeyKey);
 
   if (value[payoutKey] != null)
     payoutRate = value[payoutKey];
 
-  apiKey = value[apiKeyKey] == null ? null : value[apiKeyKey];
+  reviewsFeed = value[reviewsFeedKey] == null ? null : value[reviewsFeedKey];
 
   if (value[currentMonthsKey] != null && value[lastRefresh] != null)
     CheckMonthsData({

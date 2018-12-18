@@ -18,8 +18,7 @@ const frequency = {
 let intervalID,
   interval = 0,
   pubID,
-  pubName,
-  apiKey,
+  reviewsFeed,
   currentPeriod,
   OpenAsPopupState,
   curWindow,
@@ -27,8 +26,7 @@ let intervalID,
 
 function Links() {
   return {
-    sales: `https://publisher.assetstore.unity3d.com/api/publisher-info/sales/${pubID}/${currentPeriod}.json`,
-    reviews: `https://publisher.assetstore.unity3d.com/feed/${pubName}/${apiKey}/activity.rss`
+    sales: `https://publisher.assetstore.unity3d.com/api/publisher-info/sales/${pubID}/${currentPeriod}.json`
   }
 }
 
@@ -101,13 +99,12 @@ chrome.runtime.onMessage.addListener(request => {
 });
 
 function StartChecker() {
-  chrome.storage.local.get([pubIDKey, pubNameKey, apiKeyKey, currentMonthsKey, updateFrequencyKey], results => {
+  chrome.storage.local.get([pubIDKey, reviewsFeedKey, currentMonthsKey, updateFrequencyKey], results => {
     if (results == null || results[pubIDKey] == null || results[currentMonthsKey] == null)
       return;
 
     pubID = results[pubIDKey];
-    pubName = results[pubNameKey];
-    apiKey = results[apiKeyKey];
+    reviewsFeed = results[reviewsFeedKey];
     currentPeriod = Number(results[currentMonthsKey].replace('-', ''));
     UpdateInterval(results[updateFrequencyKey], true);
   });
@@ -217,11 +214,11 @@ function HandleStateChange() {
 }
 
 function FetchReviewData() {
-  if (apiKey == null || pubName == null)
+  if (reviewsFeed == null)
     return;
 
   xhttp.onreadystatechange = HandleReviewStateChange;
-  xhttp.open('GET', Links().reviews, true);
+  xhttp.open('GET', reviewsFeed, true);
   xhttp.timeout = 15000;
   xhttp.send();
 }

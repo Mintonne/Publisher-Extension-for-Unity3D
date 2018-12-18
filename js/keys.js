@@ -1,6 +1,7 @@
 const pubIDKey = 'pubID',
   pubNameKey = 'pubName',
   apiKeyKey = 'apiKey',
+  reviewsFeedKey = 'reviewsFeed',
   payoutKey = 'payoutRate',
   updateFrequencyKey = 'updateFrequency',
   firstMonthsKey = 'firstMonth',
