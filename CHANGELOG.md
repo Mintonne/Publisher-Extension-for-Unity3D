@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 0.9.2
+### Fixed
+- Skip reviews with malformed data.
+
 ## 0.9.1
 ### Changed
 - Get Reviews Link instead of API Key. (The previously saved API key will be deleted from storage when you open the extension)
