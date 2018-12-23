@@ -44,6 +44,15 @@ gulp.task('strip-firefox', function () {
     .pipe(gulp.dest(paths.chrome_dist_js));
 });
 
+gulp.task('strip-firefox-dev', function () {
+  return gulp.src(paths.strip_scripts)
+    .pipe(stripCode({
+      start_comment: "start-firefox",
+      end_comment: "end-firefox"
+    }))
+    .pipe(gulp.dest(paths.chrome_dist_js));
+});
+
 gulp.task('chrome-manifest', function () {
   return gulp.src(paths.chrome_manifest)
     .pipe(rename(function (path) {
@@ -63,6 +72,15 @@ gulp.task('strip-chrome', function () {
       mangle: {
         keepClassName: true
       }
+    }))
+    .pipe(gulp.dest(paths.firefox_dist_js));
+});
+
+gulp.task('strip-chrome-dev', function () {
+  return gulp.src(paths.strip_scripts)
+    .pipe(stripCode({
+      start_comment: "start-chrome",
+      end_comment: "end-chrome"
     }))
     .pipe(gulp.dest(paths.firefox_dist_js));
 });
@@ -123,3 +141,14 @@ gulp.task('build-firefox', function () {
 
 gulp.task('compile-chrome', gulp.series('concat-js', 'concat-css', 'strip-firefox', 'chrome-manifest', 'copy-files', 'clean'));
 gulp.task('compile-firefox', gulp.series('concat-js', 'concat-css', 'strip-chrome', 'firefox-manifest', 'copy-files', 'clean'));
+
+gulp.task('compile-chrome-dev', gulp.series('concat-js', 'concat-css', 'strip-firefox-dev', 'chrome-manifest', 'copy-files'));
+gulp.task('compile-firefox-dev', gulp.series('concat-js', 'concat-css', 'strip-chrome-dev', 'firefox-manifest', 'copy-files'));
+
+gulp.task('watch-chrome', function () {
+  gulp.watch(['index.html', 'pages/**/*', 'vendor/**/*', 'manifest-chrome.json', 'img/**/*', 'js/**/*', 'css/**/*'], gulp.series('compile-chrome-dev'));
+});
+
+gulp.task('watch-firefox', function () {
+  gulp.watch(['index.html', 'pages/**/*', 'vendor/**/*', 'manifest-firefox.json', 'img/**/*', 'js/**/*', 'css/**/*'], gulp.series('compile-firefox-dev'));
+});

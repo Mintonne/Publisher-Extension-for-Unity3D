@@ -6,7 +6,7 @@
     "gulp-concat": "^2.6.1",
     "gulp-rename": "^1.4.0",
     "gulp-rimraf": "^0.2.2",
-    "gulp-strip-code": "^0.1.4",
+    "gulp-strip-code": "git+https://github.com/Mintonne/gulp-strip-code.git",
     "gulp-zip": "^4.2.0",
     "streamqueue": "^1.1.2"
   },
@@ -14,6 +14,8 @@
     "compile-chrome": "npx gulp compile-chrome",
     "compile-firefox": "npx gulp compile-firefox",
     "build-chrome": "npx gulp compile-chrome && npx gulp build-chrome",
-    "build-firefox": "npx gulp compile-firefox && npx gulp build-firefox"
+    "build-firefox": "npx gulp compile-firefox && npx gulp build-firefox",
+    "watch-chrome": "npx gulp compile-chrome-dev && npx gulp watch-chrome",
+    "watch-firefox": "npx gulp compile-firefox-dev && npx gulp watch-firefox"
   }
 }
