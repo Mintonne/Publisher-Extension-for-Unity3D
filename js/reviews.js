@@ -53,16 +53,22 @@ function PopulateReviews() {
     if (title.toLowerCase().includes('reply to review'))
       continue;
 
-    let description = reviewsData.rss.channel.item[x].description;
+    let description, packageName, reviewer, heading, body, rating, isUpdate, link, pubDate;
 
-    let packageName = packageNameRegex.exec(title)[1];
-    let reviewer = title.slice(title.indexOf('by') + 3);
-    let heading = headingRegex.exec(description)[1];
-    let body = paragraphRegex.exec(description)[1];
-    let rating = paragraphRegex.exec(description)[1];
-    let isUpdate = false;
-    let link = reviewsData.rss.channel.item[x].link;
-    let pubDate = reviewsData.rss.channel.item[x].pubDate;
+    try {
+      description = reviewsData.rss.channel.item[x].description;
+
+      packageName = packageNameRegex.exec(title)[1];
+      reviewer = title.slice(title.indexOf('by') + 3);
+      heading = headingRegex.exec(description)[1];
+      body = paragraphRegex.exec(description)[1];
+      rating = paragraphRegex.exec(description)[1];
+      isUpdate = false;
+      link = reviewsData.rss.channel.item[x].link;
+      pubDate = reviewsData.rss.channel.item[x].pubDate;
+    } catch {
+      continue;
+    }
 
     if (title.toLowerCase().includes('updated review'))
       isUpdate = true;
@@ -114,8 +120,6 @@ function UpdateReviewsAccordion(index = 0) {
 
   SetupTitleClick();
 }
-
-/* <p class="font-weight-bold mb-1">${item.heading}</p> */
 
 function SetupTitleClick() {
   let reviewTitles = elemQuerySelectorAll('#reviews-accordion h5');
