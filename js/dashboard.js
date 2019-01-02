@@ -76,7 +76,7 @@ function CheckMonthsData(value) {
   let preDate = new Date(value[currentMonthsKey]);
   let curDate = new Date();
 
-  if (preDate.getMonth() < curDate.getMonth() && curDate.getTime() - value[lastRefresh] >= 3600000)
+  if ((preDate.getMonth() < curDate.getMonth() || preDate.getFullYear() < curDate.getFullYear()) && curDate.getTime() - value[lastRefresh] >= 3600000)
     xhrRequest(Links().months, UpdateMonthsData, 'Refreshing months data');
 }
 

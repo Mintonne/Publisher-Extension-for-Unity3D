@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 0.9.3
+### Fixed
+- A bug that prevented the extension from refreshing the months data when the year changes.
+
+
 ## 0.9.2
 ### Fixed
 - Skip reviews with malformed data.
