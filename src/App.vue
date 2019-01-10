@@ -1,13 +1,17 @@
 <template>
   <div id="app">
-    <h1>Hello! I am a {{ Browser }} Heading</h1>
+    <app-sidebar></app-sidebar>
     <router-view />
   </div>
 </template>
 
 <script>
-export default {
+import Sidebar from './components/TheSidebar.vue';
 
+export default {
+  components: {
+    appSidebar: Sidebar
+  }
 }
 </script>
 
