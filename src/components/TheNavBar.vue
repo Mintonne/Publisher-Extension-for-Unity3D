@@ -1,9 +1,7 @@
 <template>
-  <ul class="nav justify-content-center">
-    <li class="nav-item">
-      <a class="nav-link disabled">{{ title }}</a>
-    </li>
-  </ul>
+  <nav>
+    <a>{{ title }}</a>
+  </nav>
 </template>
 
 <script>
@@ -18,8 +16,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.nav {
-  pointer-events: none;
+nav {
+  height: 45px;
+  width: 100%;
   user-select: none;
+
+  a {
+    width: 100%;
+    display: inline-block;
+    line-height: 45px;
+    text-decoration: none;
+    text-align: center;
+  }
 }
 </style>
