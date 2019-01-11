@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <app-sidebar></app-sidebar>
+    <sidebar />
     <router-view />
   </div>
 </template>
@@ -10,7 +10,7 @@ import Sidebar from '@/components/TheSidebar.vue';
 
 export default {
   components: {
-    appSidebar: Sidebar
+    Sidebar
   }
 }
 </script>
@@ -35,17 +35,24 @@ body {
 
 body {
   overflow: auto;
-}
 
-#app {
-  width: 100%;
-  height: 100%;
+  > #app {
+    background-color: #fcfcfc;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .section {
   width: 740px;
   height: 100%;
   margin-left: 60px;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  > * {
+    width: 85%;
+    margin: 0 auto;
+  }
 }
 </style>
