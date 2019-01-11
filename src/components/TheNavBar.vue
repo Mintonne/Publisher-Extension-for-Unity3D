@@ -18,7 +18,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.nav-link {
+.nav {
   pointer-events: none;
+  user-select: none;
 }
 </style>
