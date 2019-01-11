@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Sidebar from './components/TheSidebar.vue';
+import Sidebar from '@/components/TheSidebar.vue';
 
 export default {
   components: {
@@ -35,5 +35,17 @@ body {
 
 body {
   overflow: auto;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+}
+
+.section {
+  width: 740px;
+  height: 100%;
+  margin-left: 60px;
+  overflow: hidden;
 }
 </style>
