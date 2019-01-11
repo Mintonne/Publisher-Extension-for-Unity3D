@@ -31,12 +31,12 @@
         <p>Settings</p>
       </router-link>
 
-      <li>
+      <li class="link">
         <i class="myicons icon-envelope"></i>
         <p>Support</p>
       </li>
 
-      <li>
+      <li class="link">
         <i class="myicons icon-paypal"></i>
         <p>Donate</p>
       </li>
@@ -51,14 +51,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/styles/variables.scss";
+
 #sidebar {
   position: absolute;
   top: 0;
   left: 0;
   width: 60px;
   height: 100%;
-  background: #4a4c4f;
-  color: #fff;
+  background: $dark-background;
+  color: $white;
   transition: width 200ms ease-in-out;
   z-index: 10000;
   box-shadow: 0px 0px 10px #333;
@@ -80,6 +82,7 @@ export default {
   ul {
     display: table;
     width: 200px;
+    padding: 0;
 
     li {
       display: table-row;
@@ -89,12 +92,12 @@ export default {
       width: 100%;
 
       &:hover {
-        background-color: #339af0;
+        background-color: $primary-color;
       }
 
-      &.active {
-        color: #339af0;
-        background-color: #fff;
+      &.router-link-exact-active {
+        color: $primary-color;
+        background-color: $white;
       }
 
       > * {
@@ -112,18 +115,17 @@ export default {
         text-align: left;
       }
 
-      &:nth-last-child(1),
-      &:nth-last-child(2) {
+      &.link {
         position: absolute;
         width: 200px;
-      }
 
-      &:nth-last-child(1) {
-        bottom: 0;
-      }
+        &:nth-last-child(1) {
+          bottom: 0;
+        }
 
-      &:nth-last-child(2) {
-        bottom: 60px;
+        &:nth-last-child(2) {
+          bottom: 60px;
+        }
       }
     }
   }
