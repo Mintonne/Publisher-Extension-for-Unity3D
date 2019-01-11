@@ -14,32 +14,32 @@ export default new Router({
   base: 'index.html',
   routes: [{
       path: '/',
-      name: 'dashbaord',
+      name: 'Dashboard',
       component: Dashboard
     },
     {
       path: '/sales',
-      name: 'sales',
+      name: 'Sales',
       component: Sales
     },
     {
       path: '/downloads',
-      name: 'downloads',
+      name: 'Downloads',
       component: Downloads
     },
     {
       path: '/revenue',
-      name: 'revenue',
+      name: 'Revenue',
       component: Revenue
     },
     {
       path: '/verify',
-      name: 'verify',
+      name: 'Verify Invoice',
       component: InvoiceVerification
     },
     {
       path: '/settings',
-      name: 'settings',
+      name: 'Settings',
       component: Settings
     }
   ]
