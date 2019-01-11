@@ -60,7 +60,7 @@ export default {
   background: #4a4c4f;
   color: #fff;
   transition: width 200ms ease-in-out;
-  z-index: 100;
+  z-index: 10000;
   box-shadow: 0px 0px 10px #333;
   overflow: hidden;
 
