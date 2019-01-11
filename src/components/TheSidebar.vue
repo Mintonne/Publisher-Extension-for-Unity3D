@@ -1,34 +1,41 @@
 <template>
   <div id="sidebar">
     <ul>
-      <li class="active">
+      <router-link tag="li" to="/">
         <i class="material-icons">dashboard</i>
         <p>Dashboard</p>
-      </li>
-      <li>
+      </router-link>
+
+      <router-link tag="li" to="/sales">
         <i class="material-icons">attach_money</i>
         <p>Sales</p>
-      </li>
-      <li>
+      </router-link>
+
+      <router-link tag="li" to="/downloads">
         <i class="material-icons">get_app</i>
         <p>Downloads</p>
-      </li>
-      <li>
+      </router-link>
+
+      <router-link tag="li" to="/revenue">
         <i class="material-icons">credit_card</i>
         <p>Revenue</p>
-      </li>
-      <li>
+      </router-link>
+
+      <router-link tag="li" to="/verify">
         <i class="material-icons">verified_user</i>
         <p>Verify Invoice</p>
-      </li>
-      <li>
+      </router-link>
+
+      <router-link tag="li" to="/settings">
         <i class="material-icons">settings</i>
         <p>Settings</p>
-      </li>
+      </router-link>
+
       <li>
         <i class="myicons icon-envelope"></i>
         <p>Support</p>
       </li>
+
       <li>
         <i class="myicons icon-paypal"></i>
         <p>Donate</p>
