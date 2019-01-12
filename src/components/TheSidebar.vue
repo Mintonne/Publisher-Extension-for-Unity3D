@@ -62,7 +62,7 @@
 
 <script>
 import { openLink } from '@/mixins/openLink';
-import '@/compiled-icons/index';
+import '@/assets/icons/index';
 
 export default {
   mixins: [openLink]
