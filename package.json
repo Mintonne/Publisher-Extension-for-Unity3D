@@ -9,9 +9,9 @@
     "watch:chrome": "npx gulp compile:chrome --vendor=chrome && npx gulp watch:chrome --vendor=chrome && rm -f dist/background.html"
   },
   "dependencies": {
-    "sweetalert2": "^7.33.1",
     "vue": "^2.5.22",
     "vue-router": "^3.0.1",
+    "vue-sweetalert2": "^1.6.3",
     "vuetify": "^1.4.1",
     "vuex": "^3.0.1",
     "x2js": "^3.2.3"
