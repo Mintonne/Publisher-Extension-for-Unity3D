@@ -5,7 +5,7 @@
         <v-icon size="45">{{ icon }}</v-icon>
       </v-card-title>
       <v-card-text>
-        <h3>{{ name }}</h3>
+        <p>{{ name }}</p>
       </v-card-text>
     </v-card>
   </v-flex>
