@@ -5,8 +5,8 @@ const replace = require('gulp-replace');
 const argv = require('yargs').argv;
 
 const paths = {
-  chrome_manifest: './src/manifest-chrome.json',
-  firefox_manifest: './src/manifest-firefox.json',
+  chrome_manifest: './src/manifests/manifest-chrome.json',
+  firefox_manifest: './src/manifests/manifest-firefox.json',
 
   dist: 'dist',
 };
