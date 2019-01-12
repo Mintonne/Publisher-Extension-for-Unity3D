@@ -5,12 +5,22 @@
       <v-text-field v-model="searchText" label="Search" solo single-line clearable>
       </v-text-field>
     </v-flex>
-    <p>{{ searchText }}</p>
-  </div>
+    <v-container grid-list-lg text-xs-center pa-0>
+      <v-layout row wrap>
+        <dash-tile name="Sales" icon="attach_money" path="/sales"></dash-tile>
+        <dash-tile name="Downloads" icon="get_app" path="/downloads"></dash-tile>
+        <dash-tile name="Revenue" icon="credit_card" path="/revenue"></dash-tile>
+        <dash-tile name="Verify Invoice" icon="verified_user" path="/verify"></dash-tile>
+        <dash-tile name="Reviews" icon="trending_up"></dash-tile>
+        <dash-tile name="Trend Analysis" icon="rate_review"></dash-tile>
+        <dash-tile name="Settings" icon="settings" path="/settings"></dash-tile>
+      </v-layout>
+    </v-container>
 </template>
 
 <script>
 import NavBar from "@/components/TheNavBar.vue";
+import DashTile from "@/components/DashTile.vue";
 
 export default {
   data: () => {
@@ -19,11 +29,8 @@ export default {
     }
   },
   components: {
-    NavBar
+    NavBar,
+    DashTile
   }
 }
 </script>
-
-<style lang="scss" scoped>
-@import "@/styles/variables.scss";
-</style>

@@ -5,8 +5,13 @@ import store from './store';
 import Vuetify, {
   VApp,
   VContainer,
+  VLayout,
   VFlex,
   VTextField,
+  VCard,
+  VCardTitle,
+  VCardText,
+  VIcon,
   VFadeTransition
 } from 'vuetify/lib'
 
@@ -17,8 +22,13 @@ Vue.use(Vuetify, {
   components: {
     VApp,
     VContainer,
+    VLayout,
     VFlex,
     VTextField,
+    VCard,
+    VCardTitle,
+    VCardText,
+    VIcon,
     VFadeTransition
   }
 })
