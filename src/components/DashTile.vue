@@ -1,6 +1,5 @@
 <template>
-  <v-flex xs3>
-    <v-card hover :to="path" height=140>
+  <v-flex xs3 v-if="searchMatch">
     <v-card hover @click="open(url)" :to="path" height=140>
       <v-card-title>
         <v-icon x-large>{{ icon }}</v-icon>
@@ -36,7 +35,12 @@ export default {
     term: {
       type: String
     }
-  }
+  },
+  computed: {
+    searchMatch() {
+      return (this.term == '' || this.term == null || this.name.toLowerCase().includes(this.term.toLowerCase()));
+    }
+  },
   mixins: [openLink]
 }
 </script>
