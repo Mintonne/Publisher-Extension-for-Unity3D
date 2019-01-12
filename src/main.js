@@ -13,7 +13,7 @@ import Vuetify, {
   VCardText,
   VIcon,
   VFadeTransition
-} from 'vuetify/lib'
+} from 'vuetify/lib';
 
 import 'material-design-icons-iconfont/dist/material-design-icons.css';
 import 'vuetify/src/stylus/app.styl';
@@ -31,7 +31,7 @@ Vue.use(Vuetify, {
     VIcon,
     VFadeTransition
   }
-})
+});
 
 new Vue({
   router,
