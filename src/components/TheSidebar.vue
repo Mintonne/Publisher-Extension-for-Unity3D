@@ -31,12 +31,12 @@
         <p>Settings</p>
       </router-link>
 
-      <li class="link">
+      <li class="link" @click="open('mailto:mintonne@gmail.com')">
         <i class="myicons icon-envelope"></i>
         <p>Support</p>
       </li>
 
-      <li class="link">
+      <li class="link" @click="open('https://www.paypal.me/mintonne/10')">
         <i class="myicons icon-paypal"></i>
         <p>Donate</p>
       </li>
@@ -45,8 +45,10 @@
 </template>
 
 <script>
-export default {
+import { openLink } from '@/mixins/openLink'
 
+export default {
+  mixins: [openLink]
 }
 </script>
 
