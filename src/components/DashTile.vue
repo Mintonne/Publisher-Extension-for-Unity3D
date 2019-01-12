@@ -64,7 +64,7 @@ export default {
 .v-card__title {
   i {
     margin: 0 auto;
-    color: #ccc;
+    color: #bbb;
   }
   .svg-icon {
     width: 45px;
