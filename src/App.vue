@@ -47,8 +47,7 @@ body {
   width: 740px;
   height: 100%;
   margin-left: 60px;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
 
   > * {
     width: 85%;
