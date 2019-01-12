@@ -2,6 +2,7 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
+import SvgIcon from 'vue-svgicon';
 import Vuetify, {
   VApp,
   VContainer,
@@ -31,6 +32,8 @@ Vue.use(Vuetify, {
     VFadeTransition
   }
 });
+
+Vue.use(SvgIcon);
 
 new Vue({
   router,

@@ -2,7 +2,9 @@
   <v-flex xs3 v-if="searchMatch">
     <v-card hover @click="open(url)" :to="path" height=140>
       <v-card-title>
-        <v-icon size="45">{{ icon }}</v-icon>
+        <i>
+          <svgicon :icon="icon"></svgicon>
+        </i>
       </v-card-title>
       <v-card-text>
         <p>{{ name }}</p>
@@ -12,7 +14,8 @@
 </template>
 
 <script>
-import { openLink } from '@/mixins/openLink'
+import { openLink } from '@/mixins/openLink';
+import '@/compiled-icons/index';
 
 export default {
   props: {
@@ -58,9 +61,15 @@ export default {
   }
 }
 
-.v-icon {
-  margin: 0 auto;
-  color: #ccc;
+.v-card__title {
+  i {
+    margin: 0 auto;
+    color: #ccc;
+  }
+  .svg-icon {
+    width: 45px;
+    height: 45px;
+  }
 }
 
 .v-card__text {

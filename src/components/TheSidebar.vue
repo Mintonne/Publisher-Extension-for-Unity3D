@@ -2,42 +2,58 @@
   <div id="sidebar">
     <ul>
       <router-link tag="li" to="/">
-        <i class="material-icons">dashboard</i>
+        <i>
+          <svgicon icon="dashboard"></svgicon>
+        </i>
         <p>Dashboard</p>
       </router-link>
 
       <router-link tag="li" to="/sales">
-        <i class="material-icons">attach_money</i>
+        <i>
+          <svgicon icon="dollar-sign"></svgicon>
+        </i>
         <p>Sales</p>
       </router-link>
 
       <router-link tag="li" to="/downloads">
-        <i class="material-icons">get_app</i>
+        <i>
+          <svgicon icon="download"></svgicon>
+        </i>
         <p>Downloads</p>
       </router-link>
 
       <router-link tag="li" to="/revenue">
-        <i class="material-icons">credit_card</i>
+        <i>
+          <svgicon icon="bank"></svgicon>
+        </i>
         <p>Revenue</p>
       </router-link>
 
       <router-link tag="li" to="/verify">
-        <i class="material-icons">verified_user</i>
+        <i>
+          <svgicon icon="verified"></svgicon>
+        </i>
         <p>Verify Invoice</p>
       </router-link>
 
       <router-link tag="li" to="/settings">
-        <i class="material-icons">settings</i>
+        <i>
+          <svgicon icon="settings"></svgicon>
+        </i>
         <p>Settings</p>
       </router-link>
 
       <li class="link" @click="open('mailto:mintonne@gmail.com')">
-        <i class="myicons icon-envelope"></i>
+        <i>
+          <svgicon icon="email"></svgicon>
+        </i>
         <p>Support</p>
       </li>
 
       <li class="link" @click="open('https://www.paypal.me/mintonne/10')">
-        <i class="myicons icon-paypal"></i>
+        <i>
+          <svgicon icon="paypal"></svgicon>
+        </i>
         <p>Donate</p>
       </li>
     </ul>
@@ -45,7 +61,8 @@
 </template>
 
 <script>
-import { openLink } from '@/mixins/openLink'
+import { openLink } from '@/mixins/openLink';
+import '@/compiled-icons/index';
 
 export default {
   mixins: [openLink]
