@@ -2,7 +2,7 @@
   <v-flex xs3 v-if="searchMatch">
     <v-card hover @click="open(url)" :to="path" height=140>
       <v-card-title>
-        <v-icon x-large>{{ icon }}</v-icon>
+        <v-icon size="45">{{ icon }}</v-icon>
       </v-card-title>
       <v-card-text>
         <h3>{{ name }}</h3>
