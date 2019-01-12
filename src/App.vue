@@ -55,4 +55,19 @@ body {
     margin: 0 auto;
   }
 }
+
+.svg-icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  color: inherit;
+  vertical-align: middle;
+  fill: none;
+  stroke: currentColor;
+
+  &.svg-fill {
+    fill: currentColor;
+    stroke: none;
+  }
+}
 </style>
