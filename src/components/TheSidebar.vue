@@ -59,7 +59,7 @@ export default {
   left: 0;
   width: 60px;
   height: 100%;
-  background: $dark-background;
+  background: $dark;
   color: $white;
   transition: width 200ms ease-in-out;
   z-index: 10000;
