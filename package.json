@@ -1,6 +1,6 @@
 {
-  "name": "test-project",
-  "version": "0.9.3",
+  "name": "publisher-extension-for-unity3d",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "build": "vue-cli-service build",
@@ -8,7 +8,7 @@
     "watch:chrome": "npx gulp compile:chrome --vendor=chrome && npx gulp watch:chrome --vendor=chrome && rm -f dist/background.html"
   },
   "dependencies": {
-    "vue": "^2.5.21",
+    "vue": "^2.5.22",
     "vue-router": "^3.0.1",
     "vuetify": "^1.4.1",
     "vuex": "^3.0.1",
@@ -31,7 +31,7 @@
     "style-loader": "^0.23.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
-    "vue-template-compiler": "^2.5.21",
+    "vue-template-compiler": "^2.5.22",
     "webpack-remove-blocks": "^1.1.0",
     "yargs": "^12.0.5"
   }
