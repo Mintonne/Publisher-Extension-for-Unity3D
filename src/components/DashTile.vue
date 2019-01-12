@@ -1,6 +1,7 @@
 <template>
   <v-flex xs3>
     <v-card hover :to="path" height=140>
+    <v-card hover @click="open(url)" :to="path" height=140>
       <v-card-title>
         <v-icon x-large>{{ icon }}</v-icon>
       </v-card-title>
@@ -12,6 +13,8 @@
 </template>
 
 <script>
+import { openLink } from '@/mixins/openLink'
+
 export default {
   props: {
     name: {
@@ -25,8 +28,16 @@ export default {
     path: {
       type: String,
       default: '/'
+    },
+    url: {
+      type: String,
+      default: null
+    },
+    term: {
+      type: String
     }
   }
+  mixins: [openLink]
 }
 </script>
 
