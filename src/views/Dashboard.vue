@@ -2,7 +2,7 @@
   <div class="section">
     <nav-bar title="Dashboard"></nav-bar>
     <v-flex xs12 mt-4>
-      <v-text-field v-model="searchTerm" label="Search" solo single-line clearable>
+      <v-text-field v-model="searchTerm" label="Search" solo single-line clearable clear-icon="x">
       </v-text-field>
     </v-flex>
     <v-container grid-list-lg text-xs-center pa-0>
