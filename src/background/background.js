@@ -10,7 +10,7 @@ import {
   popupWindowWidthKey,
   popupWindowTopPosKey,
   popupWindowLeftPosKey
-} from '../keys';
+} from '@/constants/keys';
 
 const xhttp = new XMLHttpRequest();
 const x2js = new X2JS();
