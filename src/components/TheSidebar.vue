@@ -66,6 +66,9 @@ import '@/assets/icons/index';
 
 export default {
   mixins: [SharedMethods],
+  created() {
+    this.loginStatus();
+  }
 }
 </script>
 
