@@ -36,6 +36,11 @@ export default new Router({
       path: '/verify',
       name: 'Verify Invoice',
       component: InvoiceVerification
+    }, ,
+    {
+      path: '/reviews',
+      name: 'Reviews',
+      component: InvoiceVerification
     },
     {
       path: '/settings',
