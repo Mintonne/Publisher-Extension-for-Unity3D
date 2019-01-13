@@ -16,6 +16,7 @@
         <dash-tile name="Settings" icon="settings" path="/settings" :term="searchTerm"></dash-tile>
       </v-layout>
     </v-container>
+  </div>
 </template>
 
 <script>
