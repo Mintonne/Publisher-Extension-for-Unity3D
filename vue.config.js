@@ -15,6 +15,10 @@ if (process.env.VENDOR == 'chrome') {
     block: 'is-chrome',
     start: '<!--',
     end: '-->'
+  }, {
+    block: 'is-chrome',
+    start: '/*',
+    end: '*/'
   });
 }
 
