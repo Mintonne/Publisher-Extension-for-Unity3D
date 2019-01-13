@@ -3,6 +3,8 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import SvgIcon from 'vue-svgicon';
+import VueSweetalert2 from 'vue-sweetalert2';
+
 import Vuetify, {
   VApp,
   VContainer,
@@ -34,6 +36,9 @@ Vue.use(Vuetify, {
 });
 
 Vue.use(SvgIcon);
+Vue.use(VueSweetalert2, {
+  heightAuto: false
+});
 
 new Vue({
   router,
