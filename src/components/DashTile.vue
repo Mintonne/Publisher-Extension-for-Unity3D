@@ -1,6 +1,6 @@
 <template>
   <v-flex xs3 v-if="searchMatch">
-    <v-card hover @click="open(url)" :to="path" height=140>
+    <v-card hover @click="openLink(url)" :to="path" height=140>
       <v-card-title>
         <i>
           <svgicon :icon="icon"></svgicon>
@@ -14,10 +14,11 @@
 </template>
 
 <script>
-import { openLink } from '@/mixins/openLink';
+import { SharedMethods } from '@/mixins';
 import '@/assets/icons/index';
 
 export default {
+  mixins: [SharedMethods],
   props: {
     name: {
       type: String,
@@ -43,8 +44,7 @@ export default {
     searchMatch() {
       return (this.term == '' || this.term == null || this.name.toLowerCase().includes(this.term.toLowerCase()));
     }
-  },
-  mixins: [openLink]
+  }
 }
 </script>
 

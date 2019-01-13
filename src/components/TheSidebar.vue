@@ -43,14 +43,14 @@
         <p>Settings</p>
       </router-link>
 
-      <li class="link" @click="open('mailto:mintonne@gmail.com')">
+      <li class="link" @click="openLink('mailto:mintonne@gmail.com')">
         <i>
           <svgicon icon="email"></svgicon>
         </i>
         <p>Support</p>
       </li>
 
-      <li class="link" @click="open('https://www.paypal.me/mintonne/10')">
+      <li class="link" @click="openLink('https://www.paypal.me/mintonne/10')">
         <i>
           <svgicon icon="paypal"></svgicon>
         </i>
@@ -61,11 +61,11 @@
 </template>
 
 <script>
-import { openLink } from '@/mixins/openLink';
+import { SharedMethods } from '@/mixins';
 import '@/assets/icons/index';
 
 export default {
-  mixins: [openLink]
+  mixins: [SharedMethods],
 }
 </script>
 
