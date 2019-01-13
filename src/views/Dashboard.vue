@@ -11,8 +11,8 @@
         <dash-tile name="Downloads" icon="download" path="/downloads" :term="searchTerm"></dash-tile>
         <dash-tile name="Revenue" icon="bank" path="/revenue" :term="searchTerm"></dash-tile>
         <dash-tile name="Verify Invoice" icon="verified" path="/verify" :term="searchTerm"></dash-tile>
-        <dash-tile name="Trend Analysis" icon="trending-up" :term="searchTerm"></dash-tile>
         <dash-tile name="Reviews" icon="review" path="/reviews" :term="searchTerm"></dash-tile>
+        <dash-tile name="Trend Analysis" icon="trending-up" :term="searchTerm"></dash-tile>
         <dash-tile name="Settings" icon="settings" path="/settings" :term="searchTerm"></dash-tile>
       </v-layout>
     </v-container>
@@ -20,8 +20,8 @@
 </template>
 
 <script>
-import NavBar from "@/components/TheNavBar.vue";
-import DashTile from "@/components/DashTile.vue";
+import NavBar from '@/components/TheNavBar.vue';
+import DashTile from '@/components/DashTile.vue';
 
 export default {
   data: () => {
