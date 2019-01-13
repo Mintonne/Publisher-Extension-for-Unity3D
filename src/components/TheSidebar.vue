@@ -81,7 +81,7 @@ export default {
   background: $dark;
   color: $white;
   transition: width 200ms ease-in-out;
-  z-index: 10000;
+  z-index: 1000;
   box-shadow: 0px 0px 10px #333;
   overflow: hidden;
 
