@@ -29,6 +29,14 @@ export const SharedMethods = {
           }
         }
       );
+    },
+    RedirectToSettings: (router, idError = true) => {
+      Vue.swal(
+        'Error',
+        `We couldn\'t find your ${idError ? 'Publisher ID.' : 'reviews link.'} `,
+        'error'
+      );
+      router.push('\settings');
     }
   }
 }
