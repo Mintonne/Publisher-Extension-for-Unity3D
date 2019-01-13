@@ -5,6 +5,7 @@ import Sales from '@/views/Sales.vue';
 import Downloads from '@/views/Downloads.vue';
 import Revenue from '@/views/Revenue.vue';
 import InvoiceVerification from '@/views/InvoiceVerification.vue';
+import Reviews from '@/views/Reviews.vue';
 import Settings from '@/views/Settings.vue';
 
 Vue.use(Router)
@@ -40,7 +41,7 @@ export default new Router({
     {
       path: '/reviews',
       name: 'Reviews',
-      component: InvoiceVerification
+      component: Reviews
     },
     {
       path: '/settings',
