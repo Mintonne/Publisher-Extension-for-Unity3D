@@ -78,7 +78,7 @@ export default {
   width: 60px;
   height: 100%;
   background: $dark;
-  color: $white;
+  color: white;
   transition: width 200ms ease-in-out;
   z-index: 100;
   box-shadow: 0px 0px 10px #333;
@@ -115,7 +115,7 @@ export default {
 
       &.router-link-exact-active {
         color: $primary-color;
-        background-color: $white;
+        background-color: white;
       }
 
       > * {

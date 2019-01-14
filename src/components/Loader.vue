@@ -42,7 +42,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$white: #fff;
 $red: #f4512c;
 
 .animation-overlay {
@@ -86,7 +85,7 @@ $red: #f4512c;
         width: 0;
         height: 0;
         border-top: 6px solid transparent;
-        border-right: 100px solid $white;
+        border-right: 100px solid white;
         border-bottom: 6px solid transparent;
 
         &:before {
@@ -94,7 +93,7 @@ $red: #f4512c;
           height: 22px;
           width: 22px;
           border-radius: 50%;
-          background: $white;
+          background: white;
           position: absolute;
           right: -110px;
           top: -16px;
@@ -106,7 +105,7 @@ $red: #f4512c;
           width: 0;
           height: 0;
           border-top: 0 solid transparent;
-          border-right: 55px solid $white;
+          border-right: 55px solid white;
           border-bottom: 16px solid transparent;
           top: -16px;
           right: -98px;
@@ -117,7 +116,7 @@ $red: #f4512c;
         position: absolute;
         height: 12px;
         width: 20px;
-        background: $white;
+        background: white;
         border-radius: 20px 20px 0 0;
         transform: rotate(-40deg);
         right: -125px;
@@ -127,7 +126,7 @@ $red: #f4512c;
           content: "";
           height: 12px;
           width: 12px;
-          background: $white;
+          background: white;
           right: 4px;
           top: 7px;
           position: absolute;
@@ -176,7 +175,7 @@ $red: #f4512c;
       position: absolute;
       height: 1px;
       width: 20%;
-      background: $white;
+      background: white;
       opacity: 0.2;
 
       &:nth-child(1) {
