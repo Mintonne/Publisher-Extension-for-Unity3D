@@ -45,6 +45,12 @@ export const SharedMethods = {
     },
     InsertCharacter(string, pos, char) {
       return [string.slice(0, pos), char, string.slice(pos)].join('');
+    },
+    RequestError() {
+      Vue.swal('Request Failed', 'Sorry, we could not complete your request. Please try again.', 'error');
+    },
+    ConvertToSecure(link) {
+      return link.replace(/http/g, 'https');
     }
   }
 }
