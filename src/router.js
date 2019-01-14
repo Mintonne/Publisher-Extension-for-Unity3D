@@ -8,7 +8,7 @@ import InvoiceVerification from '@/views/InvoiceVerification.vue';
 import Reviews from '@/views/Reviews.vue';
 import Settings from '@/views/Settings.vue';
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   mode: 'history',
