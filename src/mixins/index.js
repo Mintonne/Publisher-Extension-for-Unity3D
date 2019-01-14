@@ -39,6 +39,9 @@ export const SharedMethods = {
         'error'
       );
       router.push('\settings');
+    },
+    InsertCharacter(string, pos, char) {
+      return [string.slice(0, pos), char, string.slice(pos)].join('');
     }
   }
 }
