@@ -20,17 +20,8 @@ const saleIcon = 'images/notifications/icons8-cash-in-hand-96.png',
   chargebackIcon = 'images/notifications/icons8-fraud-96.png',
   reviewIcon = 'images/notifications/icons8-very-popular-topic-96.png';
 
-const frequency = {
-  0: 0,
-  1: 5,
-  2: 10,
-  3: 15,
-  4: 30,
-  5: 60
-};
-
 let intervalID,
-  interval = 0,
+  updateInterval = 0,
   pubID,
   reviewsFeed,
   currentPeriod,
@@ -104,48 +95,45 @@ function OpenAs(data) {
 chrome.runtime.onMessage.addListener(request => {
   if (request.command === 'restart')
     RestartChecker();
-  if (request[updateFrequencyKey] != null)
-    UpdateInterval(request[updateFrequencyKey]);
+  else if (request.command === 'restart-force')
+    RestartChecker(true);
+
 });
 
-StartChecker();
+StartChecker(true);
 
-function StartChecker() {
-  chrome.storage.local.get([pubIDKey, reviewsFeedKey, currentMonthsKey, updateFrequencyKey], results => {
-    if (results == null || results[pubIDKey] == null || results[currentMonthsKey] == null)
-      return;
+function StartChecker(force = false) {
+  pubID = Number(localStorage[pubIDKey]) || null;
+  updateInterval = Number(localStorage[updateFrequencyKey]) || null;
+  currentPeriod = localStorage[currentMonthsKey] || null;
+  reviewsFeed = localStorage[reviewsFeedKey] || null;
 
-    pubID = results[pubIDKey];
-    reviewsFeed = results[reviewsFeedKey];
-    currentPeriod = Number(results[currentMonthsKey].replace('-', ''));
-    UpdateInterval(results[updateFrequencyKey], true);
-  });
-}
+  if (pubID == null || currentPeriod == null || updateInterval == null || updateInterval == 0)
+    return;
 
-function RestartChecker() {
+  updateInterval = updateInterval * 60 * 1000;
+  currentPeriod = Number(currentPeriod.replace('-', ''));
+
   if (intervalID != null)
     clearInterval(intervalID);
 
-  StartChecker();
+  intervalID = setInterval(FetchSalesData, updateInterval);
+
+  if (force)
+    FetchSalesData();
+}
+
+
+function RestartChecker(force = false) {
+  if (intervalID != null)
+    clearInterval(intervalID);
+
+  StartChecker(force);
 }
 
 function StopChecker() {
   if (intervalID != null)
     clearInterval(intervalID);
-}
-
-function UpdateInterval(value, force = false) {
-  if (intervalID != null)
-    clearInterval(intervalID);
-
-  if (value == null)
-    return;
-
-  interval = frequency[Number(value)] * 60 * 1000;
-  intervalID = setInterval(FetchSalesData, interval);
-
-  if (force)
-    FetchSalesData();
 }
 
 function FetchSalesData() {
@@ -154,7 +142,7 @@ function FetchSalesData() {
     return;
   }
 
-  if (interval === 0) {
+  if (updateInterval === 0) {
     StopChecker();
     return;
   }
