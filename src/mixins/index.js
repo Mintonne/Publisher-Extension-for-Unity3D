@@ -40,6 +40,9 @@ export const SharedMethods = {
       );
       router.push('\settings');
     },
+    SendMessage(msg) {
+      chrome.runtime.sendMessage(msg);
+    },
     InsertCharacter(string, pos, char) {
       return [string.slice(0, pos), char, string.slice(pos)].join('');
     }
