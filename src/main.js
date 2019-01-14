@@ -4,6 +4,7 @@ import router from './router';
 import store from './store';
 import SvgIcon from 'vue-svgicon';
 import VueSweetalert2 from 'vue-sweetalert2';
+import Loader from './components/Loader.vue';
 
 import Vuetify, {
   VApp,
@@ -14,8 +15,9 @@ import Vuetify, {
   VCard,
   VCardTitle,
   VCardText,
+  VBtn,
   VIcon,
-  VFadeTransition
+  VDivider
 } from 'vuetify/lib';
 
 import 'vuetify/src/stylus/app.styl';
@@ -30,8 +32,10 @@ Vue.use(Vuetify, {
     VCard,
     VCardTitle,
     VCardText,
+    VBtn,
     VIcon,
-    VFadeTransition
+    VDivider,
+    Loader
   }
 });
 
