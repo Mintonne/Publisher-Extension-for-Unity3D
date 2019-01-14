@@ -1,5 +1,5 @@
 <template>
-  <div id="sidebar">
+  <div id="sidebar" :class="{static: isStatic}">
     <ul>
       <router-link tag="li" to="/">
         <i>
@@ -64,7 +64,11 @@
 import '@/assets/icons/index';
 
 export default {
-
+  computed: {
+    isStatic() {
+      return this.$store.getters.getSidebarStatus;
+    }
+  }
 }
 </script>
 
@@ -87,7 +91,7 @@ export default {
   white-space: nowrap;
   user-select: none;
 
-  &:hover {
+  &:hover:not(.static) {
     width: 200px;
     transition-delay: 100ms;
   }
