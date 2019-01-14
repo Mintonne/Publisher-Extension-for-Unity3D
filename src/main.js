@@ -15,6 +15,7 @@ import Vuetify, {
   VCard,
   VCardTitle,
   VCardText,
+  VBtnToggle,
   VBtn,
   VIcon,
   VDivider
@@ -32,6 +33,7 @@ Vue.use(Vuetify, {
     VCard,
     VCardTitle,
     VCardText,
+    VBtnToggle,
     VBtn,
     VIcon,
     VDivider,
