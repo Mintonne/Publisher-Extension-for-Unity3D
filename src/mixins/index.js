@@ -9,7 +9,7 @@ export const SharedMethods = {
         url: url
       });
     },
-    loginStatus: () => {
+    loginStatus: (store) => {
       chrome.cookies.get({
           url: 'https://publisher.assetstore.unity3d.com',
           name: 'kharma_session'
@@ -26,6 +26,8 @@ export const SharedMethods = {
                 window.close();
               }
             });
+          } else {
+            store.dispatch('loadPubInfo');
           }
         }
       );
