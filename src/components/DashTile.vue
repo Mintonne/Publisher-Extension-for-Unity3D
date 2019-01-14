@@ -1,6 +1,6 @@
 <template>
   <v-flex xs3 v-if="searchMatch">
-    <v-card hover @click="openLink(url)" :to="path" height=140>
+    <v-card hover @click="OpenLink(url)" :to="path" height=140>
       <v-card-title>
         <i>
           <svgicon :icon="icon"></svgicon>

@@ -12,7 +12,7 @@ import { SharedMethods } from '@/mixins';
 export default {
   mixins: [SharedMethods],
   created() {
-    this.loginStatus(this.$store);
+    this.LoginStatus(this.$store);
   },
   components: {
     Sidebar

@@ -2,14 +2,14 @@ import Vue from 'vue';
 
 export const SharedMethods = {
   methods: {
-    openLink: (url) => {
+    OpenLink: (url) => {
       if (url == null)
         return;
       chrome.tabs.create({
         url: url
       });
     },
-    loginStatus: (store) => {
+    LoginStatus: (store) => {
       chrome.cookies.get({
           url: 'https://publisher.assetstore.unity3d.com',
           name: 'kharma_session'

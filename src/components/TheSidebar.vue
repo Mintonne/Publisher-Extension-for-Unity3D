@@ -43,14 +43,14 @@
         <p>Settings</p>
       </router-link>
 
-      <li class="link" @click="openLink('mailto:mintonne@gmail.com')">
+      <li class="link" @click="OpenLink('mailto:mintonne@gmail.com')">
         <i>
           <svgicon icon="email"></svgicon>
         </i>
         <p>Support</p>
       </li>
 
-      <li class="link" @click="openLink('https://www.paypal.me/mintonne/10')">
+      <li class="link" @click="OpenLink('https://www.paypal.me/mintonne/10')">
         <i>
           <svgicon icon="paypal"></svgicon>
         </i>
