@@ -7,8 +7,13 @@
 
 <script>
 import Sidebar from '@/components/TheSidebar.vue';
+import { SharedMethods } from '@/mixins';
 
 export default {
+  mixins: [SharedMethods],
+  created() {
+    this.loginStatus(this.$store);
+  },
   components: {
     Sidebar
   }
