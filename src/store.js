@@ -6,19 +6,27 @@ import {
   payoutRateKey,
   firstMonthsKey,
   currentMonthsKey,
-  lastRefreshKey
+  lastRefreshKey,
+  reviewsFeedKey,
+  staticSidebarKey,
+  updateFrequencyKey
 } from '@/constants/keys';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    timeout: 15000,
+    interval: 0,
+    staticSidebar: false,
+
     pubId: null,
     pubName: null,
     pubRate: null,
     firstMonth: null,
     currentMonth: null,
-    lastRefresh: null
+    lastRefresh: null,
+    reviewsFeed: null
   },
   mutations: {
     savePubInfo(state, payload) {
@@ -31,13 +39,29 @@ export default new Vuex.Store({
       localStorage[currentMonthsKey] = state.currentMonth = payload.currentMonth;
       localStorage[lastRefreshKey] = state.lastRefresh = payload.lastRefresh;
     },
+    saveReviewsFeed(state, payload) {
+      localStorage[reviewsFeedKey] = state.reviewsFeed = payload;
+    },
+    saveSidebarStatus(state, payload) {
+      localStorage[staticSidebarKey] = state.staticSidebar = payload;
+    },
+    updateInterval(state, payload) {
+      localStorage[updateFrequencyKey] = state.interval = payload;
+    },
     loadPubInfo(state) {
-      state.pubId = localStorage[pubIDKey] || null;
+      state.interval = Number(localStorage[updateFrequencyKey]) || 0;
+
+      state.pubId = Number(localStorage[pubIDKey]) || null;
       state.pubName = localStorage[pubNameKey] || null;
-      state.pubRate = localStorage[payoutRateKey] || null;
+      state.pubRate = Number(localStorage[payoutRateKey]) || null;
+
       state.firstMonth = localStorage[firstMonthsKey] || null;
       state.currentMonth = localStorage[currentMonthsKey] || null;
-      state.lastRefresh = localStorage[lastRefreshKey] || null;
+      state.lastRefresh = Number(localStorage[lastRefreshKey]) || null;
+
+      state.reviewsFeed = localStorage[reviewsFeedKey] || null;
+
+      state.staticSidebar = localStorage[staticSidebarKey] === 'true';
     }
   },
   actions: {
@@ -47,11 +71,26 @@ export default new Vuex.Store({
     saveMonthsData(state, payload) {
       state.commit('saveMonthsData', payload);
     },
+    saveReviewsFeed(state, payload) {
+      state.commit('saveReviewsFeed', payload);
+    },
+    saveSidebarStatus(state, payload) {
+      state.commit('saveSidebarStatus', payload);
+    },
+    updateInterval(state, payload) {
+      state.commit('updateInterval', payload);
+    },
     loadPubInfo(state) {
       state.commit('loadPubInfo');
     }
   },
   getters: {
+    timeout: state => {
+      return state.timeout;
+    },
+    getInterval: state => {
+      return state.interval;
+    },
     pubIdStatus: state => {
       return state.pubId != null;
     },
@@ -72,6 +111,12 @@ export default new Vuex.Store({
     },
     getLastRefresh: state => {
       return state.lastRefresh;
-    }
+    },
+    getReviewsFeed: state => {
+      return state.reviewsFeed;
+    },
+    getSidebarStatus: state => {
+      return state.staticSidebar;
+    },
   }
 });
