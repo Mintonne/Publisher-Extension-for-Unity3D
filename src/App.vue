@@ -45,18 +45,18 @@ body {
     background-color: #fcfcfc;
     width: 100%;
     height: 100%;
-  }
-}
 
-.section {
-  width: 740px;
-  height: 100%;
-  margin-left: 60px;
-  overflow: hidden;
+    .section {
+      width: 740px;
+      height: 100%;
+      margin-left: 60px;
+      overflow: hidden;
 
-  > * {
-    width: 85%;
-    margin: 0 auto;
+      > *:not(.fill) {
+        width: 85%;
+        margin: 0 auto;
+      }
+    }
   }
 }
 
