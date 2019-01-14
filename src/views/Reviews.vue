@@ -13,6 +13,8 @@ export default {
   created() {
     if (!this.$store.getters.pubIdStatus)
       this.RedirectToSettings(this.$router);
+    else if (this.$store.getters.getReviewsFeed == null)
+      this.RedirectToSettings(this.$router, false);
   },
   components: {
     NavBar
