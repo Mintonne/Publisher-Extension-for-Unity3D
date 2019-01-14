@@ -1,5 +1,7 @@
 <template>
   <div class="section">
+    <loader class="fill" v-if="loading" :message="loadingMessage"></loader>
+
     <nav-bar title="Settings"></nav-bar>
 
     <div>
@@ -12,15 +14,57 @@
           <v-btn block large
             id="fetchBtn"
             class=" my-0"
-            @click="getPublisherInfo">
-            <span> Fetch ID </span>
+            @click="GetPublisherInfo">
+            <span> Fetch Info </span>
           </v-btn>
         </v-flex>
       </v-layout>
     </div>
 
     <v-divider class="my-4"></v-divider>
-    <loader class="fill" v-if="loading" :message="loadingMessage"></loader>
+
+    <div>
+      <h2 class="subheading mb-3">Sales Update Frequency</h2>
+      <v-flex xs12>
+        <v-btn-toggle mandatory v-model="interval" id="update-btn-group">
+          <v-btn large :value="0">
+            <span>Off</span>
+          </v-btn>
+          <v-btn large :value="5">
+            <span>5 Mins</span>
+          </v-btn>
+          <v-btn large :value="10">
+            <span>10 Mins</span>
+          </v-btn>
+          <v-btn large :value="15">
+            <span>15 Mins</span>
+          </v-btn>
+          <v-btn large :value="30">
+            <span>30 Mins</span>
+          </v-btn>
+          <v-btn large :value="60">
+            <span>60 Mins</span>
+          </v-btn>
+        </v-btn-toggle>
+      </v-flex>
+    </div>
+
+    <v-divider class="my-4"></v-divider>
+
+    <div>
+      <h2 class="subheading mb-3">Static Sidebar</h2>
+      <v-flex xs12>
+        <v-btn-toggle mandatory v-model="sidebarStatus" ID="sidebar-btn-group">
+          <v-btn large :value="true">
+            <span>On</span>
+          </v-btn>
+          <v-btn large :value="false">
+            <span>Off</span>
+          </v-btn>
+        </v-btn-toggle>
+      </v-flex>
+    </div>
+
   </div>
 </template>
 
@@ -37,58 +81,118 @@ export default {
       loadingMessage: null
     }
   },
+  computed: {
+    pubId() {
+      return this.$store.getters.getPubId;
+    },
+    interval: {
+      get: function () {
+        return this.$store.getters.getInterval;
+      },
+      set: function (newValue) {
+        this.$store.dispatch('updateInterval', newValue);
+        this.SendMessage('restart');
+      }
+    },
+    sidebarStatus: {
+      get: function () {
+        return this.$store.getters.getSidebarStatus;
+      },
+      set: function (newValue) {
+        this.$store.dispatch('saveSidebarStatus', newValue);
+      }
+    }
+  },
   methods: {
-    getPublisherInfo() {
-      let myInstance = this;
+    GetPublisherInfo() {
       let endpoint = 'https://publisher.assetstore.unity3d.com/api/publisher/overview.json';
 
       this.loading = true;
       this.loadingMessage = 'Fetching your publisher information';
 
-      axios.get(endpoint)
+      axios.get(endpoint, {
+        timeout: this.$store.getters.timeout
+      })
         .then((response) => {
           let data = response.data.overview;
 
-          myInstance.$store.dispatch('savePubInfo', { id: data.id, name: data.name, rate: data.payout_cut });
+          this.$store.dispatch('savePubInfo', { id: data.id, name: data.name, rate: data.payout_cut });
 
-          myInstance.CacheMonthsData();
+          this.CacheMonthsData();
         })
         .catch((error) => {
           console.log(error);
-          myInstance.loading = false;
+          this.RequestError();
+          this.loading = false;
         })
     },
     CacheMonthsData() {
-      let myInstance = this;
       let id = this.$store.getters.getPubId;
-
       let endpoint = `https://publisher.assetstore.unity3d.com/api/publisher-info/months/${id}.json`;
 
       this.loadingMessage = 'Fetching months data';
 
-      axios.get(endpoint)
+      axios.get(endpoint, {
+        timeout: this.$store.getters.timeout
+      })
         .then((response) => {
           let data = response.data;
 
-          let firstMonth = myInstance.InsertCharacter(data.periods[data.periods.length - 1].value, 4, '-');
-          let currentMonth = myInstance.InsertCharacter(data.periods[0].value, 4, '-');
+          let firstMonth = this.InsertCharacter(data.periods[data.periods.length - 1].value, 4, '-');
+          let currentMonth = this.InsertCharacter(data.periods[0].value, 4, '-');
           let lastRefresh = Date.now();
 
-          myInstance.$store.dispatch('saveMonthsData', { firstMonth, currentMonth, lastRefresh });
+          this.$store.dispatch('saveMonthsData', { firstMonth, currentMonth, lastRefresh });
+
+          this.GetReviewsLink();
         })
         .catch((error) => {
           console.log(error);
-          myInstance.loading = false;
+          this.RequestError();
         })
         .then(() => {
-          myInstance.$store.dispatch('loadPubInfo');
-          myInstance.loading = false;
+          this.loading = false;
         });
-    }
-  },
-  computed: {
-    pubId() {
-      return this.$store.getters.getPubId;
+    },
+    GetReviewsLink() {
+      this.$swal({
+        title: "Get Reviews Link?",
+        text: 'Do you want the extension to retrieve and save your reviews feed link?',
+        type: 'info',
+        showCancelButton: true,
+        confirmButtonText: 'Get Reviews Link',
+        cancelButtonText: 'Skip',
+        allowEnterKey: false,
+      }).then((result) => {
+        if (result.value) {
+          let id = this.$store.getters.getPubId;
+          let endpoint = `https://publisher.assetstore.unity3d.com/api/management/publisher/info/${id}.json`;
+
+          this.loading = true;
+          this.loadingMessage = 'Fetching Reviews Link';
+
+          axios.get(endpoint, {
+            timeout: this.$store.getters.timeout
+          })
+            .then((response) => {
+              let data = response.data;
+
+              let link = this.ConvertToSecure(data.result.publisher.activity_url);
+
+              this.$store.dispatch('saveReviewsFeed', link);
+
+              this.SendMessage('restart');
+            })
+            .catch((error) => {
+              console.log(error);
+              this.RequestError();
+            })
+            .then(() => {
+              this.loading = false;
+            });
+
+        }
+      });
     }
   },
   components: {
@@ -103,7 +207,44 @@ export default {
 #fetchBtn {
   height: 48px;
   margin-left: -1px;
-  background-color: $primary-color;
-  color: $white;
+  background-color: white;
+  color: $primary-color;
+
+  &:hover {
+    background-color: $primary-color;
+    color: white;
+  }
+}
+
+#update-btn-group {
+  width: 100%;
+
+  .v-btn {
+    width: calc(100% / 6);
+    background-color: white;
+    color: $primary-color;
+    opacity: 1;
+
+    &.v-btn--active {
+      background-color: $primary-color;
+      color: white;
+    }
+  }
+}
+
+#sidebar-btn-group {
+  width: 100%;
+
+  .v-btn {
+    width: calc(100% / 2);
+    background-color: white;
+    color: $primary-color;
+    opacity: 1;
+
+    &.v-btn--active {
+      background-color: $primary-color;
+      color: white;
+    }
+  }
 }
 </style>
