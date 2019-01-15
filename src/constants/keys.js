@@ -11,7 +11,7 @@ module.exports = {
   salesSortOrderKey: 'salesSortOrder',
   salesInfoKey: 'salesInfo',
   reviewCountKey: 'reviewCount',
-  staticSidebarKey: 'staticSidebar',
+  sidebarTransitionKey: 'sidebarTransition',
   openAsPopupKey: 'openAsPopup',
   popupWindowWidthKey: 'popupWindowWidth',
   popupWindowHeightKey: 'popupWindowHeight',

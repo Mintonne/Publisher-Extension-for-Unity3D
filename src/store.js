@@ -8,7 +8,7 @@ import {
   currentMonthsKey,
   lastRefreshKey,
   reviewsFeedKey,
-  staticSidebarKey,
+  sidebarTransitionKey,
   updateFrequencyKey
 } from '@/constants/keys';
 
@@ -18,7 +18,7 @@ export default new Vuex.Store({
   state: {
     timeout: 15000,
     interval: 0,
-    staticSidebar: false,
+    sidebarTransition: false,
 
     pubId: null,
     pubName: null,
@@ -43,7 +43,7 @@ export default new Vuex.Store({
       localStorage[reviewsFeedKey] = state.reviewsFeed = payload;
     },
     saveSidebarStatus(state, payload) {
-      localStorage[staticSidebarKey] = state.staticSidebar = payload;
+      localStorage[sidebarTransitionKey] = state.sidebarTransition = payload;
     },
     updateInterval(state, payload) {
       localStorage[updateFrequencyKey] = state.interval = payload;
@@ -61,7 +61,7 @@ export default new Vuex.Store({
 
       state.reviewsFeed = localStorage[reviewsFeedKey] || null;
 
-      state.staticSidebar = localStorage[staticSidebarKey] === 'true';
+      state.sidebarTransition = localStorage[sidebarTransitionKey] === 'true';
     }
   },
   actions: {
@@ -116,7 +116,7 @@ export default new Vuex.Store({
       return state.reviewsFeed;
     },
     getSidebarStatus: state => {
-      return state.staticSidebar;
+      return state.sidebarTransition;
     },
   }
 });

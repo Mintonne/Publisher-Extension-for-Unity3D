@@ -1,5 +1,5 @@
 <template>
-  <div id="sidebar" :class="{static: isStatic}">
+  <div id="sidebar" :class="{static: !enableTransition}">
     <ul>
       <router-link tag="li" to="/">
         <i>
@@ -65,7 +65,7 @@ import '@/assets/icons/index';
 
 export default {
   computed: {
-    isStatic() {
+    enableTransition() {
       return this.$store.getters.getSidebarStatus;
     }
   }
