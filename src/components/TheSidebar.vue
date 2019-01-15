@@ -62,8 +62,10 @@
 
 <script>
 import '@/assets/icons/index';
+import { SharedMethods } from '@/mixins';
 
 export default {
+  mixins: [SharedMethods],
   computed: {
     enableTransition() {
       return this.$store.getters.getSidebarStatus;
