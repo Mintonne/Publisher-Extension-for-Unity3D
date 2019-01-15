@@ -209,6 +209,7 @@ $red: #f4512c;
     top: 55%;
     width: 100%;
     padding-left: 60px;
+    font-size: 18px;
   }
 }
 
