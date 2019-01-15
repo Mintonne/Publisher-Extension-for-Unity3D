@@ -74,6 +74,6 @@ export default {
 
 .v-card__text {
   color: $dark;
-  font-weight: 600;
+  font-weight: 500;
 }
 </style>
