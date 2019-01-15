@@ -40,9 +40,9 @@ body {
 
 body {
   overflow: auto;
+  background-color: #fcfcfc;
 
   > #app {
-    background-color: #fcfcfc;
     width: 100%;
     height: 100%;
 
