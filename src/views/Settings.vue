@@ -26,33 +26,23 @@
     <div>
       <h2 class="subheading mb-3">Sales Update Frequency</h2>
       <v-flex xs12>
-        <v-btn-toggle mandatory v-model="interval" id="update-btn-group">
-          <v-btn large :value="0">
-            <span>Off</span>
-          </v-btn>
-          <v-btn large :value="5">
-            <span>5 Mins</span>
-          </v-btn>
-          <v-btn large :value="10">
-            <span>10 Mins</span>
-          </v-btn>
-          <v-btn large :value="15">
-            <span>15 Mins</span>
-          </v-btn>
-          <v-btn large :value="30">
-            <span>30 Mins</span>
-          </v-btn>
-          <v-btn large :value="60">
-            <span>60 Mins</span>
-          </v-btn>
-        </v-btn-toggle>
+        <v-slider
+          hide-details
+          color="#339af0"
+          v-model="interval"
+          thumb-label="always"
+          step="5"
+          max="60"
+          class="mt-5">
+        </v-slider>
       </v-flex>
+      <p class="text-xs-center body-1">Time in Minutes</p>
     </div>
 
     <v-divider class="my-4"></v-divider>
 
     <div>
-      <h2 class="subheading mb-3">Static Sidebar</h2>
+      <h2 class="subheading mb-3">Sidebar Transition</h2>
       <v-flex xs12>
         <v-btn-toggle mandatory v-model="sidebarStatus" ID="sidebar-btn-group">
           <v-btn large :value="true">
@@ -216,22 +206,6 @@ export default {
   }
 }
 
-#update-btn-group {
-  width: 100%;
-
-  .v-btn {
-    width: calc(100% / 6);
-    background-color: white;
-    color: $primary-color;
-    opacity: 1;
-
-    &.v-btn--active {
-      background-color: $primary-color;
-      color: white;
-    }
-  }
-}
-
 #sidebar-btn-group {
   width: 100%;
 
@@ -243,7 +217,10 @@ export default {
 
     &.v-btn--active {
       background-color: $primary-color;
-      color: white;
+
+      span {
+        color: white;
+      }
     }
   }
 }
