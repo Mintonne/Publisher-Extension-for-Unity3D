@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <nav class="fill">
     <a>{{ title }}</a>
   </nav>
 </template>
