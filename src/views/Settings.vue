@@ -15,7 +15,7 @@
             id="fetchBtn"
             class=" my-0"
             @click="GetPublisherInfo">
-            <span> Fetch Info </span>
+            <span class="text-none">Fetch Info</span>
           </v-btn>
         </v-flex>
       </v-layout>
