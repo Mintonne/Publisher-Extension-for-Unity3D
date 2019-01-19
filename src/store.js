@@ -26,7 +26,9 @@ export default new Vuex.Store({
     firstMonth: null,
     currentMonth: null,
     lastRefresh: null,
-    reviewsFeed: null
+    reviewsFeed: null,
+
+    invoiceData: null
   },
   mutations: {
     savePubInfo(state, payload) {
@@ -62,6 +64,9 @@ export default new Vuex.Store({
       state.reviewsFeed = localStorage[reviewsFeedKey] || null;
 
       state.sidebarTransition = localStorage[sidebarTransitionKey] === 'true';
+    },
+    saveInvoiceData(state, payload) {
+      state.invoiceData = payload;
     }
   },
   actions: {
@@ -82,7 +87,10 @@ export default new Vuex.Store({
     },
     loadPubInfo(state) {
       state.commit('loadPubInfo');
-    }
+    },
+    saveInvoiceData(state, payload) {
+      state.commit('saveInvoiceData', payload);
+    },
   },
   getters: {
     timeout: state => {
@@ -118,5 +126,8 @@ export default new Vuex.Store({
     getSidebarStatus: state => {
       return state.sidebarTransition;
     },
+    getInvoiceData: state => {
+      return state.invoiceData;
+    }
   }
 });
