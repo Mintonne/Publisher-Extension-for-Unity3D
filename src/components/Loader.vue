@@ -42,7 +42,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$red: #f4512c;
+$rocket: #f4512c;
 
 .animation-overlay {
   position: fixed;
@@ -53,7 +53,7 @@ $red: #f4512c;
   text-align: center;
   overflow: hidden;
   z-index: 1000;
-  opacity: 0.75;
+  opacity: 0.9;
   transition-property: opacity;
   transition-duration: 0.5s;
 
@@ -72,7 +72,7 @@ $red: #f4512c;
     > span {
       height: 5px;
       width: 35px;
-      background: $red;
+      background: $rocket;
       position: absolute;
       top: -19px;
       left: 60px;
@@ -140,7 +140,7 @@ $red: #f4512c;
     > span > span {
       width: 30px;
       height: 1px;
-      background: $red;
+      background: $rocket;
       position: absolute;
 
       &:nth-child(1) {
