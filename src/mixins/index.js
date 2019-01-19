@@ -46,6 +46,14 @@ export const SharedMethods = {
     InsertCharacter(string, pos, char) {
       return [string.slice(0, pos), char, string.slice(pos)].join('');
     },
+    FormatDate(dateString) {
+      return new Date(dateString).toLocaleDateString(navigator.language, {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+    },
     RequestError() {
       Vue.swal('Request Failed', 'Sorry, we could not complete your request. Please try again.', 'error');
     },
