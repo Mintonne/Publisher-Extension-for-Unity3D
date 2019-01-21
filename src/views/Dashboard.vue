@@ -12,7 +12,7 @@
         <dash-tile name="Revenue" icon="bank" path="/revenue" :term="searchTerm"></dash-tile>
         <dash-tile name="Verify Invoice" icon="verified" path="/verify" :term="searchTerm"></dash-tile>
         <dash-tile name="Reviews" icon="review" path="/reviews" :term="searchTerm"></dash-tile>
-        <dash-tile name="Trend Analysis" icon="trending-up" :term="searchTerm"></dash-tile>
+        <dash-tile name="Trend Analysis" icon="trending-up" :term="searchTerm" url="./trend-analysis.html"></dash-tile>
         <dash-tile name="Settings" icon="settings" path="/settings" :term="searchTerm"></dash-tile>
       </v-layout>
     </v-container>
