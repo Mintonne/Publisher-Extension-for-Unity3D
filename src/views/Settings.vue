@@ -95,6 +95,8 @@ export default {
   },
   methods: {
     GetPublisherInfo() {
+      chrome.storage.local.clear();
+      localStorage.clear();
 
       let endpoint = '/publisher/overview.json';
 
