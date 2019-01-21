@@ -10,6 +10,7 @@
 import Api from '@/api';
 import Sidebar from '@/components/TheSidebar.vue';
 import { SharedMethods } from '@/mixins';
+import { popupWindowHeightKey, popupWindowWidthKey, popupWindowTopPosKey, popupWindowLeftPosKey } from '@/constants/keys';
 
 export default {
   mixins: [SharedMethods],
@@ -29,6 +30,16 @@ export default {
       sessionStorage.setItem('selectedInvoice', windowURL.searchParams.get('inv'));
       this.$router.push('verify');
     }
+
+    if (windowURL.searchParams.has('resize')) {
+      window.addEventListener('resize', () => {
+        localStorage[popupWindowHeightKey] = window.outerHeight;
+        localStorage[popupWindowWidthKey] = window.outerWidth;
+        localStorage[popupWindowTopPosKey] = window.screenTop;
+        localStorage[popupWindowLeftPosKey] = window.screenLeft;
+      });
+    }
+  },
   mounted() {
     if (this.$store.getters.getCurrentMonth == null || this.$store.getters.getLastRefresh == null)
       return;
