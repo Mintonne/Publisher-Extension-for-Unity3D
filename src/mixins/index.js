@@ -20,6 +20,7 @@ export const SharedMethods = {
               title: 'Not Logged In!',
               text: 'Sign in to your publisher dashboard to proceed.',
               type: 'error',
+              footer: '<a href="https://publisher.assetstore.unity3d.com" target="_blank">Go to Dashboard</a>',
               allowOutsideClick: false,
             }).then(result => {
               if (result.value) {
