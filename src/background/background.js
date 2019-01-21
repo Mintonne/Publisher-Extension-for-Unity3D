@@ -92,12 +92,11 @@ function OpenAs(data) {
 }
 /* is-chrome:end */
 
-chrome.runtime.onMessage.addListener(request => {
-  if (request.command === 'restart')
-    RestartChecker();
-  else if (request.command === 'restart-force')
-    RestartChecker(true);
-
+chrome.runtime.onMessage.addListener(message => {
+  if (message === 'restart')
+    StartChecker();
+  else if (request === 'restart-force')
+    StartChecker(true);
 });
 
 StartChecker(true);
