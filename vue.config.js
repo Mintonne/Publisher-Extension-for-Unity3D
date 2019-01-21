@@ -67,6 +67,17 @@ module.exports = {
           }]
         }
       ]
+    },
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          chart: {
+            test: /[\\/]node_modules[\\/](chart\.js)[\\/]/,
+            name: 'chart',
+            chunks: 'all'
+          }
+        }
+      }
     }
   },
   chainWebpack: config => {
