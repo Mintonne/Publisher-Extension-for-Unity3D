@@ -54,7 +54,7 @@ export default {
   },
   data() {
     return {
-      invoiceNumber: null,
+      invoiceNumber: sessionStorage.getItem('selectedInvoice') || null,
       invoiceData: null,
       loading: false,
       loadingMessage: 'Fetching invoice data'

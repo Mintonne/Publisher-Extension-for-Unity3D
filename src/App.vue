@@ -22,6 +22,13 @@ export default {
   created() {
     this.LoginStatus();
   },
+  beforeMount() {
+    const windowURL = new URL(window.location.href);
+
+    if (windowURL.searchParams.has('inv')) {
+      sessionStorage.setItem('selectedInvoice', windowURL.searchParams.get('inv'));
+      this.$router.push('verify');
+    }
   mounted() {
     if (this.$store.getters.getCurrentMonth == null || this.$store.getters.getLastRefresh == null)
       return;
