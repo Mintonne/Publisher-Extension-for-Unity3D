@@ -67,6 +67,10 @@ export default {
   },
   methods: {
     GetInvoiceInfo() {
+      if (this.invoiceNumber == null || this.invoiceNumber.length <= 5) {
+        return this.$swal('Invalid Invoice', 'The invoice number entered is too short', 'error');
+      }
+
       let id = this.$store.getters.getPubId;
       let endpoint = `https://publisher.assetstore.unity3d.com/api/publisher-info/verify-invoice/${id}/${this.invoiceNumber}.json`;
 
