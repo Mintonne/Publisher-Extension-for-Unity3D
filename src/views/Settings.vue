@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import Api from '@/api';
 import NavBar from "@/components/TheNavBar.vue";
 import { SharedMethods } from '@/mixins';
 
@@ -95,14 +95,13 @@ export default {
   },
   methods: {
     GetPublisherInfo() {
-      let endpoint = 'https://publisher.assetstore.unity3d.com/api/publisher/overview.json';
+
+      let endpoint = '/publisher/overview.json';
 
       this.loading = true;
       this.loadingMessage = 'Fetching your publisher information';
 
-      axios.get(endpoint, {
-        timeout: this.$store.getters.timeout
-      })
+      Api.get(endpoint)
         .then((response) => {
           let data = response.data.overview;
 
@@ -118,13 +117,11 @@ export default {
     },
     CacheMonthsData() {
       let id = this.$store.getters.getPubId;
-      let endpoint = `https://publisher.assetstore.unity3d.com/api/publisher-info/months/${id}.json`;
+      let endpoint = `/publisher-info/months/${id}.json`;
 
       this.loadingMessage = 'Fetching months data';
 
-      axios.get(endpoint, {
-        timeout: this.$store.getters.timeout
-      })
+      Api.get(endpoint)
         .then((response) => {
           let data = response.data;
 
@@ -133,6 +130,8 @@ export default {
           let lastRefresh = Date.now();
 
           this.$store.dispatch('saveMonthsData', { firstMonth, currentMonth, lastRefresh });
+
+          this.SendMessage('restart');
 
           this.GetReviewsLink();
         })
@@ -156,14 +155,12 @@ export default {
       }).then((result) => {
         if (result.value) {
           let id = this.$store.getters.getPubId;
-          let endpoint = `https://publisher.assetstore.unity3d.com/api/management/publisher/info/${id}.json`;
+          let endpoint = `/management/publisher/info/${id}.json`;
 
           this.loading = true;
           this.loadingMessage = 'Fetching Reviews Link';
 
-          axios.get(endpoint, {
-            timeout: this.$store.getters.timeout
-          })
+          Api.get(endpoint)
             .then((response) => {
               let data = response.data;
 
@@ -180,7 +177,6 @@ export default {
             .then(() => {
               this.loading = false;
             });
-
         }
       });
     }

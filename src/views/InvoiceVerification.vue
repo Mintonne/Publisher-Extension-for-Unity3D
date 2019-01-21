@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import Api from '@/api';
 import NavBar from "@/components/TheNavBar.vue";
 import { SharedMethods } from '@/mixins';
 
@@ -72,13 +72,11 @@ export default {
       }
 
       let id = this.$store.getters.getPubId;
-      let endpoint = `https://publisher.assetstore.unity3d.com/api/publisher-info/verify-invoice/${id}/${this.invoiceNumber}.json`;
+      let endpoint = `/publisher-info/verify-invoice/${id}/${this.invoiceNumber}.json`;
 
       this.loading = true;
 
-      axios.get(endpoint.trim(), {
-        timeout: this.$store.getters.timeout
-      })
+      Api.get(endpoint.trim())
         .then((response) => {
           let data = response.data.aaData;
 
