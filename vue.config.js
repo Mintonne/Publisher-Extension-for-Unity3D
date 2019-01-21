@@ -63,5 +63,13 @@ module.exports = {
         }
       ]
     }
+  },
+  chainWebpack: config => {
+    config.plugins.delete('preload-index');
+    config.plugins.delete('prefetch-index');
+    config.plugins.delete('preload-background');
+    config.plugins.delete('prefetch-background');
+    config.plugins.delete('preload-trend-analysis');
+    config.plugins.delete('prefetch-trend-analysis');
   }
 }
