@@ -1,9 +1,5 @@
 import {
-  pubIDKey,
-  reviewsFeedKey,
   reviewCountKey,
-  currentMonthsKey,
-  updateFrequencyKey,
   salesInfoKey,
   openAsPopupKey,
   popupWindowHeightKey,
@@ -102,10 +98,18 @@ chrome.runtime.onMessage.addListener(message => {
 StartChecker(true);
 
 function StartChecker(force = false) {
-  pubID = Number(localStorage[pubIDKey]) || null;
-  updateInterval = Number(localStorage[updateFrequencyKey]) || null;
-  currentPeriod = localStorage[currentMonthsKey] || null;
-  reviewsFeed = localStorage[reviewsFeedKey] || null;
+  if (intervalID != null)
+    clearInterval(intervalID);
+
+  if (localStorage.vuex == null)
+    return;
+
+  let storageData = JSON.parse(localStorage.vuex);
+
+  pubID = Number(storageData.pubId) || null;
+  updateInterval = storageData.interval || null;
+  currentPeriod = storageData.currentMonth || null;
+  reviewsFeed = storageData.reviewsFeed || null;
 
   if (pubID == null || currentPeriod == null || updateInterval == null || updateInterval == 0)
     return;
@@ -113,21 +117,10 @@ function StartChecker(force = false) {
   updateInterval = updateInterval * 60 * 1000;
   currentPeriod = Number(currentPeriod.replace('-', ''));
 
-  if (intervalID != null)
-    clearInterval(intervalID);
-
   intervalID = setInterval(FetchSalesData, updateInterval);
 
   if (force)
     FetchSalesData();
-}
-
-
-function RestartChecker(force = false) {
-  if (intervalID != null)
-    clearInterval(intervalID);
-
-  StartChecker(force);
 }
 
 function StopChecker() {
@@ -137,7 +130,7 @@ function StopChecker() {
 
 function FetchSalesData() {
   if (pubID == null || currentPeriod == null) {
-    RestartChecker();
+    StartChecker();
     return;
   }
 
