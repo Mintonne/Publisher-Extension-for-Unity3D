@@ -1,20 +1,13 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import {
-  pubIDKey,
-  pubNameKey,
-  payoutRateKey,
-  firstMonthsKey,
-  currentMonthsKey,
-  lastRefreshKey,
-  reviewsFeedKey,
-  sidebarTransitionKey,
-  updateFrequencyKey
-} from '@/constants/keys';
+import persistedState from 'vuex-persistedstate';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+  plugins: [persistedState({
+    paths: ['pubId', 'pubName', 'pubRate', 'firstMonth', 'currentMonth', 'lastRefresh', 'reviewsFeed', 'interval', 'sidebarTransition']
+  })],
   state: {
     timeout: 15000,
     interval: 0,
@@ -32,38 +25,23 @@ export default new Vuex.Store({
   },
   mutations: {
     savePubInfo(state, payload) {
-      localStorage[pubIDKey] = state.pubId = payload.id;
-      localStorage[pubNameKey] = state.pubName = payload.name;
-      localStorage[payoutRateKey] = state.pubRate = payload.rate;
+      state.pubId = payload.id;
+      state.pubName = payload.name;
+      state.pubRate = payload.rate;
     },
     saveMonthsData(state, payload) {
-      localStorage[firstMonthsKey] = state.firstMonth = payload.firstMonth;
-      localStorage[currentMonthsKey] = state.currentMonth = payload.currentMonth;
-      localStorage[lastRefreshKey] = state.lastRefresh = payload.lastRefresh;
+      state.firstMonth = payload.firstMonth;
+      state.currentMonth = payload.currentMonth;
+      state.lastRefresh = payload.lastRefresh;
     },
     saveReviewsFeed(state, payload) {
-      localStorage[reviewsFeedKey] = state.reviewsFeed = payload;
+      state.reviewsFeed = payload;
     },
     saveSidebarStatus(state, payload) {
-      localStorage[sidebarTransitionKey] = state.sidebarTransition = payload;
+      state.sidebarTransition = payload;
     },
     updateInterval(state, payload) {
-      localStorage[updateFrequencyKey] = state.interval = payload;
-    },
-    loadPubInfo(state) {
-      state.interval = Number(localStorage[updateFrequencyKey]) || 0;
-
-      state.pubId = Number(localStorage[pubIDKey]) || null;
-      state.pubName = localStorage[pubNameKey] || null;
-      state.pubRate = Number(localStorage[payoutRateKey]) || null;
-
-      state.firstMonth = localStorage[firstMonthsKey] || null;
-      state.currentMonth = localStorage[currentMonthsKey] || null;
-      state.lastRefresh = Number(localStorage[lastRefreshKey]) || null;
-
-      state.reviewsFeed = localStorage[reviewsFeedKey] || null;
-
-      state.sidebarTransition = localStorage[sidebarTransitionKey] === 'true';
+      state.interval = payload;
     },
     saveInvoiceData(state, payload) {
       state.invoiceData = payload;
