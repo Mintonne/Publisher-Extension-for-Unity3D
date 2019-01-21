@@ -35,6 +35,11 @@ module.exports = {
     background: {
       entry: 'src/background/background.js',
       chunks: ['background']
+    },
+    'trend-analysis': {
+      entry: 'src/trend-analysis/trend-main.js',
+      title: 'Trend Analysis',
+      chunks: ['chunk-vendors', 'chart', 'trend-analysis']
     }
   },
   configureWebpack: {
