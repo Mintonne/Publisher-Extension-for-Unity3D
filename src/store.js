@@ -9,7 +9,6 @@ export default new Vuex.Store({
     paths: ['pubId', 'pubName', 'pubRate', 'firstMonth', 'currentMonth', 'lastRefresh', 'reviewsFeed', 'interval', 'sidebarTransition']
   })],
   state: {
-    timeout: 15000,
     interval: 0,
     sidebarTransition: false,
 
@@ -71,9 +70,6 @@ export default new Vuex.Store({
     },
   },
   getters: {
-    timeout: state => {
-      return state.timeout;
-    },
     getInterval: state => {
       return state.interval;
     },
