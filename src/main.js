@@ -4,7 +4,7 @@ import router from './router';
 import store from './store';
 import SvgIcon from 'vue-svgicon';
 import VueSweetalert2 from 'vue-sweetalert2';
-import Loader from './components/Loader.vue';
+import Loader from '@/components/Loader.vue';
 
 import Vuetify, {
   VApp,
