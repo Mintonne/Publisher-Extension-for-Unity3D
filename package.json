@@ -12,6 +12,7 @@
     "axios": "^0.18.0",
     "chart.js": "^2.7.3",
     "vue": "^2.5.22",
+    "vue-carousel": "^0.17.0",
     "vue-router": "^3.0.1",
     "vue-sweetalert2": "^1.6.4",
     "vuetify": "^1.4.2",
