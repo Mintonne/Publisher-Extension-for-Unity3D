@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import NavBar from '@/components/TheNavBar.vue';
+import NavBar from '@/components/Navbar.vue';
 import DashTile from '@/components/DashTile.vue';
 
 export default {

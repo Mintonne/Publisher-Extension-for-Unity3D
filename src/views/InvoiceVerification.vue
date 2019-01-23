@@ -41,7 +41,7 @@
 
 <script>
 import Api from '@/api';
-import NavBar from "@/components/TheNavBar.vue";
+import NavBar from "@/components/Navbar.vue";
 import { SharedMethods } from '@/mixins';
 
 export default {

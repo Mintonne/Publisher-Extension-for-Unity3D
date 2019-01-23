@@ -47,7 +47,7 @@
 
 <script>
 import Api from '@/api';
-import NavBar from '@/components/TheNavBar.vue';
+import NavBar from '@/components/Navbar.vue';
 import InfoCarousel from '@/components/InfoCarousel.vue';
 import InfoTile from '@/components/InfoTile.vue';
 import Chart from '@/../node_modules/chart.js/dist/Chart.min.js';
