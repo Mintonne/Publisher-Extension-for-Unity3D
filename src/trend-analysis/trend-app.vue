@@ -28,7 +28,7 @@ export default {
     }
   },
   mounted() {
-    let id = localStorage[pubIDKey];
+    let id = this.$store.getters.getPubId;
 
     if (id == null) {
       return this.$swal('Error', 'Publisher ID not found.', 'error');
