@@ -82,7 +82,7 @@ export default {
   top: 0;
   left: 0;
   width: 60px;
-  height: 100%;
+  height: 100vh;
   background: $dark;
   color: white;
   transition: width 200ms ease-in-out;
