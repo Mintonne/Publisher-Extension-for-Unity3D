@@ -20,6 +20,7 @@ import Vuetify, {
   VBtnToggle,
   VBtn,
   VIcon,
+  VSnackbar,
   VDivider
 } from 'vuetify/lib';
 
@@ -39,6 +40,7 @@ Vue.use(Vuetify, {
     VBtnToggle,
     VBtn,
     VIcon,
+    VSnackbar,
     VDivider,
     Loader
   }
