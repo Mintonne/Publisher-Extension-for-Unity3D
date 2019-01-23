@@ -39,7 +39,7 @@ module.exports = {
     'trend-analysis': {
       entry: 'src/trend-analysis/trend-main.js',
       title: 'Trend Analysis',
-      chunks: ['chunk-vendors', 'chart', 'trend-analysis']
+      chunks: ['chunk-vendors', 'trend-analysis']
     }
   },
   configureWebpack: {
@@ -67,17 +67,6 @@ module.exports = {
           }]
         }
       ]
-    },
-    optimization: {
-      splitChunks: {
-        cacheGroups: {
-          chart: {
-            test: /[\\/]node_modules[\\/](chart\.js)[\\/]/,
-            name: 'chart',
-            chunks: 'all'
-          }
-        }
-      }
     }
   },
   chainWebpack: config => {
