@@ -18,7 +18,7 @@
     "vuetify": "^1.4.3",
     "vuex": "^3.1.0",
     "vuex-persistedstate": "^2.5.4",
-    "x2js": "^3.2.3"
+    "x2js": "^3.2.5"
   },
   "devDependencies": {
     "@vue/cli-plugin-eslint": "^3.3.0",
