@@ -1,7 +1,9 @@
 /* eslint-disable */
 import './bank'
+import './close'
 import './dashboard'
 import './dollar-sign'
+import './down'
 import './download'
 import './email'
 import './paypal'
