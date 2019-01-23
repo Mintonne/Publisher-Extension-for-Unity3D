@@ -10,7 +10,7 @@
 
 <script>
 import '@/assets/icons/save.js';
-import axios from 'axios';
+import Api from '@/api';
 import Chart from '@/../node_modules/chart.js/dist/Chart.min.js';
 import Loader from '@/components/Loader.vue';
 import { SharedMethods } from '@/mixins';
@@ -34,13 +34,11 @@ export default {
       return this.$swal('Error', 'Publisher ID not found.', 'error');
     }
 
-    let endpoint = `https://publisher.assetstore.unity3d.com/api/publisher-info/revenue/${id}.json`;
+    let endpoint = `/publisher-info/revenue/${id}.json`;
 
     this.loading = true;
 
-    axios.get(endpoint.trim(), {
-      timeout: this.$store.getters.timeout
-    })
+    Api.get(endpoint)
       .then((response) => {
         let trendData = response.data;
 
