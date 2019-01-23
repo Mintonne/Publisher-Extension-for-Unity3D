@@ -80,6 +80,7 @@ export default {
 #sidebar {
   position: absolute;
   top: 0;
+  bottom: 0;
   left: 0;
   width: 60px;
   height: 100vh;

@@ -10,7 +10,7 @@
 
 <script>
 import Api from '@/api';
-import Sidebar from '@/components/TheSidebar.vue';
+import Sidebar from '@/components/Sidebar.vue';
 import { SharedMethods } from '@/mixins';
 import { popupWindowHeightKey, popupWindowWidthKey, popupWindowTopPosKey, popupWindowLeftPosKey } from '@/constants/keys';
 
