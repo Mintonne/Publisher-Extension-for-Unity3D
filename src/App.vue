@@ -2,7 +2,9 @@
   <div data-app="true" id="app">
     <loader class="fill" v-if="loading" :message="loadingMessage"></loader>
     <sidebar />
-    <router-view />
+    <keep-alive exclude="['Dashboard', 'Settings']">
+      <router-view />
+    </keep-alive>
   </div>
 </template>
 
