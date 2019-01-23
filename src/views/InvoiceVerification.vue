@@ -18,7 +18,7 @@
         <v-btn block large
           id="verifyBtn"
           class=" my-0"
-          @click="GetInvoiceInfo">
+          @click="GetInvoiceData">
           <span class="text-none">Verify</span>
         </v-btn>
       </v-flex>
@@ -49,8 +49,6 @@ export default {
   created() {
     if (!this.$store.getters.pubIdStatus)
       this.RedirectToSettings(this.$router);
-
-    this.invoiceData = this.$store.getters.getInvoiceData || null;
   },
   data() {
     return {
@@ -60,13 +58,8 @@ export default {
       loadingMessage: 'Fetching invoice data'
     }
   },
-  watch: {
-    invoiceData() {
-      this.$store.dispatch('saveInvoiceData', this.invoiceData);
-    }
-  },
   methods: {
-    GetInvoiceInfo() {
+    GetInvoiceData() {
       if (this.invoiceNumber == null || this.invoiceNumber.length <= 5) {
         return this.$swal('Invalid Invoice', 'The invoice number entered is too short', 'error');
       }
