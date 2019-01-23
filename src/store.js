@@ -5,9 +5,7 @@ import persistedState from 'vuex-persistedstate';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  plugins: [persistedState({
-    paths: ['pubId', 'pubName', 'pubRate', 'firstMonth', 'currentMonth', 'lastRefresh', 'reviewsFeed', 'interval', 'sidebarTransition']
-  })],
+  plugins: [persistedState()],
   state: {
     interval: 0,
     sidebarTransition: false,
@@ -19,8 +17,6 @@ export default new Vuex.Store({
     currentMonth: null,
     lastRefresh: null,
     reviewsFeed: null,
-
-    invoiceData: null
   },
   mutations: {
     savePubInfo(state, payload) {
@@ -41,9 +37,6 @@ export default new Vuex.Store({
     },
     updateInterval(state, payload) {
       state.interval = payload;
-    },
-    saveInvoiceData(state, payload) {
-      state.invoiceData = payload;
     }
   },
   actions: {
@@ -64,10 +57,7 @@ export default new Vuex.Store({
     },
     loadPubInfo(state) {
       state.commit('loadPubInfo');
-    },
-    saveInvoiceData(state, payload) {
-      state.commit('saveInvoiceData', payload);
-    },
+    }
   },
   getters: {
     getInterval: state => {
@@ -99,9 +89,6 @@ export default new Vuex.Store({
     },
     getSidebarStatus: state => {
       return state.sidebarTransition;
-    },
-    getInvoiceData: state => {
-      return state.invoiceData;
     }
   }
 });
