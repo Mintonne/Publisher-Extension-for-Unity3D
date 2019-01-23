@@ -19,7 +19,7 @@ export default {
 nav {
   height: 45px;
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   user-select: none;
 
   a {
