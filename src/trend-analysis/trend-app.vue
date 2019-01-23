@@ -15,7 +15,7 @@ import Chart from '@/../node_modules/chart.js/dist/Chart.min.js';
 import Loader from '@/components/Loader.vue';
 import { SharedMethods } from '@/mixins';
 import { pubIDKey } from '@/constants/keys';
-import { monthsNames, chartColors } from './chart-options.js';
+import { monthsNames, chartColors } from '@/constants/chart-options.js';
 
 export default {
   mixins: [SharedMethods],
