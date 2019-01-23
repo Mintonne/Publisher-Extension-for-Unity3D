@@ -1,11 +1,12 @@
 /* eslint-disable */
-require('./bank')
-require('./dashboard')
-require('./dollar-sign')
-require('./download')
-require('./email')
-require('./paypal')
-require('./review')
-require('./settings')
-require('./trending-up')
-require('./verified')
+import './bank'
+import './dashboard'
+import './dollar-sign'
+import './download'
+import './email'
+import './paypal'
+import './review'
+import './save'
+import './settings'
+import './trending-up'
+import './verified'
