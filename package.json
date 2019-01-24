@@ -36,7 +36,6 @@
     "style-loader": "^0.23.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
-    "vue-svgicon": "^3.2.2",
     "vue-template-compiler": "^2.5.22",
     "webpack-remove-blocks": "^1.1.0",
     "yargs": "^12.0.5"
