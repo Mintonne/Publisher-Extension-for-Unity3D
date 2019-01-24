@@ -205,6 +205,10 @@ export default {
   font-size: 16px;
 }
 
+html {
+  overflow-y: auto !important;
+}
+
 #save-chart-button {
   user-select: none;
   position: fixed;

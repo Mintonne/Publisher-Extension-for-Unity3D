@@ -104,6 +104,10 @@ body {
   height: 580px;
 }
 
+html {
+  overflow-y: auto !important;
+}
+
 body {
   overflow: auto;
   background-color: #fcfcfc;
