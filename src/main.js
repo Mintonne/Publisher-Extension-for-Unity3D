@@ -7,15 +7,20 @@ import VueSweetalert2 from 'vue-sweetalert2';
 import Loader from '@/components/Loader.vue';
 import customIcons from '@/assets/icons';
 
+import 'vuetify/src/stylus/app.styl';
+
 import Vuetify, {
   VApp,
   VContainer,
   VLayout,
   VFlex,
   VTextField,
+  VSelect,
   VCard,
   VCardTitle,
   VCardText,
+  VExpansionPanel,
+  VExpansionPanelContent,
   VSlider,
   VBtnToggle,
   VBtn,
@@ -24,8 +29,6 @@ import Vuetify, {
   VDivider
 } from 'vuetify/lib';
 
-import 'vuetify/src/stylus/app.styl';
-
 Vue.use(Vuetify, {
   components: {
     VApp,
@@ -33,9 +36,12 @@ Vue.use(Vuetify, {
     VLayout,
     VFlex,
     VTextField,
+    VSelect,
     VCard,
     VCardTitle,
     VCardText,
+    VExpansionPanel,
+    VExpansionPanelContent,
     VSlider,
     VBtnToggle,
     VBtn,
