@@ -40,8 +40,14 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss">
+@import "@/styles/variables.scss";
+
 .v-snack {
   margin-left: 60px;
+
+  div.v-snack__wrapper {
+    background-color: $dark;
+  }
 }
 </style>
