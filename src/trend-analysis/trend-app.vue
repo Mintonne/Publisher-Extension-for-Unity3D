@@ -210,15 +210,9 @@ html {
 #save-chart-button {
   user-select: none;
   position: fixed;
-  top: 5px;
-  right: 20px;
-  padding: 5px;
-  font-size: 30px;
-  text-align: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 25%;
-  color: #dedede;
+  top: 15px;
+  right: 15px;
+  color: #bbb;
   cursor: pointer;
 }
 </style>
