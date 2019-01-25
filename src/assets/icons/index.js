@@ -6,6 +6,7 @@ import Download from 'vue-mdi/Download.vue';
 import Email from 'vue-mdi/Email.vue';
 import MessageDraw from 'vue-mdi/MessageDraw.vue';
 import MenuDown from 'vue-mdi/MenuDown.vue';
+import OpenInNew from 'vue-mdi/OpenInNew.vue';
 import Paypal from 'vue-mdi/Paypal.vue';
 import Settings from 'vue-mdi/Settings.vue';
 import ShieldCheck from 'vue-mdi/ShieldCheck.vue';
@@ -30,6 +31,9 @@ export default {
   },
   email: {
     component: Email
+  },
+  open: {
+    component: OpenInNew
   },
   paypal: {
     component: Paypal
