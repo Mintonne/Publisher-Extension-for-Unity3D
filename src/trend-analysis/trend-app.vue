@@ -2,12 +2,13 @@
   <div id="app">
     <loader class="fill" v-if="loading" :message="loadingMessage"></loader>
     <canvas id="trend-chat"></canvas>
-    <save v-if="myChart != null" size="35" id="save-chart-button" @click.native="SaveChart" />
+    <save v-if="myChart != null" size="35" id="save-chart-button" @click.native="InitSave" />
   </div>
 </template>
 
 <script>
 import Api from '@/api';
+import saveAs from 'file-saver';
 import Chart from '@/../node_modules/chart.js/dist/Chart.min.js';
 import Loader from '@/components/Loader.vue';
 import Save from 'vue-mdi/ContentSave.vue';
@@ -184,14 +185,55 @@ export default {
       });
   },
   methods: {
-    SaveChart() {
-      console.log('Save Chart');
+    InitSave() {
+      this.$swal({
+        type: 'question',
+        title: 'Save Chart',
+        text: 'Do you want to hide the Revenue axis?',
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No'
+      }).then((result) => {
+        if (result.value) {
+          this.SaveChart(true);
+        }
+        else if (result.dismiss == 'cancel') {
+          this.SaveChart();
+        }
+      });
+    },
+    SaveChart(hideAxis = false) {
+      if (hideAxis) {
+        this.myChart.config.options.scales.yAxes[0].ticks.callback = () => {
+          return '';
+        }
+
+        this.myChart.update({
+          duration: 0
+        });
+      };
+
+      this.myChart.ctx.canvas.toBlob(blob => {
+        saveAs(blob, `chart-${Date.now()}.png`);
+      });
+
+      if (hideAxis) {
+        this.myChart.config.options.scales.yAxes[0].ticks.callback = value => {
+          return value;
+        };
+
+        this.myChart.update({
+          duration: 0
+        });
+      };
     }
   }
 }
 </script>
 
 <style lang="scss">
+@import "@/styles/variables.scss";
+
 *,
 *:before,
 *:after {
@@ -212,7 +254,7 @@ html {
   position: fixed;
   top: 15px;
   right: 15px;
-  color: #bbb;
+  color: $dark;
   cursor: pointer;
 }
 </style>
