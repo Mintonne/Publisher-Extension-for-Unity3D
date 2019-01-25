@@ -29,19 +29,7 @@
 
     <p v-if="revenueData != null" class="mt-3 text-xs-center font-weight-medium fill">* Excluding current month's sales.</p>
 
-    <v-snackbar
-      bottom
-      class="fill"
-      :timeout="0"
-      :value="showSnackbar">
-      Request Error
-      <v-btn
-        color="pink"
-        flat
-        @click="GetRevenueData()">
-        Retry
-      </v-btn>
-    </v-snackbar>
+    <snackbar :value="showSnackbar" :callback="GetRevenueData" />
   </div>
 </template>
 
@@ -50,6 +38,7 @@ import Api from '@/api';
 import NavBar from '@/components/Navbar.vue';
 import InfoCarousel from '@/components/InfoCarousel.vue';
 import InfoTile from '@/components/InfoTile.vue';
+import Snackbar from '@/components/Snackbar.vue';
 import Chart from '@/../node_modules/chart.js/dist/Chart.min.js';
 import { SharedMethods } from '@/mixins';
 import { monthsAbbreviations } from '@/constants/chart-options.js';
@@ -89,13 +78,11 @@ export default {
           let data = response.data.aaData;
 
           if (data == null || data.length <= 0) {
-            this.revenueData = null;
-            this.$swal('Error', 'No records found', 'error');
+            return this.$swal('Error', 'No records found', 'error');
           }
-          else {
-            this.revenueData = data[0];
-            this.PopulateRevenueData(data);
-          }
+
+          this.revenueData = data[0];
+          this.PopulateRevenueData(data);
         })
         .catch((error) => {
           console.log(error);
@@ -206,7 +193,8 @@ export default {
   components: {
     NavBar,
     InfoCarousel,
-    InfoTile
+    InfoTile,
+    Snackbar
   }
 }
 </script>
@@ -214,9 +202,5 @@ export default {
 <style lang="scss" scoped>
 canvas {
   width: 90% !important;
-}
-
-.v-snack {
-  margin-left: 60px;
 }
 </style>
