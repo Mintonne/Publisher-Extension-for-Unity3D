@@ -55,7 +55,7 @@ $rocket: #f4512c;
   z-index: 1000;
   opacity: 0.9;
   transition-property: opacity;
-  transition-duration: 0.5s;
+  transition-duration: 1s;
 
   &.fade-enter,
   &.fade-leave-to {
