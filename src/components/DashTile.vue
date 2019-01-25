@@ -2,6 +2,7 @@
   <v-flex xs3 v-if="searchMatch">
     <v-card hover @click="OpenLink(url)" :to="path" height=140>
       <v-card-title>
+        <v-icon width="45" height="45" v-text="iconName"></v-icon>
       </v-card-title>
       <v-card-text>
         <p>{{ name }}</p>
@@ -37,6 +38,9 @@ export default {
     }
   },
   computed: {
+    iconName() {
+      return '$vuetify.icons.' + this.icon;
+    },
     searchMatch() {
       return (this.term == '' || this.term == null || this.name.toLowerCase().includes(this.term.toLowerCase()));
     }
@@ -52,24 +56,21 @@ export default {
 
   &:hover {
     * {
-      color: $primary-color;
+      color: $primary-color !important;
     }
   }
-}
 
-.v-card__title {
-  i {
-    margin: 0 auto;
-    color: #bbb;
+  .v-card__title {
+    .v-icon {
+      margin: 0 auto;
+      color: #bbb;
+      height: 45px;
+    }
   }
-  .svg-icon {
-    width: 45px;
-    height: 45px;
-  }
-}
 
-.v-card__text {
-  color: $dark;
-  font-weight: 500;
+  .v-card__text {
+    color: $dark;
+    font-weight: 500;
+  }
 }
 </style>

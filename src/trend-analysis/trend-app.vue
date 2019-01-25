@@ -2,6 +2,7 @@
   <div id="app">
     <loader class="fill" v-if="loading" :message="loadingMessage"></loader>
     <canvas id="trend-chat"></canvas>
+    <save v-if="myChart != null" size="35" id="save-chart-button" @click.native="SaveChart" />
   </div>
 </template>
 
@@ -9,13 +10,14 @@
 import Api from '@/api';
 import Chart from '@/../node_modules/chart.js/dist/Chart.min.js';
 import Loader from '@/components/Loader.vue';
+import Save from 'vue-mdi/ContentSave.vue';
 import { SharedMethods } from '@/mixins';
 import { pubIDKey } from '@/constants/keys';
 import { monthsNames, chartColors } from '@/constants/chart-options.js';
 
 export default {
   mixins: [SharedMethods],
-  components: { Loader },
+  components: { Loader, Save },
   data() {
     return {
       myChart: null,

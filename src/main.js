@@ -5,6 +5,7 @@ import store from './store';
 import VueCarousel from 'vue-carousel';
 import VueSweetalert2 from 'vue-sweetalert2';
 import Loader from '@/components/Loader.vue';
+import customIcons from '@/assets/icons';
 
 import Vuetify, {
   VApp,
@@ -42,7 +43,8 @@ Vue.use(Vuetify, {
     VSnackbar,
     VDivider,
     Loader
-  }
+  },
+  icons: customIcons
 });
 
 Vue.use(VueCarousel);
