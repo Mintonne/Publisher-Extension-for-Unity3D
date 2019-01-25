@@ -2,58 +2,34 @@
   <div id="sidebar" :class="{static: !enableTransition}">
     <ul>
       <router-link tag="li" to="/">
-        <i>
-          <svgicon icon="dashboard"></svgicon>
-        </i>
         <p>Dashboard</p>
       </router-link>
 
       <router-link tag="li" to="/sales">
-        <i>
-          <svgicon icon="dollar-sign"></svgicon>
-        </i>
         <p>Sales</p>
       </router-link>
 
       <router-link tag="li" to="/downloads">
-        <i>
-          <svgicon icon="download"></svgicon>
-        </i>
         <p>Downloads</p>
       </router-link>
 
       <router-link tag="li" to="/revenue">
-        <i>
-          <svgicon icon="bank"></svgicon>
-        </i>
         <p>Revenue</p>
       </router-link>
 
       <router-link tag="li" to="/verify">
-        <i>
-          <svgicon icon="verified"></svgicon>
-        </i>
         <p>Verify Invoice</p>
       </router-link>
 
       <router-link tag="li" to="/settings">
-        <i>
-          <svgicon icon="settings"></svgicon>
-        </i>
         <p>Settings</p>
       </router-link>
 
       <li class="link" @click="OpenLink('mailto:mintonne@gmail.com')">
-        <i>
-          <svgicon icon="email"></svgicon>
-        </i>
         <p>Support</p>
       </li>
 
       <li class="link" @click="OpenLink('https://www.paypal.me/mintonne/10')">
-        <i>
-          <svgicon icon="paypal"></svgicon>
-        </i>
         <p>Donate</p>
       </li>
     </ul>
@@ -61,7 +37,6 @@
 </template>
 
 <script>
-import '@/assets/icons/index';
 import { SharedMethods } from '@/mixins';
 
 export default {

@@ -2,7 +2,6 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
-import SvgIcon from 'vue-svgicon';
 import VueCarousel from 'vue-carousel';
 import VueSweetalert2 from 'vue-sweetalert2';
 import Loader from '@/components/Loader.vue';
@@ -46,7 +45,6 @@ Vue.use(Vuetify, {
   }
 });
 
-Vue.use(SvgIcon);
 Vue.use(VueCarousel);
 Vue.use(VueSweetalert2, {
   heightAuto: false

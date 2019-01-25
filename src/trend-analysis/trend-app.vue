@@ -2,14 +2,10 @@
   <div id="app">
     <loader class="fill" v-if="loading" :message="loadingMessage"></loader>
     <canvas id="trend-chat"></canvas>
-    <i id="save-chart-button" @click="SaveChart">
-      <svgicon icon="save"></svgicon>
-    </i>
   </div>
 </template>
 
 <script>
-import '@/assets/icons/save.js';
 import Api from '@/api';
 import Chart from '@/../node_modules/chart.js/dist/Chart.min.js';
 import Loader from '@/components/Loader.vue';
