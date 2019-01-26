@@ -1,4 +1,5 @@
 import Bank from 'vue-mdi/Bank.vue';
+import CalendarCheck from 'vue-mdi/CalendarCheck.vue';
 import ContentSave from 'vue-mdi/ContentSave.vue';
 import Close from 'vue-mdi/Close.vue';
 import CurrencyUsd from 'vue-mdi/CurrencyUsd.vue';
@@ -16,6 +17,9 @@ import ViewDashboard from 'vue-mdi/ViewDashboard.vue';
 export default {
   bank: {
     component: Bank
+  },
+  calendar: {
+    component: CalendarCheck
   },
   clear: {
     component: Close
