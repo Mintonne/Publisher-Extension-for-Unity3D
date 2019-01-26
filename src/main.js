@@ -14,6 +14,10 @@ import Vuetify, {
   VContainer,
   VLayout,
   VFlex,
+  VMenu,
+  VList,
+  VListTile,
+  VListTileTitle,
   VTextField,
   VSelect,
   VDialog,
@@ -27,7 +31,8 @@ import Vuetify, {
   VBtn,
   VIcon,
   VSnackbar,
-  VDivider
+  VDivider,
+  VSpacer
 } from 'vuetify/lib';
 
 Vue.use(Vuetify, {
@@ -36,6 +41,10 @@ Vue.use(Vuetify, {
     VContainer,
     VLayout,
     VFlex,
+    VMenu,
+    VList,
+    VListTile,
+    VListTileTitle,
     VTextField,
     VSelect,
     VDialog,
@@ -50,6 +59,7 @@ Vue.use(Vuetify, {
     VIcon,
     VSnackbar,
     VDivider,
+    VSpacer,
     Loader
   },
   icons: customIcons
