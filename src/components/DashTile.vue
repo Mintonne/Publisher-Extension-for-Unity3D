@@ -52,8 +52,6 @@ export default {
 @import "@/styles/variables.scss";
 
 .v-card {
-  border-radius: 10px;
-
   &:hover {
     * {
       color: $primary-color !important;
