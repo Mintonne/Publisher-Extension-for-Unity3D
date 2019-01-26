@@ -11,7 +11,8 @@
           solo
           Placeholder="Invoice Number"
           :readonly="loading"
-          v-model="invoiceNumber">
+          v-model="invoiceNumber"
+          @keyup.enter="GetInvoiceData">
         </v-text-field>
       </v-flex>
       <v-flex xs2>
@@ -60,6 +61,9 @@ export default {
   },
   methods: {
     GetInvoiceData() {
+      if (this.loading)
+        return;
+
       if (this.invoiceNumber == null || this.invoiceNumber.length <= 5) {
         return this.$swal('Invalid Invoice', 'The invoice number entered is too short', 'error');
       }
