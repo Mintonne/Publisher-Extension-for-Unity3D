@@ -45,6 +45,12 @@ export const SharedMethods = {
     InsertCharacter(string, pos, char) {
       return [string.slice(0, pos), char, string.slice(pos)].join('');
     },
+    ellipsis(str, maxLength, ellipsis = "...") {
+      if (str.length > maxLength)
+        return str.slice(0, maxLength - ellipsis.length) + ellipsis;
+      else
+        return str;
+    },
     FormatDate(dateString) {
       return new Date(dateString).toLocaleDateString(navigator.language, {
         weekday: 'long',
