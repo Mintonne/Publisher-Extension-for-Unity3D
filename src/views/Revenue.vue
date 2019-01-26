@@ -45,11 +45,12 @@ import { monthsAbbreviations } from '@/constants/chart-options.js';
 
 export default {
   mixins: [SharedMethods],
-  created() {
+  activated() {
     if (!this.$store.getters.pubIdStatus)
-      this.RedirectToSettings(this.$router);
+      return this.RedirectToSettings(this.$router);
 
-    this.GetRevenueData();
+    if (this.revenueData == null)
+      this.GetRevenueData();
   },
   data() {
     return {

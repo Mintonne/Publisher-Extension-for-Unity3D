@@ -49,13 +49,14 @@ import { SharedMethods } from '@/mixins';
 
 export default {
   mixins: [SharedMethods],
-  created() {
+  activated() {
     if (!this.$store.getters.pubIdStatus)
-      this.RedirectToSettings(this.$router);
+      return this.RedirectToSettings(this.$router);
     else if (this.$store.getters.getReviewsFeed == null)
-      this.RedirectToSettings(this.$router, false);
+      return this.RedirectToSettings(this.$router, false);
 
-    this.GetReviewsData();
+    if (this.reviewsData == null)
+      this.GetReviewsData();
   },
   data() {
     return {

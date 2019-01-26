@@ -10,9 +10,9 @@ import { SharedMethods } from '@/mixins';
 
 export default {
   mixins: [SharedMethods],
-  created() {
+  activated() {
     if (!this.$store.getters.pubIdStatus)
-      this.RedirectToSettings(this.$router);
+      return this.RedirectToSettings(this.$router);
   },
   components: {
     NavBar
