@@ -2,7 +2,7 @@
   <div id="app">
     <loader class="fill" v-if="loading" :message="loadingMessage"></loader>
     <canvas id="trend-chat"></canvas>
-    <save v-if="myChart != null" size="35" id="save-chart-button" @click.native="InitSave" />
+    <save v-if="myChart != null" size="30" id="save-chart-button" @click.native="InitSave" />
   </div>
 </template>
 
