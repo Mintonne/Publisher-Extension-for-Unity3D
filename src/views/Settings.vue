@@ -1,11 +1,11 @@
 <template>
-  <div class="section">
+  <div class="section pb-3">
     <loader class="fill" v-if="loading" :message="loadingMessage"></loader>
 
     <nav-bar title="Settings"></nav-bar>
 
     <div>
-      <h2 class="subheading mb-3">Publisher ID</h2>
+      <p>Publisher ID</p>
       <v-layout>
         <v-flex xs10>
           <v-text-field hide-details readonly solo Placeholder="Publisher ID" :value="pubId"></v-text-field>
@@ -24,7 +24,7 @@
     <v-divider class="my-4"></v-divider>
 
     <div>
-      <h2 class="subheading mb-3">Sales Update Frequency</h2>
+      <p>Sales Update Frequency</p>
       <v-flex xs12>
         <v-slider
           hide-details
@@ -42,9 +42,25 @@
     <v-divider class="my-4"></v-divider>
 
     <div>
-      <h2 class="subheading mb-3">Sidebar Transition</h2>
+      <p>Sales Tooltip</p>
       <v-flex xs12>
-        <v-btn-toggle mandatory v-model="sidebarStatus" ID="sidebar-btn-group">
+        <v-btn-toggle mandatory v-model="tooltipStatus">
+          <v-btn large :value="true">
+            <span>On</span>
+          </v-btn>
+          <v-btn large :value="false">
+            <span>Off</span>
+          </v-btn>
+        </v-btn-toggle>
+      </v-flex>
+    </div>
+
+    <v-divider class="my-4"></v-divider>
+
+    <div>
+      <p>Sidebar Transition</p>
+      <v-flex xs12>
+        <v-btn-toggle mandatory v-model="sidebarStatus">
           <v-btn large :value="true">
             <span>On</span>
           </v-btn>
@@ -90,6 +106,14 @@ export default {
       },
       set: function (newValue) {
         this.$store.dispatch('saveSidebarStatus', newValue);
+      }
+    },
+    tooltipStatus: {
+      get: function () {
+        return this.$store.getters.getTooltipStatus;
+      },
+      set: function (newValue) {
+        this.$store.dispatch('saveTooltipStatus', newValue);
       }
     }
   },
@@ -192,6 +216,10 @@ export default {
 <style lang="scss" scoped>
 @import "@/styles/variables.scss";
 
+.section {
+  overflow-y: auto !important;
+}
+
 #fetchBtn {
   height: 48px;
   margin-left: -1px;
@@ -204,10 +232,10 @@ export default {
   }
 }
 
-#sidebar-btn-group {
+.v-btn-toggle {
   width: 100%;
 
-  .v-btn {
+  .v-btn:not(.v-btn--icon):not(.v-btn--flat) {
     width: calc(100% / 2);
     background-color: white;
     color: $primary-color;
