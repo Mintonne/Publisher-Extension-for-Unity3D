@@ -1,5 +1,5 @@
 <template>
-  <div class="section">
+  <div class="section pb-3">
     <loader class="fill" v-if="loading" :message="loadingMessage"></loader>
 
     <nav-bar :title="navbarTitle"></nav-bar>
@@ -23,8 +23,7 @@
             large
             id="pickerBtn"
             class=" my-0"
-            slot="activator"
-            @click="GetInvoiceData">
+            slot="activator">
             <v-icon>$vuetify.icons.calendar</v-icon>
           </v-btn>
 
@@ -40,13 +39,12 @@
             no-title
             scrollable>
           </v-date-picker>
-
         </v-menu>
 
       </v-flex>
     </v-layout>
 
-    <info-carousel v-if="salesData != null">
+    <info-carousel v-if="salesData != null && salesData.length > 0">
       <slide>
         <info-tile title="Net Revenue" :text="netRevenue.toFixed(2)" />
       </slide>
@@ -67,7 +65,7 @@
       </slide>
     </info-carousel>
 
-    <v-layout v-if="salesData != null" class="px-1">
+    <v-layout v-if="salesData != null && salesData.length > 0" class="px-1">
       <v-btn class="mx-0 text-none" disabled flat>Packages ({{ sortOptions[currentSortOrder] }})
       </v-btn>
       <v-spacer />
@@ -95,7 +93,7 @@
       </v-menu>
     </v-layout>
 
-    <v-layout v-if="salesData != null" row wrap>
+    <v-layout v-if="salesData != null && salesData.length > 0" row wrap>
       <package-tile v-for="(item, index) in packagesData" :key="index" :packageData="item" :term="searchTerm" />
     </v-layout>
 
@@ -118,7 +116,8 @@ export default {
     if (!this.$store.getters.pubIdStatus)
       return this.RedirectToSettings(this.$router);
 
-    this.salesPeriod = this.$store.getters.getCurrentMonth;
+    if (this.salesPeriod == null)
+      this.salesPeriod = this.$store.getters.getCurrentMonth;
 
     if (this.salesData == null)
       this.GetSalesData();
@@ -132,7 +131,7 @@ export default {
       maxDate: new Date().toISOString().substr(0, 10),
       sortOptions: ['Name', 'Price', 'Quantity', 'Refunds', 'Chargebacks', 'Revenue', 'First Sale Date', 'Last Sale Date'],
       orderOptions: ['Ascending (A - Z)', 'Descending (Z - A)'],
-      currentSortOrder: this.$store.getters.getSortOrder,
+      currentSortOrder: this.$store.getters.getSalesSortOrder,
       currentOrder: 1,
       salesData: null,
       packagesData: [],
@@ -170,7 +169,7 @@ export default {
             year: 'numeric'
           });
 
-          this.salesData = data[0];
+          this.salesData = data;
 
           if (data == null) {
             return this.$swal('Error', 'No records found', 'error');
@@ -224,14 +223,14 @@ export default {
       this.SortPackages();
     },
     ChangeSortOrder(index) {
-      this.$store.dispatch('saveSortOrder', index);
+      this.$store.dispatch('saveSalesSortOrder', index);
       this.currentSortOrder = index;
 
       this.SortPackages();
     },
     ChangeOrder(index) {
       this.currentOrder = index;
-      this.ChangeSortOrder(Number(this.$store.getters.getSortOrder));
+      this.ChangeSortOrder(Number(this.$store.getters.getSalesSortOrder));
 
       this.SortPackages();
     },
