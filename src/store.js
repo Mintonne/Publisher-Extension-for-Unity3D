@@ -19,7 +19,8 @@ export default new Vuex.Store({
     lastRefresh: null,
     reviewsFeed: null,
 
-    sortOrder: 5
+    salesSortOrder: 5,
+    downloadsSortOrder: 1
   },
   mutations: {
     updateInterval(state, payload) {
@@ -44,8 +45,11 @@ export default new Vuex.Store({
     saveReviewsFeed(state, payload) {
       state.reviewsFeed = payload;
     },
-    saveSortOrder(state, payload) {
-      state.sortOrder = payload;
+    saveSalesSortOrder(state, payload) {
+      state.salesSortOrder = payload;
+    },
+    saveDownloadsSortOrder(state, payload) {
+      state.downloadsSortOrder = payload;
     }
   },
   actions: {
@@ -67,8 +71,11 @@ export default new Vuex.Store({
     saveReviewsFeed(state, payload) {
       state.commit('saveReviewsFeed', payload);
     },
-    saveSortOrder(state, payload) {
-      state.commit('saveSortOrder', payload);
+    saveSalesSortOrder(state, payload) {
+      state.commit('saveSalesSortOrder', payload);
+    },
+    saveDownloadsSortOrder(state, payload) {
+      state.commit('saveDownloadsSortOrder', payload);
     }
   },
   getters: {
@@ -105,8 +112,11 @@ export default new Vuex.Store({
     getReviewsFeed: state => {
       return state.reviewsFeed;
     },
-    getSortOrder: state => {
-      return state.sortOrder;
+    getSalesSortOrder: state => {
+      return state.salesSortOrder;
+    },
+    getDownloadsSortOrder: state => {
+      return state.downloadsSortOrder;
     }
   }
 });
