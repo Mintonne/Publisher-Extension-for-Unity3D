@@ -283,6 +283,11 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/styles/variables.scss";
+
+.section {
+  overflow-y: auto !important;
+}
+
 .selected-option {
   color: $primary-color;
   font-weight: 500;
