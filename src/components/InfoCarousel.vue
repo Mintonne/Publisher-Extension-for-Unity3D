@@ -11,8 +11,16 @@
   </carousel>
 </template>
 
-<style>
-.VueCarousel-navigation button.VueCarousel-navigation-button:focus {
-  outline: none;
+<style lang="scss">
+@import "@/styles/variables.scss";
+
+.VueCarousel-navigation {
+  button.VueCarousel-navigation-button {
+    color: $dark;
+
+    &:focus {
+      outline: none;
+    }
+  }
 }
 </style>

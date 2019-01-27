@@ -1,6 +1,6 @@
 <template>
   <nav class="fill">
-    <a>{{ title }}</a>
+    <a class="font-weight-medium">{{ title }}</a>
   </nav>
 </template>
 
@@ -16,6 +16,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/styles/variables.scss";
+
 nav {
   height: 45px;
   width: 100%;
@@ -28,6 +30,7 @@ nav {
     line-height: 45px;
     text-decoration: none;
     text-align: center;
+    color: $dark;
   }
 }
 </style>
