@@ -9,6 +9,7 @@ export default new Vuex.Store({
   state: {
     interval: 0,
     sidebarTransition: false,
+    salesTooltip: false,
 
     pubId: null,
     pubName: null,
@@ -26,6 +27,9 @@ export default new Vuex.Store({
     },
     saveSidebarStatus(state, payload) {
       state.sidebarTransition = payload;
+    },
+    saveTooltipStatus(state, payload) {
+      state.salesTooltip = payload;
     },
     savePubInfo(state, payload) {
       state.pubId = payload.id;
@@ -51,6 +55,9 @@ export default new Vuex.Store({
     saveSidebarStatus(state, payload) {
       state.commit('saveSidebarStatus', payload);
     },
+    saveTooltipStatus(state, payload) {
+      state.commit('saveTooltipStatus', payload);
+    },
     savePubInfo(state, payload) {
       state.commit('savePubInfo', payload);
     },
@@ -70,6 +77,9 @@ export default new Vuex.Store({
     },
     getSidebarStatus: state => {
       return state.sidebarTransition;
+    },
+    getTooltipStatus: state => {
+      return state.salesTooltip;
     },
     pubIdStatus: state => {
       return state.pubId != null;
