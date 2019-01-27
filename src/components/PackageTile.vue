@@ -6,7 +6,10 @@
         <p class="mx-auto my-0">{{ ellipsis(packageData[0], 35) }}</p>
       </v-card-title>
       <v-card-text>
-        <p class="mx-auto my-0">{{ packageData[getSortOrder].replace(/\s/g,'') }}</p>
+        <v-tooltip :disabled="!showTooltip" bottom transition="scale-transition">
+          <p slot="activator" class="my-0">{{ packageData[getSortOrder].replace(/\s/g,'') }}</p>
+          <span>Sales: {{ packageData[2] }}</span>
+        </v-tooltip>
       </v-card-text>
     </v-card>
   </v-flex>
@@ -27,6 +30,9 @@ export default {
     }
   },
   computed: {
+    showTooltip() {
+      return this.$store.getters.getTooltipStatus;
+    },
     getSortOrder() {
       let sortOrder = this.$store.getters.getSortOrder == 0 ? 1 : this.$store.getters.getSortOrder;
       return sortOrder;
@@ -77,6 +83,10 @@ export default {
     align-items: center;
     padding: 5px;
     color: $primary-color;
+
+    > .v-tooltip {
+      width: 100%;
+    }
 
     p {
       font-size: 24px;
