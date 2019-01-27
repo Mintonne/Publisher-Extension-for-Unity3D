@@ -25,22 +25,40 @@ export default {
       type: String,
       required: true
     },
+    downloads: {
+      type: Boolean,
+      default: false
+    },
     term: {
       type: String
     }
   },
   computed: {
     showTooltip() {
+      if (this.downloads)
+        return false;
+
       return this.$store.getters.getTooltipStatus;
     },
     getSortOrder() {
-      let sortOrder = this.$store.getters.getSortOrder == 0 ? 1 : this.$store.getters.getSortOrder;
+      let sortOrder;
+
+      if (this.downloads) {
+        sortOrder = this.$store.getters.getDownloadsSortOrder == 0 ? 1 : this.$store.getters.getDownloadsSortOrder;
+      }
+      else {
+        sortOrder = this.$store.getters.getSalesSortOrder == 0 ? 1 : this.$store.getters.getSalesSortOrder;
+      }
+
       return sortOrder;
     },
     searchMatch() {
       return (this.term == '' || this.term == null || this.packageData[0].toLowerCase().includes(this.term.toLowerCase()));
     },
     showWarning() {
+      if (this.downloads)
+        return false;
+
       if (this.packageData[3] != "0" || this.packageData[4] != "0")
         return true;
       else
