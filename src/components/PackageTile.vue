@@ -1,11 +1,12 @@
 <template>
   <v-flex xs4 v-if="searchMatch">
     <v-card class="text-xs-center" elevation="3" hover height="120">
+      <div v-if="showWarning" id="warning"></div>
       <v-card-title>
         <p class="mx-auto my-0">{{ ellipsis(packageData[0], 35) }}</p>
       </v-card-title>
       <v-card-text>
-        <p class="mx-auto my-0">{{ packageData[getSortOrder] }}</p>
+        <p class="mx-auto my-0">{{ packageData[getSortOrder].replace(/\s/g,'') }}</p>
       </v-card-text>
     </v-card>
   </v-flex>
@@ -27,10 +28,17 @@ export default {
   },
   computed: {
     getSortOrder() {
-      return this.$store.getters.getSortOrder == 0 ? 1 : this.$store.getters.getSortOrder;
+      let sortOrder = this.$store.getters.getSortOrder == 0 ? 1 : this.$store.getters.getSortOrder;
+      return sortOrder;
     },
     searchMatch() {
       return (this.term == '' || this.term == null || this.packageData[0].toLowerCase().includes(this.term.toLowerCase()));
+    },
+    showWarning() {
+      if (this.packageData[3] != "0" || this.packageData[4] != "0")
+        return true;
+      else
+        return false;
     }
   }
 }
@@ -38,6 +46,16 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/styles/variables.scss";
+
+#warning {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  left: 0;
+  width: 2px;
+  background-color: #ee2b4b;
+  opacity: 0.75;
+}
 
 .v-card {
   margin: 5px;
@@ -51,7 +69,6 @@ export default {
 
     p {
       color: $dark;
-      font-size: 18px;
     }
   }
 
@@ -62,7 +79,7 @@ export default {
     color: $primary-color;
 
     p {
-      font-size: 25px;
+      font-size: 24px;
     }
   }
 }
