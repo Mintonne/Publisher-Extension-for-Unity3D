@@ -10,12 +10,39 @@
         </v-text-field>
       </v-flex>
       <v-flex xs2>
-        <v-btn block large
-          id="pickerBtn"
-          class=" my-0"
-          @click="GetInvoiceData">
-          <v-icon>$vuetify.icons.calendar</v-icon>
-        </v-btn>
+
+        <v-menu
+          :close-on-content-click="false"
+          v-model="showPicker"
+          left
+          full-width
+          transition="slide-x-transition"
+          offset-y>
+          <v-btn
+            block
+            large
+            id="pickerBtn"
+            class=" my-0"
+            slot="activator"
+            @click="GetInvoiceData">
+            <v-icon>$vuetify.icons.calendar</v-icon>
+          </v-btn>
+
+          <v-date-picker
+            color="#339af0"
+            v-model="salesPeriod"
+            :min="minDate"
+            :max="maxDate"
+            type="month"
+            :show-current="salesPeriod"
+            @input="changeMonth"
+            width="250"
+            no-title
+            scrollable>
+          </v-date-picker>
+
+        </v-menu>
+
       </v-flex>
     </v-layout>
 
@@ -72,7 +99,7 @@
       <package-tile v-for="(item, index) in packagesData" :key="index" :packageData="item" :term="searchTerm" />
     </v-layout>
 
-    <snackbar :value="showSnackbar" :callback="GetSalesData" />
+    <snackbar :value="showSnackbar" :callback="GetSalesData" timeout="5000" />
   </div>
 </template>
 
@@ -92,13 +119,19 @@ export default {
       return this.RedirectToSettings(this.$router);
 
     this.salesPeriod = this.$store.getters.getCurrentMonth;
+
+    if (this.salesData == null)
+      this.GetSalesData();
   },
   data() {
     return {
       navbarTitle: 'Sales',
       searchTerm: '',
+      showPicker: false,
+      minDate: this.$store.getters.getFirstMonth,
+      maxDate: new Date().toISOString().substr(0, 10),
       sortOptions: ['Name', 'Price', 'Quantity', 'Refunds', 'Chargebacks', 'Revenue', 'First Sale Date', 'Last Sale Date'],
-      orderOptions: ['Ascending (A - Z)', 'Descending (Z -A)'],
+      orderOptions: ['Ascending (A - Z)', 'Descending (Z - A)'],
       currentSortOrder: this.$store.getters.getSortOrder,
       currentOrder: 1,
       salesData: null,
@@ -115,16 +148,15 @@ export default {
       loadingMessage: 'Fetching sales data'
     }
   },
-  watch: {
-    salesPeriod() {
-      this.GetSalesData();
-    }
-  },
   methods: {
+    changeMonth() {
+      this.showPicker = false;
+      this.GetSalesData();
+    },
     GetSalesData() {
       let id = this.$store.getters.getPubId;
 
-      let endpoint = `/publisher-info/sales/${id}/${this.salesPeriod.replace('-', '')}.json`;
+      let endpoint = `/publisher-info/sales/${id}/${this.salesPeriod.replace(/-/g, '')}.json`;
 
       this.loading = true;
       this.showSnackbar = false;
@@ -133,16 +165,17 @@ export default {
         .then((response) => {
           let data = response.data.aaData;
 
-          if (data == null || data.length <= 0) {
-            return this.$swal('Error', 'No records found', 'error');
-          }
-
           this.navbarTitle = new Date(this.salesPeriod).toLocaleString(navigator.language, {
             month: 'long',
             year: 'numeric'
           });
 
           this.salesData = data[0];
+
+          if (data == null) {
+            return this.$swal('Error', 'No records found', 'error');
+          }
+
           this.PopulateSalesData(data);
         })
         .catch((error) => {
@@ -154,44 +187,64 @@ export default {
         });
     },
     PopulateSalesData(data) {
+      if (data.length <= 0)
+        return;
+
       let grossRevenue = 0;
 
       this.packagesData.splice(0, this.packagesData.length)
 
-      if (data.length > 0) {
-        data.forEach(item => {
-          this.packagesData.push(item);
+      this.totalVouchers = 0;
+      this.totalSales = 0;
+      this.totalRefunds = 0;
+      this.totalChargebacks = 0;
 
-          let gross = Number(item[5].replace('$', ''));
-          let qty = Number(item[2]);
+      data.forEach(item => {
+        this.packagesData.push(item);
 
-          if (gross === 0)
-            this.vouchers += qty;
+        let gross = Number(item[5].replace(/\$/g, ''));
+        let qty = Number(item[2]);
 
-          grossRevenue += gross;
-          this.totalSales += qty;
-          this.totalRefunds += Number(item[3]);
-          this.totalChargebacks += Number(item[4]);
-        });
+        if (gross === 0)
+          this.totalVouchers += qty;
 
-        let payoutRate = Number(this.$store.getters.getPubRate) || 0.7;
+        grossRevenue += gross;
+        this.totalSales += qty;
+        this.totalRefunds += Number(item[3]);
+        this.totalChargebacks += Number(item[4]);
+      });
 
-        this.netRevenue = grossRevenue * payoutRate;
-        this.totalCommission = grossRevenue * (1 - payoutRate);
-      }
+      let payoutRate = this.$store.getters.getPubRate || 0.7;
+      payoutRate = Number(payoutRate)
+
+      this.netRevenue = grossRevenue * payoutRate;
+      this.totalCommission = grossRevenue * (1 - payoutRate);
+
+      this.searchTerm = '';
+      this.SortPackages();
     },
     ChangeSortOrder(index) {
       this.$store.dispatch('saveSortOrder', index);
       this.currentSortOrder = index;
 
+      this.SortPackages();
+    },
+    ChangeOrder(index) {
+      this.currentOrder = index;
+      this.ChangeSortOrder(Number(this.$store.getters.getSortOrder));
+
+      this.SortPackages();
+    },
+    SortPackages() {
+      let index = this.currentSortOrder;
       let desc = this.currentOrder === 0 ? true : false;
 
       this.packagesData.sort(function (a, b) {
         let x, y;
 
         if (index == 1 || index == 5) {
-          x = Number(a[index].replace('$', ''));
-          y = Number(b[index].replace('$', ''));
+          x = Number(a[index].replace(/\$/g, ''));
+          y = Number(b[index].replace(/\$/g, ''));
         }
         else {
           x = a[index].toUpperCase();
@@ -216,17 +269,14 @@ export default {
           return 0;
         }
       });
-    },
-    ChangeOrder(index) {
-      this.currentOrder = index;
-      this.ChangeSortOrder(Number(this.$store.getters.getSortOrder));
     }
   },
   components: {
     NavBar,
     InfoCarousel,
     InfoTile,
-    PackageTile
+    PackageTile,
+    Snackbar
   }
 }
 </script>
