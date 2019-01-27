@@ -27,13 +27,13 @@
 
     <div id="invoice-results" class="mt-5 text-xs-center" v-if="invoiceData != null">
       <p class="display-1">{{ invoiceData[1] }}</p>
-      <p class="mb-1 font-weight-bold">Purchased On</p>
+      <p class="mb-2 font-weight-medium">Purchased On</p>
       <p>{{ FormatDate(invoiceData[4]) }}</p>
-      <p class="mb-1 font-weight-bold">Price (Excluding VAT)</p>
+      <p class="mb-2 font-weight-medium">Price (Excluding VAT)</p>
       <p>{{ invoiceData[3] }}</p>
-      <p class="mb-1 font-weight-bold">Quantity</p>
+      <p class="mb-2 font-weight-medium">Quantity</p>
       <p>{{ invoiceData[2] }} License(s)</p>
-      <p class="mb-1 font-weight-bold">Status</p>
+      <p class="mb-2 font-weight-medium">Status</p>
       <p>{{ invoiceData[5] }}</p>
     </div>
 
