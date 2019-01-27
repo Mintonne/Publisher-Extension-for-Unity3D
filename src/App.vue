@@ -106,6 +106,27 @@ body {
 }
 
 html {
+  /* width */
+  ::-webkit-scrollbar {
+    width: 11px;
+    height: 14px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #c9c9c9;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+  }
+
   overflow-y: auto !important;
 }
 
