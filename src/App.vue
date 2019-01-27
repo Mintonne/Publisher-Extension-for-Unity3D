@@ -95,6 +95,7 @@ export default {
   padding: 0;
   border: 0;
   font: inherit;
+  font-family: "Roboto", sans-serif;
   font-size: 16px;
 }
 
