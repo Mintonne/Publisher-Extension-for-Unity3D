@@ -15,25 +15,23 @@
     </v-flex>
 
     <v-flex v-if="reviews.length > 0" xs12 class="mb-3">
-      <vue-scroll>
-        <v-expansion-panel popout>
-          <v-expansion-panel-content
-            expand-icon="$vuetify.icons.dropdown"
-            id="content"
-            v-for="(review,i) in filteredReviews"
-            :key="i">
-            <div slot="header">{{ review.heading }} - {{ review.packageName }} by {{ review.reviewer }}</div>
-            <v-card>
-              <v-card-text>
-                <p>{{ review.body }}</p>
-                <p class="text-xs-right ma-0">Rated <span class="review-stars" :title="review.stars + ' stars'"> {{ "&bigstar;".repeat(review.stars) }}</span> by {{ review.reviewer.length > 20 ? review.reviewer.substr(0, 20) + '...' : review.reviewer }}
-                  <v-icon width="16" height="16" @click.native="OpenLink(review.link)">$vuetify.icons.open</v-icon>
-                </p>
-              </v-card-text>
-            </v-card>
-          </v-expansion-panel-content>
-        </v-expansion-panel>
-      </vue-scroll>
+      <v-expansion-panel popout>
+        <v-expansion-panel-content
+          expand-icon="$vuetify.icons.dropdown"
+          id="content"
+          v-for="(review,i) in filteredReviews"
+          :key="i">
+          <div slot="header">{{ review.heading }} - {{ review.packageName }} by {{ review.reviewer }}</div>
+          <v-card>
+            <v-card-text>
+              <p>{{ review.body }}</p>
+              <p class="text-xs-right ma-0">Rated <span class="review-stars" :title="review.stars + ' stars'"> {{ "&bigstar;".repeat(review.stars) }}</span> by {{ review.reviewer.length > 20 ? review.reviewer.substr(0, 20) + '...' : review.reviewer }}
+                <v-icon width="16" height="16" @click.native="OpenLink(review.link)">$vuetify.icons.open</v-icon>
+              </p>
+            </v-card-text>
+          </v-card>
+        </v-expansion-panel-content>
+      </v-expansion-panel>
     </v-flex>
 
     <snackbar :value="showSnackbar" :callback="GetReviewsData" />
