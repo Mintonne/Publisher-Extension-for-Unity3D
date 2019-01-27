@@ -1,6 +1,8 @@
 <template>
   <v-card class="text-xs-center" elevation="3" height="90">
-    <v-card-title>{{ title }}</v-card-title>
+    <v-card-title>
+      <p class="mx-auto my-0">{{ title }}</p>
+    </v-card-title>
     <v-card-text :style="{color}">{{ prefix }}{{ text }}</v-card-text>
   </v-card>
 </template>
@@ -34,16 +36,20 @@ export default {
 .v-card {
   margin: 5px;
 
+  > div {
+    height: 50%;
+  }
+
   .v-card__title {
-    display: block;
-    margin: 0 auto;
-    color: $dark;
-    font-weight: 500;
-    padding: 8px;
+    padding: 5px;
+
+    p {
+      color: $dark;
+    }
   }
 
   .v-card__text {
-    font-size: 25px;
+    font-size: 24px;
     padding: 8px;
   }
 }
