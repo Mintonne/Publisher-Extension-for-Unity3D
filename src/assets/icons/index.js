@@ -1,5 +1,7 @@
 import Bank from 'vue-mdi/Bank.vue';
 import CalendarCheck from 'vue-mdi/CalendarCheck.vue';
+import ChevronLeft from 'vue-mdi/ChevronLeft.vue';
+import ChevronRight from 'vue-mdi/ChevronRight.vue';
 import ContentSave from 'vue-mdi/ContentSave.vue';
 import Close from 'vue-mdi/Close.vue';
 import CurrencyUsd from 'vue-mdi/CurrencyUsd.vue';
@@ -36,11 +38,17 @@ export default {
   email: {
     component: Email
   },
+  next: {
+    component: ChevronRight
+  },
   open: {
     component: OpenInNew
   },
   paypal: {
     component: Paypal
+  },
+  prev: {
+    component: ChevronLeft
   },
   sales: {
     component: CurrencyUsd
