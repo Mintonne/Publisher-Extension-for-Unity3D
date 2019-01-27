@@ -4,9 +4,7 @@
       <v-card-title>
         <v-icon width="45" height="45" v-text="iconName"></v-icon>
       </v-card-title>
-      <v-card-text>
-        <p>{{ name }}</p>
-      </v-card-text>
+      <v-card-text>{{ name }}</v-card-text>
     </v-card>
   </v-flex>
 </template>
