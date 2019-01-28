@@ -1,5 +1,5 @@
 <template>
-  <div class="section">
+  <div class="section pb-3">
     <loader class="fill" v-if="loading" :message="loadingMessage"></loader>
 
     <nav-bar :title="navbarTitle"></nav-bar>
