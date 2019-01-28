@@ -22,6 +22,8 @@ if (process.env.VENDOR == 'chrome') {
   });
 }
 
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 module.exports = {
   lintOnSave: false,
   productionSourceMap: false,
@@ -67,7 +69,17 @@ module.exports = {
           }]
         }
       ]
-    }
+    },
+    optimization: {
+      minimize: false
+    },
+    plugins: [
+      new CopyWebpackPlugin([{
+        from: 'node_modules/x2js/dist/x2js.min.js',
+        to: 'vendor/x2js',
+        toType: 'dir'
+      }])
+    ]
   },
   chainWebpack: config => {
     config.plugins.delete('preload-index');
