@@ -44,7 +44,7 @@
       </v-flex>
     </v-layout>
 
-    <info-tile v-if="downloadsData != null && downloadsData.length > 0" prefix="" title="Total Downloads" :text="totalDownloads" />
+    <info-tile v-if="downloadsData != null" prefix="" title="Total Downloads" :text="totalDownloads" />
 
     <v-layout v-if="downloadsData != null && downloadsData.length > 0" class="px-1">
       <v-btn class="mx-0 text-none" disabled flat>Packages ({{ sortOptions[currentSortOrder] }})
@@ -161,12 +161,12 @@ export default {
         });
     },
     PopulateDownloadsData(data) {
+      this.totalDownloads = 0;
+
       if (data.length <= 0)
         return;
 
       this.packagesData.splice(0, this.packagesData.length)
-
-      this.totalDownloads = 0;
 
       data.forEach(item => {
         this.packagesData.push(item);
