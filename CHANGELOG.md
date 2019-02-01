@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 1.0.2
+### Fixed
+- [Background] Start the FetchReviewsData request immediately after the FetchSalesInfo request is completed successfully.
+
 ## 1.0.1
 ### Changed
 - Hide tooltip if the sort order is set to quantity.
