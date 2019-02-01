@@ -20,14 +20,14 @@
     "vue-mdi": "^2.7.0-a",
     "vue-router": "^3.0.1",
     "vue-sweetalert2": "^1.6.4",
-    "vuetify": "^1.4.3",
+    "vuetify": "^1.4.4",
     "vuex": "^3.1.0",
     "vuex-persistedstate": "^2.5.4",
     "x2js": "^3.2.6"
   },
   "devDependencies": {
-    "@vue/cli-plugin-eslint": "^3.3.0",
-    "@vue/cli-service": "^3.3.1",
+    "@vue/cli-plugin-eslint": "^3.4.0",
+    "@vue/cli-service": "^3.4.0",
     "babel-eslint": "^10.0.1",
     "css-loader": "^2.1.0",
     "eslint": "^5.12.1",
