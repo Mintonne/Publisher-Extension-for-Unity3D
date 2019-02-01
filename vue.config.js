@@ -70,9 +70,6 @@ module.exports = {
         }
       ]
     },
-    optimization: {
-      minimize: false
-    },
     plugins: [
       new CopyWebpackPlugin([{
         from: 'node_modules/x2js/dist/x2js.min.js',
