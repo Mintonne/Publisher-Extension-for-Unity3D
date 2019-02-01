@@ -150,6 +150,8 @@ function HandleStateChange() {
     if (xhttp.status === 200) {
       let data = JSON.parse(xhttp.responseText);
 
+      FetchReviewData();
+
       if (data.aaData.length == 0) return;
 
       let qty = 0,
@@ -177,8 +179,6 @@ function HandleStateChange() {
         localStorage[salesInfoKey] = JSON.stringify(newData);
 
         previousData = JSON.parse(previousData);
-
-        FetchReviewData();
 
         if (newData.Qty > previousData.Qty) {
           let diff = newData.Qty - previousData.Qty;
