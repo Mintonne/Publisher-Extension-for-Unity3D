@@ -1,6 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 1.0.1
+### Changed
+- Hide tooltip if the sort order is set to quantity.
+
+### Fixed
+- A rare bug that caused package sorting to fail.
+
 ## 1.0.0
 ### Added
 - A red strip on the package tiles if the package has refund/chargeback.
