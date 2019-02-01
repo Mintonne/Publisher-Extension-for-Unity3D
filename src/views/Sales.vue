@@ -238,17 +238,14 @@ export default {
       let index = this.currentSortOrder;
       let desc = this.currentOrder === 0 ? true : false;
 
-      this.packagesData.sort(function (a, b) {
+      this.packagesData.sort((a, b) => {
         let x, y;
 
-        if (index == 1 || index == 5) {
-          x = Number(a[index].replace(/\$/g, ''));
-          y = Number(b[index].replace(/\$/g, ''));
-        }
-        else {
-          x = a[index].toUpperCase();
-          y = b[index].toUpperCase();
-        }
+        x = Number(a[index].replace(/\$/g, ''));
+        y = Number(b[index].replace(/\$/g, ''));
+
+        isNaN(x) ? x = a[index].toUpperCase() : x;
+        isNaN(y) ? y = b[index].toUpperCase() : y;
 
         if (desc) {
           if (x > y) {
