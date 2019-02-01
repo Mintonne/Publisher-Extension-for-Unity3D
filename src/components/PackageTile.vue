@@ -38,6 +38,9 @@ export default {
       if (this.downloads)
         return false;
 
+      if (this.getSortOrder == 2)
+        return false;
+
       return this.$store.getters.getTooltipStatus;
     },
     getSortOrder() {
