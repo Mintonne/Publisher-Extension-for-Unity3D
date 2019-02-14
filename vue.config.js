@@ -1,3 +1,5 @@
+const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
+
 let blocks = [];
 
 if (process.env.VENDOR == 'chrome') {
@@ -75,7 +77,8 @@ module.exports = {
         from: 'node_modules/x2js/dist/x2js.min.js',
         to: 'vendor/x2js',
         toType: 'dir'
-      }])
+      }]),
+      new VuetifyLoaderPlugin()
     ]
   },
   chainWebpack: config => {

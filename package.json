@@ -5,7 +5,6 @@
   "scripts": {
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "generate:icons": "vsvg -s ./svg-icons -t ./src/assets/icons --es6",
     "watch:chrome": "npx gulp compile --vendor=chrome && npx gulp watch --vendor=chrome",
     "build:chrome": "npx gulp release --vendor=chrome",
     "watch:firefox": "npx gulp compile --vendor=firefox && npx gulp watch --vendor=firefox",
@@ -21,6 +20,7 @@
     "vue-router": "^3.0.1",
     "vue-sweetalert2": "^1.6.4",
     "vuetify": "^1.5.1",
+    "vuetify-loader": "^1.2.1",
     "vuex": "^3.1.0",
     "vuex-persistedstate": "^2.5.4",
     "x2js": "^3.2.6"
