@@ -1,8 +1,17 @@
 <template>
-  <v-flex xs3 v-if="searchMatch">
-    <v-card hover @click="OpenLink(url)" :to="path" height=140>
+  <v-flex
+    v-if="searchMatch"
+    xs3>
+    <v-card
+      hover
+      :to="path"
+      height="140"
+      @click="OpenLink(url)">
       <v-card-title>
-        <v-icon width="45" height="45" v-text="iconName"></v-icon>
+        <v-icon
+          width="45"
+          height="45"
+          v-text="iconName" />
       </v-card-title>
       <v-card-text>{{ name }}</v-card-text>
     </v-card>
@@ -10,7 +19,7 @@
 </template>
 
 <script>
-import { SharedMethods } from '@/mixins';
+import { SharedMethods } from '@/mixins'
 
 export default {
   mixins: [SharedMethods],
@@ -32,15 +41,16 @@ export default {
       default: null
     },
     term: {
-      type: String
+      type: String,
+      default: ''
     }
   },
   computed: {
-    iconName() {
-      return '$vuetify.icons.' + this.icon;
+    iconName () {
+      return '$vuetify.icons.' + this.icon
     },
-    searchMatch() {
-      return (this.term == '' || this.term == null || this.name.toLowerCase().includes(this.term.toLowerCase()));
+    searchMatch () {
+      return (this.term === '' || this.term == null || this.name.toLowerCase().includes(this.term.toLowerCase()))
     }
   }
 }

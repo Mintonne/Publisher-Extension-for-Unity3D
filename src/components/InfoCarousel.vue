@@ -1,13 +1,13 @@
 <template>
   <carousel
     :autoplay="true"
-    :autoplayTimeout="5000"
+    :autoplay-timeout="5000"
     :loop="true"
-    :navigationEnabled="true"
-    :navigationClickTargetSize="20"
-    :paginationEnabled="false"
-    :perPage="3">
-    <slot></slot>
+    :navigation-enabled="true"
+    :navigation-click-target-size="20"
+    :pagination-enabled="false"
+    :per-page="3">
+    <slot />
   </carousel>
 </template>
 

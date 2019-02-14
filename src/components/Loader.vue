@@ -1,25 +1,29 @@
 <template>
   <!-- Redirecting Loader by Mr Alien  -->
   <!-- https://codepen.io/mr_alien/pen/FDLjg -->
-  <transition name="fade" appear>
-    <div class="animation-overlay" :style="{backgroundColor: color}">
-      <div class='body'>
+  <transition
+    name="fade"
+    appear>
+    <div
+      class="animation-overlay"
+      :style="{backgroundColor: color}">
+      <div class="body">
         <span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
+          <span />
+          <span />
+          <span />
+          <span />
         </span>
-        <div class='base'>
-          <span></span>
-          <div class='face'></div>
+        <div class="base">
+          <span />
+          <div class="face" />
         </div>
       </div>
-      <div class='longfazers'>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+      <div class="longfazers">
+        <span />
+        <span />
+        <span />
+        <span />
       </div>
       <h1>{{ message }}</h1>
     </div>

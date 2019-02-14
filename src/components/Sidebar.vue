@@ -1,42 +1,60 @@
 <template>
-  <div id="sidebar" :class="{static: !enableTransition}">
+  <div
+    id="sidebar"
+    :class="{static: !enableTransition}">
     <ul>
-      <router-link tag="li" to="/">
+      <router-link
+        tag="li"
+        to="/">
         <v-icon>$vuetify.icons.dashboard</v-icon>
         <p>Dashboard</p>
       </router-link>
 
-      <router-link tag="li" to="/sales">
+      <router-link
+        tag="li"
+        to="/sales">
         <v-icon>$vuetify.icons.sales</v-icon>
         <p>Sales</p>
       </router-link>
 
-      <router-link tag="li" to="/downloads">
+      <router-link
+        tag="li"
+        to="/downloads">
         <v-icon>$vuetify.icons.download</v-icon>
         <p>Downloads</p>
       </router-link>
 
-      <router-link tag="li" to="/revenue">
+      <router-link
+        tag="li"
+        to="/revenue">
         <v-icon>$vuetify.icons.bank</v-icon>
         <p>Revenue</p>
       </router-link>
 
-      <router-link tag="li" to="/verify">
+      <router-link
+        tag="li"
+        to="/verify">
         <v-icon>$vuetify.icons.verified</v-icon>
         <p>Verify Invoice</p>
       </router-link>
 
-      <router-link tag="li" to="/settings">
+      <router-link
+        tag="li"
+        to="/settings">
         <v-icon>$vuetify.icons.settings</v-icon>
         <p>Settings</p>
       </router-link>
 
-      <li class="link" @click="OpenLink('mailto:mintonne@gmail.com')">
+      <li
+        class="link"
+        @click="OpenLink('mailto:mintonne@gmail.com')">
         <v-icon>$vuetify.icons.email</v-icon>
         <p>Support</p>
       </li>
 
-      <li class="link" @click="OpenLink('https://www.paypal.me/mintonne/5')">
+      <li
+        class="link"
+        @click="OpenLink('https://www.paypal.me/mintonne/5')">
         <v-icon>$vuetify.icons.paypal</v-icon>
         <p>Donate</p>
       </li>
@@ -45,13 +63,13 @@
 </template>
 
 <script>
-import { SharedMethods } from '@/mixins';
+import { SharedMethods } from '@/mixins'
 
 export default {
   mixins: [SharedMethods],
   computed: {
-    enableTransition() {
-      return this.$store.getters.getSidebarStatus;
+    enableTransition () {
+      return this.$store.getters.getSidebarStatus
     }
   }
 }

@@ -1,8 +1,8 @@
-const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
+const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 
-let blocks = [];
+let blocks = []
 
-if (process.env.VENDOR == 'chrome') {
+if (process.env.VENDOR === 'chrome') {
   blocks.push({
     block: 'is-firefox',
     start: '<!--',
@@ -11,8 +11,8 @@ if (process.env.VENDOR == 'chrome') {
     block: 'is-firefox',
     start: '/*',
     end: '*/'
-  });
-} else if (process.env.VENDOR == 'firefox') {
+  })
+} else if (process.env.VENDOR === 'firefox') {
   blocks.push({
     block: 'is-chrome',
     start: '<!--',
@@ -21,10 +21,10 @@ if (process.env.VENDOR == 'chrome') {
     block: 'is-chrome',
     start: '/*',
     end: '*/'
-  });
+  })
 }
 
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   lintOnSave: false,
@@ -49,27 +49,27 @@ module.exports = {
   configureWebpack: {
     module: {
       rules: [{
-          test: /\.vue$/,
-          enforce: 'pre',
-          exclude: /(node_modules|bower_components|\.spec\.js)/,
-          use: [{
-            loader: 'webpack-remove-blocks',
-            options: {
-              blocks
-            }
-          }]
-        },
-        {
-          test: /\.js$/,
-          enforce: 'pre',
-          exclude: /(node_modules|bower_components|\.spec\.js)/,
-          use: [{
-            loader: 'webpack-remove-blocks',
-            options: {
-              blocks
-            }
-          }]
-        }
+        test: /\.vue$/,
+        enforce: 'pre',
+        exclude: /(node_modules|bower_components|\.spec\.js)/,
+        use: [{
+          loader: 'webpack-remove-blocks',
+          options: {
+            blocks
+          }
+        }]
+      },
+      {
+        test: /\.js$/,
+        enforce: 'pre',
+        exclude: /(node_modules|bower_components|\.spec\.js)/,
+        use: [{
+          loader: 'webpack-remove-blocks',
+          options: {
+            blocks
+          }
+        }]
+      }
       ]
     },
     plugins: [
@@ -82,11 +82,11 @@ module.exports = {
     ]
   },
   chainWebpack: config => {
-    config.plugins.delete('preload-index');
-    config.plugins.delete('prefetch-index');
-    config.plugins.delete('preload-background');
-    config.plugins.delete('prefetch-background');
-    config.plugins.delete('preload-trend-analysis');
-    config.plugins.delete('prefetch-trend-analysis');
+    config.plugins.delete('preload-index')
+    config.plugins.delete('prefetch-index')
+    config.plugins.delete('preload-background')
+    config.plugins.delete('prefetch-background')
+    config.plugins.delete('preload-trend-analysis')
+    config.plugins.delete('prefetch-trend-analysis')
   }
 }

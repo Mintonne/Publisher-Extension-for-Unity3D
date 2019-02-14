@@ -1,110 +1,114 @@
 <template>
   <div id="app">
-    <loader class="fill" v-if="loading" :message="loadingMessage"></loader>
-    <canvas id="trend-chat"></canvas>
-    <save v-if="myChart != null" size="30" id="save-chart-button" @click.native="InitSave" />
+    <loader
+      v-if="loading"
+      class="fill"
+      :message="loadingMessage" />
+    <canvas id="trend-chat" />
+    <save
+      v-if="myChart != null"
+      id="save-chart-button"
+      size="30"
+      @click.native="InitSave" />
   </div>
 </template>
 
 <script>
-import Api from '@/api';
-import saveAs from 'file-saver';
-import Chart from '@/../node_modules/chart.js/dist/Chart.min.js';
-import Loader from '@/components/Loader.vue';
-import Save from 'vue-mdi/ContentSave.vue';
-import { SharedMethods } from '@/mixins';
-import { pubIDKey } from '@/constants/keys';
-import { monthsNames, chartColors } from '@/constants/chart-options.js';
+import Api from '@/api'
+import saveAs from 'file-saver'
+import Chart from '@/../node_modules/chart.js/dist/Chart.min.js'
+import Loader from '@/components/Loader.vue'
+import Save from 'vue-mdi/ContentSave.vue'
+import { SharedMethods } from '@/mixins'
+import { monthsNames, chartColors } from '@/constants/chart-options.js'
 
 export default {
-  mixins: [SharedMethods],
   components: { Loader, Save },
-  data() {
+  mixins: [SharedMethods],
+  data () {
     return {
       myChart: null,
       loading: false,
       loadingMessage: 'Fetching revenue data'
     }
   },
-  mounted() {
-    let id = this.$store.getters.getPubId;
+  mounted () {
+    let id = this.$store.getters.getPubId
 
     if (id == null) {
-      return this.$swal('Error', 'Publisher ID not found.', 'error');
+      return this.$swal('Error', 'Publisher ID not found.', 'error')
     }
 
-    let endpoint = `/publisher-info/revenue/${id}.json`;
+    let endpoint = `/publisher-info/revenue/${id}.json`
 
-    this.loading = true;
+    this.loading = true
 
     Api.get(endpoint)
       .then((response) => {
-        let trendData = response.data;
+        let trendData = response.data
 
         Chart.plugins.register({
           beforeDraw: function (c) {
-            let ctx = c.chart.ctx;
-            ctx.fillStyle = 'white';
-            ctx.fillRect(0, 0, c.chart.width, c.chart.height);
+            let ctx = c.chart.ctx
+            ctx.fillStyle = 'white'
+            ctx.fillRect(0, 0, c.chart.width, c.chart.height)
           }
-        });
+        })
 
-        let yearsData = [], data = [], Debit, Description, entryDate, curYear, curMonth;
+        let yearsData = []; let data = []; let Debit; let Description; let entryDate; let curYear; let curMonth
 
         if (trendData.aaData.length > 0) {
           trendData.aaData.forEach(item => {
-            Debit = Number(item[2].replace('$', ''));
+            Debit = Number(item[2].replace('$', ''))
 
-            Description = item[1].toLowerCase();
+            Description = item[1].toLowerCase()
 
             if (Description.includes('revenue for') && !Description.includes('fixing')) {
-              entryDate = new Date('01 ' + Description.replace(/sale|revenue|for/g, '').trim());
+              entryDate = new Date('01 ' + Description.replace(/sale|revenue|for/g, '').trim())
 
-              curYear = entryDate.getFullYear();
-              curMonth = entryDate.getMonth();
+              curYear = entryDate.getFullYear()
+              curMonth = entryDate.getMonth()
 
-              if (curYear != null && !yearsData.includes(curYear, 0))
-                yearsData.push(curYear);
+              if (curYear != null && !yearsData.includes(curYear, 0)) { yearsData.push(curYear) }
 
-              if (data[yearsData.indexOf(curYear)] == null)
-                data[yearsData.indexOf(curYear)] = [];
+              if (data[yearsData.indexOf(curYear)] == null) { data[yearsData.indexOf(curYear)] = [] }
 
-              data[yearsData.indexOf(curYear)][curMonth] = Debit.toFixed(2);
+              data[yearsData.indexOf(curYear)][curMonth] = Debit.toFixed(2)
             }
-          });
+          })
         }
 
         data.forEach(item => {
-          for (let x = 0; x < 12; x++)
-            if (item[x] == null)
-              item[x] = '0';
-        });
+          for (let x = 0; x < 12; x++) {
+            if (item[x] == null) { item[x] = '0' }
+          }
+        })
 
         const showZeroPlugin = {
           beforeRender: function (chartInstance) {
-            let datasets = chartInstance.config.data.datasets;
+            let datasets = chartInstance.config.data.datasets
 
             for (let i = 0; i < datasets.length; i++) {
-              let meta = datasets[i]._meta;
+              let meta = datasets[i]._meta
               // It counts up every time you change something on the chart so
               // this is a way to get the info on whichever index it's at
-              let metaData = meta[Object.keys(meta)[0]];
-              let bars = metaData.data;
+              let metaData = meta[Object.keys(meta)[0]]
+              let bars = metaData.data
 
               for (let j = 0; j < bars.length; j++) {
-                let model = bars[j]._model;
+                let model = bars[j]._model
 
                 if (metaData.type === 'horizontalBar' && model.base === model.x) {
-                  model.x = model.base + 3;
+                  model.x = model.base + 3
                 } else if (model.base === model.y) {
-                  model.y = model.base - 3;
+                  model.y = model.base - 3
                 }
               }
             }
           }
-        };
+        }
 
-        const ctx = document.getElementById('trend-chat');
+        const ctx = document.getElementById('trend-chat')
 
         this.myChart = new Chart(ctx, {
           plugins: [showZeroPlugin],
@@ -136,10 +140,10 @@ export default {
               titleFontSize: 13,
               callbacks: {
                 title: ([tooltipItems], data) => {
-                  return `${data.labels[tooltipItems.index]} ${yearsData[tooltipItems.datasetIndex]}`;
+                  return `${data.labels[tooltipItems.index]} ${yearsData[tooltipItems.datasetIndex]}`
                 },
                 label: (tooltipItem, data) => {
-                  return `$${data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index]}`;
+                  return `$${data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index]}`
                 }
               }
             },
@@ -158,34 +162,34 @@ export default {
                   fontSize: 15,
                   fontStyle: 'bold',
                   callback: value => {
-                    return value;
+                    return value
                   }
                 }
               }]
             }
           }
-        });
+        })
 
         data.forEach((item, index) => {
           this.myChart.data.datasets.push({
             label: yearsData[index],
             backgroundColor: chartColors[index],
             data: item
-          });
-        });
+          })
+        })
 
-        this.myChart.update();
+        this.myChart.update()
       })
       .catch((error) => {
-        console.log(error);
-        this.RequestError();
+        console.log(error)
+        this.RequestError()
       })
       .then(() => {
-        this.loading = false;
-      });
+        this.loading = false
+      })
   },
   methods: {
-    InitSave() {
+    InitSave () {
       this.$swal({
         type: 'question',
         title: 'Save Chart',
@@ -195,36 +199,35 @@ export default {
         cancelButtonText: 'No'
       }).then((result) => {
         if (result.value) {
-          this.SaveChart(true);
+          this.SaveChart(true)
+        } else if (result.dismiss === 'cancel') {
+          this.SaveChart()
         }
-        else if (result.dismiss == 'cancel') {
-          this.SaveChart();
-        }
-      });
+      })
     },
-    SaveChart(hideAxis = false) {
+    SaveChart (hideAxis = false) {
       if (hideAxis) {
         this.myChart.config.options.scales.yAxes[0].ticks.callback = () => {
-          return '';
+          return ''
         }
 
         this.myChart.update({
           duration: 0
-        });
+        })
       };
 
       this.myChart.ctx.canvas.toBlob(blob => {
-        saveAs(blob, `chart-${Date.now()}.png`);
-      });
+        saveAs(blob, `chart-${Date.now()}.png`)
+      })
 
       if (hideAxis) {
         this.myChart.config.options.scales.yAxes[0].ticks.callback = value => {
-          return value;
-        };
+          return value
+        }
 
         this.myChart.update({
           duration: 0
-        });
+        })
       };
     }
   }

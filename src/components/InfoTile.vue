@@ -1,9 +1,16 @@
 <template>
-  <v-card class="text-xs-center" elevation="3" height="90">
+  <v-card
+    class="text-xs-center"
+    elevation="3"
+    height="90">
     <v-card-title>
-      <p class="mx-auto my-0">{{ title }}</p>
+      <p class="mx-auto my-0">
+        {{ title }}
+      </p>
     </v-card-title>
-    <v-card-text :style="{color}">{{ prefix }}{{ text }}</v-card-text>
+    <v-card-text :style="{color}">
+      {{ prefix }}{{ text }}
+    </v-card-text>
   </v-card>
 </template>
 

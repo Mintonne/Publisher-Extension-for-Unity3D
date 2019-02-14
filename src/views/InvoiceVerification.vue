@@ -1,23 +1,27 @@
 <template>
   <div class="section">
-    <loader class="fill" v-if="loading" :message="loadingMessage"></loader>
+    <loader
+      v-if="loading"
+      class="fill"
+      :message="loadingMessage" />
 
-    <nav-bar title="Verify Invoice"></nav-bar>
+    <nav-bar title="Verify Invoice" />
 
     <v-layout>
       <v-flex xs10>
         <v-text-field
+          v-model="invoiceNumber"
           hide-details
           solo
-          Placeholder="Invoice Number"
+          placeholder="Invoice Number"
           :readonly="loading"
-          v-model="invoiceNumber"
-          @keyup.enter="GetInvoiceData">
-        </v-text-field>
+          @keyup.enter="GetInvoiceData" />
       </v-flex>
       <v-flex xs2>
-        <v-btn block large
+        <v-btn
           id="verifyBtn"
+          block
+          large
           class=" my-0"
           @click="GetInvoiceData">
           <span class="text-none">Verify</span>
@@ -25,33 +29,44 @@
       </v-flex>
     </v-layout>
 
-    <div id="invoice-results" class="mt-5 text-xs-center" v-if="invoiceData != null">
-      <p class="display-1">{{ invoiceData[1] }}</p>
-      <p class="mb-2 font-weight-medium">Purchased On</p>
+    <div
+      v-if="invoiceData != null"
+      id="invoice-results"
+      class="mt-5 text-xs-center">
+      <p class="display-1">
+        {{ invoiceData[1] }}
+      </p>
+      <p class="mb-2 font-weight-medium">
+        Purchased On
+      </p>
       <p>{{ FormatDate(invoiceData[4]) }}</p>
-      <p class="mb-2 font-weight-medium">Price (Excluding VAT)</p>
+      <p class="mb-2 font-weight-medium">
+        Price (Excluding VAT)
+      </p>
       <p>{{ invoiceData[3] }}</p>
-      <p class="mb-2 font-weight-medium">Quantity</p>
+      <p class="mb-2 font-weight-medium">
+        Quantity
+      </p>
       <p>{{ invoiceData[2] }} License(s)</p>
-      <p class="mb-2 font-weight-medium">Status</p>
+      <p class="mb-2 font-weight-medium">
+        Status
+      </p>
       <p>{{ invoiceData[5] }}</p>
     </div>
-
   </div>
 </template>
 
 <script>
-import Api from '@/api';
-import NavBar from "@/components/Navbar.vue";
-import { SharedMethods } from '@/mixins';
+import Api from '@/api'
+import NavBar from '@/components/Navbar.vue'
+import { SharedMethods } from '@/mixins'
 
 export default {
-  mixins: [SharedMethods],
-  activated() {
-    if (!this.$store.getters.pubIdStatus)
-      return this.RedirectToSettings(this.$router);
+  components: {
+    NavBar
   },
-  data() {
+  mixins: [SharedMethods],
+  data () {
     return {
       invoiceNumber: sessionStorage.getItem('selectedInvoice') || null,
       invoiceData: null,
@@ -59,43 +74,41 @@ export default {
       loadingMessage: 'Fetching invoice data'
     }
   },
+  activated () {
+    if (!this.$store.getters.pubIdStatus) { return this.RedirectToSettings(this.$router) }
+  },
   methods: {
-    GetInvoiceData() {
-      if (this.loading)
-        return;
+    GetInvoiceData () {
+      if (this.loading) { return }
 
       if (this.invoiceNumber == null || this.invoiceNumber.length <= 5) {
-        return this.$swal('Invalid Invoice', 'The invoice number entered is too short', 'error');
+        return this.$swal('Invalid Invoice', 'The invoice number entered is too short', 'error')
       }
 
-      let id = this.$store.getters.getPubId;
-      let endpoint = `/publisher-info/verify-invoice/${id}/${this.invoiceNumber}.json`;
+      let id = this.$store.getters.getPubId
+      let endpoint = `/publisher-info/verify-invoice/${id}/${this.invoiceNumber}.json`
 
-      this.loading = true;
+      this.loading = true
 
       Api.get(endpoint.trim())
         .then((response) => {
-          let data = response.data.aaData;
+          let data = response.data.aaData
 
           if (data == null || data.length <= 0) {
-            this.invoiceData = null;
-            this.$swal('Error', 'No record found', 'error');
-          }
-          else {
-            this.invoiceData = data[0];
+            this.invoiceData = null
+            this.$swal('Error', 'No record found', 'error')
+          } else {
+            this.invoiceData = data[0]
           }
         })
         .catch((error) => {
-          console.log(error);
-          this.RequestError();
+          console.log(error)
+          this.RequestError()
         })
         .then(() => {
-          this.loading = false;
-        });
+          this.loading = false
+        })
     }
-  },
-  components: {
-    NavBar
   }
 }
 </script>

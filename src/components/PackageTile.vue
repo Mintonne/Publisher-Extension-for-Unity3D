@@ -1,13 +1,30 @@
 <template>
-  <v-flex xs4 v-if="searchMatch">
-    <v-card class="text-xs-center" elevation="3" hover height="120">
-      <div v-if="showWarning" id="warning"></div>
+  <v-flex
+    v-if="searchMatch"
+    xs4>
+    <v-card
+      class="text-xs-center"
+      elevation="3"
+      hover
+      height="120">
+      <div
+        v-if="showWarning"
+        id="warning" />
       <v-card-title>
-        <p class="mx-auto my-0">{{ ellipsis(packageData[0], 35) }}</p>
+        <p class="mx-auto my-0">
+          {{ ellipsis(packageData[0], 35) }}
+        </p>
       </v-card-title>
       <v-card-text>
-        <v-tooltip :disabled="!showTooltip" bottom transition="scale-transition">
-          <p slot="activator" class="my-0">{{ packageData[getSortOrder].replace(/\s/g,'') }}</p>
+        <v-tooltip
+          :disabled="!showTooltip"
+          bottom
+          transition="scale-transition">
+          <p
+            slot="activator"
+            class="my-0">
+            {{ packageData[getSortOrder].replace(/\s/g,'') }}
+          </p>
           <span>Sales: {{ packageData[2] }}</span>
         </v-tooltip>
       </v-card-text>
@@ -16,7 +33,7 @@
 </template>
 
 <script>
-import { SharedMethods } from '@/mixins';
+import { SharedMethods } from '@/mixins'
 
 export default {
   mixins: [SharedMethods],
@@ -30,42 +47,36 @@ export default {
       default: false
     },
     term: {
-      type: String
+      type: String,
+      default: ''
     }
   },
   computed: {
-    showTooltip() {
-      if (this.downloads)
-        return false;
+    showTooltip () {
+      if (this.downloads) { return false }
 
-      if (this.getSortOrder == 2)
-        return false;
+      if (this.getSortOrder === 2) { return false }
 
-      return this.$store.getters.getTooltipStatus;
+      return this.$store.getters.getTooltipStatus
     },
-    getSortOrder() {
-      let sortOrder;
+    getSortOrder () {
+      let sortOrder
 
       if (this.downloads) {
-        sortOrder = this.$store.getters.getDownloadsSortOrder == 0 ? 1 : this.$store.getters.getDownloadsSortOrder;
-      }
-      else {
-        sortOrder = this.$store.getters.getSalesSortOrder == 0 ? 1 : this.$store.getters.getSalesSortOrder;
+        sortOrder = this.$store.getters.getDownloadsSortOrder === 0 ? 1 : this.$store.getters.getDownloadsSortOrder
+      } else {
+        sortOrder = this.$store.getters.getSalesSortOrder === 0 ? 1 : this.$store.getters.getSalesSortOrder
       }
 
-      return sortOrder;
+      return sortOrder
     },
-    searchMatch() {
-      return (this.term == '' || this.term == null || this.packageData[0].toLowerCase().includes(this.term.toLowerCase()));
+    searchMatch () {
+      return (this.term === '' || this.term == null || this.packageData[0].toLowerCase().includes(this.term.toLowerCase()))
     },
-    showWarning() {
-      if (this.downloads)
-        return false;
+    showWarning () {
+      if (this.downloads) { return false }
 
-      if (this.packageData[3] != "0" || this.packageData[4] != "0")
-        return true;
-      else
-        return false;
+      if (this.packageData[3] !== '0' || this.packageData[4] !== '0') { return true } else { return false }
     }
   }
 }

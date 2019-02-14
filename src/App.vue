@@ -1,6 +1,11 @@
 <template>
-  <div data-app="true" id="app">
-    <loader class="fill" v-if="loading" :message="loadingMessage"></loader>
+  <div
+    id="app"
+    data-app="true">
+    <loader
+      v-if="loading"
+      class="fill"
+      :message="loadingMessage" />
     <sidebar />
     <keep-alive exclude="['Dashboard', 'Settings']">
       <router-view />
@@ -9,79 +14,100 @@
 </template>
 
 <script>
-import Api from '@/api';
-import Sidebar from '@/components/Sidebar.vue';
-import { SharedMethods } from '@/mixins';
-import { popupWindowHeightKey, popupWindowWidthKey, popupWindowTopPosKey, popupWindowLeftPosKey } from '@/constants/keys';
+import Api from '@/api'
+import Sidebar from '@/components/Sidebar.vue'
+import { SharedMethods } from '@/mixins'
+import {
+  popupWindowHeightKey,
+  popupWindowWidthKey,
+  popupWindowTopPosKey,
+  popupWindowLeftPosKey
+} from '@/constants/keys'
 
 export default {
+  components: {
+    Sidebar
+  },
   mixins: [SharedMethods],
-  data() {
+  data () {
     return {
       loading: false,
       loadingMessage: 'Refreshing months data'
     }
   },
-  created() {
-    this.LoginStatus();
+  created () {
+    this.LoginStatus()
   },
-  beforeMount() {
-    const windowURL = new URL(window.location.href);
+  beforeMount () {
+    const windowURL = new URL(window.location.href)
 
     if (windowURL.searchParams.has('inv')) {
-      sessionStorage.setItem('selectedInvoice', windowURL.searchParams.get('inv'));
-      this.$router.push('verify');
+      sessionStorage.setItem(
+        'selectedInvoice',
+        windowURL.searchParams.get('inv')
+      )
+      this.$router.push('verify')
     }
 
     if (windowURL.searchParams.has('resize')) {
       window.addEventListener('resize', () => {
-        localStorage[popupWindowHeightKey] = window.outerHeight;
-        localStorage[popupWindowWidthKey] = window.outerWidth;
-        localStorage[popupWindowTopPosKey] = window.screenTop;
-        localStorage[popupWindowLeftPosKey] = window.screenLeft;
-      });
+        localStorage[popupWindowHeightKey] = window.outerHeight
+        localStorage[popupWindowWidthKey] = window.outerWidth
+        localStorage[popupWindowTopPosKey] = window.screenTop
+        localStorage[popupWindowLeftPosKey] = window.screenLeft
+      })
     }
   },
-  mounted() {
-    if (this.$store.getters.getCurrentMonth == null || this.$store.getters.getLastRefresh == null)
-      return;
+  mounted () {
+    if (
+      this.$store.getters.getCurrentMonth == null ||
+      this.$store.getters.getLastRefresh == null
+    ) { return }
 
-    let preDate = new Date(this.$store.getters.getCurrentMonth);
-    let curDate = new Date();
+    let preDate = new Date(this.$store.getters.getCurrentMonth)
+    let curDate = new Date()
 
-    if ((preDate.getMonth() < curDate.getMonth() || preDate.getFullYear() < curDate.getFullYear()) && curDate.getTime() - this.$store.getters.getLastRefresh >= 3600000)
-      this.CacheMonthsData();
+    if (
+      (preDate.getMonth() < curDate.getMonth() ||
+        preDate.getFullYear() < curDate.getFullYear()) &&
+      curDate.getTime() - this.$store.getters.getLastRefresh >= 3600000
+    ) { this.CacheMonthsData() }
   },
   methods: {
-    CacheMonthsData() {
-      let id = this.$store.getters.getPubId;
-      let endpoint = `/publisher-info/months/${id}.json`;
+    CacheMonthsData () {
+      let id = this.$store.getters.getPubId
+      let endpoint = `/publisher-info/months/${id}.json`
 
-      this.loading = true;
+      this.loading = true
 
       Api.get(endpoint)
-        .then((response) => {
-          let data = response.data;
+        .then(response => {
+          let data = response.data
 
-          let firstMonth = this.InsertCharacter(data.periods[data.periods.length - 1].value, 4, '-');
-          let currentMonth = this.InsertCharacter(data.periods[0].value, 4, '-');
-          let lastRefresh = Date.now();
+          let firstMonth = this.InsertCharacter(data.periods[data.periods.length - 1].value, 4, '-')
+          let currentMonth = this.InsertCharacter(
+            data.periods[0].value,
+            4,
+            '-'
+          )
+          let lastRefresh = Date.now()
 
-          this.$store.dispatch('saveMonthsData', { firstMonth, currentMonth, lastRefresh });
+          this.$store.dispatch('saveMonthsData', {
+            firstMonth,
+            currentMonth,
+            lastRefresh
+          })
 
-          this.SendMessage('restart');
+          this.SendMessage('restart')
         })
-        .catch((error) => {
-          console.log(error);
-          this.RequestError();
+        .catch(error => {
+          console.log(error)
+          this.RequestError()
         })
         .then(() => {
-          this.loading = false;
-        });
+          this.loading = false
+        })
     }
-  },
-  components: {
-    Sidebar
   }
 }
 </script>

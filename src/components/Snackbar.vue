@@ -18,7 +18,8 @@
 export default {
   props: {
     value: {
-      type: null
+      type: Boolean,
+      default: false
     },
     message: {
       type: String,
