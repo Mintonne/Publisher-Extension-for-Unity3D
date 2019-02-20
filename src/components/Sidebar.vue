@@ -40,6 +40,13 @@
 
       <router-link
         tag="li"
+        to="/reviews">
+        <v-icon>$vuetify.icons.review</v-icon>
+        <p>Reviews</p>
+      </router-link>
+
+      <router-link
+        tag="li"
         to="/settings">
         <v-icon>$vuetify.icons.settings</v-icon>
         <p>Settings</p>
@@ -63,16 +70,16 @@
 </template>
 
 <script>
-import { SharedMethods } from '@/mixins'
+import { SharedMethods } from "@/mixins";
 
 export default {
   mixins: [SharedMethods],
   computed: {
-    enableTransition () {
-      return this.$store.getters.getSidebarStatus
+    enableTransition() {
+      return this.$store.getters.getSidebarStatus;
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
