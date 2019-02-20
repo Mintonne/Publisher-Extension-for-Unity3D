@@ -1,6 +1,14 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 1.0.3
+### Added
+- Vuetify loader
+- ESLint standard config
+
+## Changed
+- Added reviews sidebar icon
+
 ## 1.0.2
 ### Fixed
 - [Background] Start the FetchReviewsData request immediately after the FetchSalesInfo request is completed successfully.
