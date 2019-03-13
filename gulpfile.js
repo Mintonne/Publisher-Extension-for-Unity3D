@@ -38,10 +38,6 @@ gulp.task('manifest', function () {
     .pipe(gulp.dest(paths.dist))
 })
 
-gulp.task('delete:bg-html', function () {
-  return run('rm -f dist/background.html').exec()
-})
-
 gulp.task('zip', function () {
   let fileName = argv.vendor === 'chrome' ? 'chrome-ext' : 'firefox-ext'
 
@@ -50,8 +46,8 @@ gulp.task('zip', function () {
     .pipe(gulp.dest('../'))
 })
 
-gulp.task('compile', gulp.series('set:vendor', 'build', 'manifest', 'delete:bg-html'))
-gulp.task('release', gulp.series('set:vendor', 'build', 'manifest', 'delete:bg-html', 'zip'))
+gulp.task('compile', gulp.series('set:vendor', 'build', 'manifest'))
+gulp.task('release', gulp.series('set:vendor', 'build', 'manifest', 'zip'))
 
 gulp.task('watch', function () {
   gulp.watch(['./public/**/*', './src/**/*'], gulp.series('compile'))
