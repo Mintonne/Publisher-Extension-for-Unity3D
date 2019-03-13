@@ -152,8 +152,6 @@ html {
   ::-webkit-scrollbar-thumb:hover {
     background: #a8a8a8;
   }
-
-  overflow-y: auto !important;
 }
 
 body {

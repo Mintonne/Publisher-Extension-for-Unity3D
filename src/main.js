@@ -7,7 +7,7 @@ import VueCarousel from 'vue-carousel'
 import VueSweetalert2 from 'vue-sweetalert2'
 import Loader from '@/components/Loader.vue'
 import customIcons from '@/assets/icons'
-import 'vuetify/src/stylus/app.styl'
+import './stylus/main.styl'
 
 Vue.use(Vuetify, {
   icons: customIcons
