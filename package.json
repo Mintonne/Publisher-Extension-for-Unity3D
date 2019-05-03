@@ -38,7 +38,7 @@
     "gulp-replace": "^1.0.0",
     "gulp-run": "^1.7.1",
     "gulp-zip": "^4.2.0",
-    "node-sass": "^4.9.0",
+    "sass": "^1.19.0",
     "sass-loader": "^7.0.1",
     "style-loader": "^0.23.1",
     "stylus": "^0.54.5",
