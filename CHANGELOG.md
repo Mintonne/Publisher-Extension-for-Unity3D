@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 1.1.1
+### Changed
+- Update packages
+
 ## 1.1.0
 ### Removed
 - Vuetify color pack.
