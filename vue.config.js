@@ -1,4 +1,6 @@
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
+const cspBuilder = require('content-security-policy-builder')
+const packageJson = require('./package.json')
 
 let blocks = []
 
@@ -80,11 +82,39 @@ module.exports = {
       ]
     },
     plugins: [
-      new CopyWebpackPlugin([{
-        from: 'node_modules/x2js/dist/x2js.min.js',
-        to: 'vendor/x2js',
-        toType: 'dir'
-      }]),
+      new CopyWebpackPlugin([
+        {
+          from: 'node_modules/x2js/dist/x2js.min.js',
+          to: 'vendor/x2js',
+          toType: 'dir'
+        },
+        {
+          from: './src/manifest.json',
+          to: 'manifest.json',
+          transform (content) {
+            const manifestContent = JSON.parse(content)
+
+            manifestContent.version = packageJson.version
+
+            manifestContent.content_security_policy = cspBuilder({
+              directives: {
+                connectSrc: ['https://publisher.assetstore.unity3d.com'],
+                defaultSrc: ["'none'"],
+                imgSrc: ["'self'", 'data:'],
+                scriptSrc: process.env.NODE_ENV === 'production' ? ["'self'"] : ["'self'", "'unsafe-eval'"],
+                styleSrc: ["'self'", "'unsafe-inline'"]
+              }
+            })
+
+            manifestContent.background = process.env.NODE_ENV === 'production' ? manifestContent.backgroundProd : manifestContent.backgroundDev
+
+            delete manifestContent.backgroundProd
+            delete manifestContent.backgroundDev
+
+            return JSON.stringify(manifestContent, null, 2)
+          }
+        }
+      ]),
       new VuetifyLoaderPlugin()
     ]
   },
@@ -93,7 +123,7 @@ module.exports = {
     config.plugins.delete('prefetch-index')
     config.plugins.delete('preload-background')
     config.plugins.delete('prefetch-background')
-    config.plugins.delete('preload-trend-analysis')
-    config.plugins.delete('prefetch-trend-analysis')
+    config.plugins.delete('preload-trends')
+    config.plugins.delete('prefetch-trends')
   }
 }

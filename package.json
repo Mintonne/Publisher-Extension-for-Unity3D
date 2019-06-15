@@ -4,11 +4,12 @@
   "private": true,
   "scripts": {
     "build": "vue-cli-service build",
+    "serve": "vue-cli-service build --mode development --watch",
     "lint": "vue-cli-service lint",
-    "watch:chrome": "npx gulp compile --vendor=chrome && npx gulp watch --vendor=chrome",
-    "build:chrome": "npx gulp release --vendor=chrome",
-    "watch:firefox": "npx gulp compile --vendor=firefox && npx gulp watch --vendor=firefox",
-    "build:firefox": "npx gulp release --vendor=firefox"
+    "watch:chrome": "cross-env VENDOR=chrome npm run serve",
+    "build:chrome": "cross-env VENDOR=chrome npm run build && cross-env VENDOR=chrome gulp zip",
+    "watch:firefox": "cross-env VENDOR=firefox npm run serve",
+    "build:firefox": "cross-env VENDOR=firefox npm run build && cross-env VENDOR=firefox gulp zip"
   },
   "dependencies": {
     "axios": "^0.19.0",
@@ -29,13 +30,12 @@
     "@vue/cli-service": "^3.8.4",
     "@vue/eslint-config-standard": "^4.0.0",
     "babel-eslint": "^10.0.1",
+    "content-security-policy-builder": "^2.1.0",
+    "cross-env": "^5.2.0",
     "css-loader": "^3.0.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.2.2",
     "gulp": "^4.0.2",
-    "gulp-rename": "^1.4.0",
-    "gulp-replace": "^1.0.0",
-    "gulp-run": "^1.7.1",
     "gulp-zip": "^5.0.0",
     "sass": "^1.21.0",
     "sass-loader": "^7.1.0",
@@ -44,7 +44,6 @@
     "stylus-loader": "^3.0.2",
     "vue-template-compiler": "^2.6.10",
     "vuetify-loader": "^1.2.2",
-    "webpack-remove-blocks": "^1.1.0",
-    "yargs": "^13.2.4"
+    "webpack-remove-blocks": "^1.1.0"
   }
 }
