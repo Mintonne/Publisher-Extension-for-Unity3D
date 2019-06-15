@@ -12,8 +12,6 @@
 </template>
 
 <style lang="scss">
-@import "@/styles/variables.scss";
-
 .VueCarousel-navigation {
   button.VueCarousel-navigation-button {
     color: $dark;

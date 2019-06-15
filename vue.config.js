@@ -46,6 +46,13 @@ module.exports = {
       chunks: ['chunk-vendors', 'trends']
     }
   },
+  css: {
+    loaderOptions: {
+      sass: {
+        data: `@import "@/styles/variables.scss";`
+      }
+    }
+  },
   configureWebpack: {
     module: {
       rules: [{

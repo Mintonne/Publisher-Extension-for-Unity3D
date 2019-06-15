@@ -42,8 +42,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/styles/variables.scss";
-
 .v-snack {
   margin-left: 60px;
 

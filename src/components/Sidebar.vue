@@ -70,21 +70,19 @@
 </template>
 
 <script>
-import { SharedMethods } from "@/mixins";
+import { SharedMethods } from '@/mixins';
 
 export default {
   mixins: [SharedMethods],
   computed: {
-    enableTransition() {
-      return this.$store.getters.getSidebarStatus;
+    enableTransition () {
+      return this.$store.getters.getSidebarStatus
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
-@import "@/styles/variables.scss";
-
 #sidebar {
   position: absolute;
   top: 0;

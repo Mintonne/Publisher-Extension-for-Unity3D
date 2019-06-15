@@ -114,8 +114,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/styles/variables.scss";
-
 #verifyBtn {
   height: 48px;
   margin-left: -1px;
