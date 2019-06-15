@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import App from './trend-app.vue'
+import App from './App.vue'
 import store from '@/store.js'
 import VueSweetalert2 from 'vue-sweetalert2'
 

@@ -40,10 +40,10 @@ module.exports = {
       entry: 'src/background.js',
       chunks: ['background']
     },
-    'trend-analysis': {
-      entry: 'src/trend-analysis/trend-main.js',
+    trends: {
+      entry: 'src/trends/main.js',
       title: 'Trend Analysis',
-      chunks: ['chunk-vendors', 'trend-analysis']
+      chunks: ['chunk-vendors', 'trends']
     }
   },
   configureWebpack: {
