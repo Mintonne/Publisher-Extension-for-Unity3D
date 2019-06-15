@@ -20,11 +20,19 @@
     "https://publisher.assetstore.unity3d.com/",
     "notifications",
     "cookies",
-    "storage",
     "contextMenus"
   ],
-  "background": {
-    "scripts": ["vendor/x2js/x2js.min.js", "js/background.js"]
+  "backgroundProd": {
+    "scripts": [
+      "vendor/x2js/x2js.min.js",
+      "js/background.js"
+    ]
+  },
+  "backgroundDev": {
+    "scripts": [
+      "vendor/x2js/x2js.min.js",
+      "background.js"
+    ]
   },
   "browser_action": {
     "default_popup": "index.html",
@@ -33,5 +41,5 @@
       "32": "images/icons/icon32.png"
     }
   },
-  "content_security_policy": "default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;connect-src https://publisher.assetstore.unity3d.com"
+  "content_security_policy": "{{csp}}"
 }
