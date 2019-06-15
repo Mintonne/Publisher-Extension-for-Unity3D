@@ -37,7 +37,7 @@ module.exports = {
       title: 'Publisher Dashboard for Unity'
     },
     background: {
-      entry: 'src/background/background.js',
+      entry: 'src/background.js',
       chunks: ['background']
     },
     'trend-analysis': {
