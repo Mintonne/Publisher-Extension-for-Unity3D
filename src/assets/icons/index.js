@@ -62,7 +62,7 @@ export default {
   review: {
     component: MessageDraw
   },
-  trending_up: {
+  trendingUp: {
     component: TrendingUp
   },
   verified: {

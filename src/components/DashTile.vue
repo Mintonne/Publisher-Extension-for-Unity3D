@@ -1,19 +1,23 @@
 <template>
-  <v-flex
-    v-if="searchMatch"
-    xs3>
+  <v-flex xs3>
     <v-card
+      class="card-tile"
       hover
       :to="path"
       height="140"
       @click="OpenLink(url)">
       <v-card-title>
         <v-icon
+          class="card-icon mx-auto"
+          color="#bbb"
           width="45"
-          height="45"
-          v-text="iconName" />
+          height="45">
+          {{ iconName }}
+        </v-icon>
       </v-card-title>
-      <v-card-text>{{ name }}</v-card-text>
+      <v-card-text class="card-text font-weight-medium">
+        {{ name }}
+      </v-card-text>
     </v-card>
   </v-flex>
 </template>
@@ -39,42 +43,30 @@ export default {
     url: {
       type: String,
       default: null
-    },
-    term: {
-      type: String,
-      default: ''
     }
   },
   computed: {
     iconName () {
       return '$vuetify.icons.' + this.icon
-    },
-    searchMatch () {
-      return (this.term === '' || this.term == null || this.name.toLowerCase().includes(this.term.toLowerCase()))
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.v-card {
+.card-tile {
   &:hover {
     * {
       color: $primary-color !important;
     }
   }
 
-  .v-card__title {
-    .v-icon {
-      margin: 0 auto;
-      color: #bbb;
-      height: 45px;
-    }
+  .card-icon {
+    height: 45px;
   }
 
-  .v-card__text {
+  .card-text {
     color: $dark;
-    font-weight: 500;
   }
 }
 </style>
