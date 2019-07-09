@@ -17,7 +17,7 @@ export const SharedMethods = {
       },
       cookie => {
         if (cookie == null) {
-          Vue.swal({
+          Vue.prototype.$swal.fire({
             title: 'Not Logged In!',
             text: 'Sign in to your publisher dashboard to proceed.',
             type: 'error',
@@ -33,7 +33,7 @@ export const SharedMethods = {
       )
     },
     RedirectToSettings: (router, idError = true) => {
-      Vue.swal(
+      Vue.prototype.$swal.fire(
         'Error',
         `We couldn't find your ${idError ? 'Publisher ID.' : 'reviews link.'} `,
         'error'
@@ -62,7 +62,7 @@ export const SharedMethods = {
       })
     },
     RequestError () {
-      Vue.swal('Request Failed', 'Sorry, we could not complete your request. Please try again.', 'error')
+      Vue.prototype.$swal.fire('Request Failed', 'Sorry, we could not complete your request. Please try again.', 'error')
     },
     ConvertToSecure (link) {
       return link.replace(/http/g, 'https')

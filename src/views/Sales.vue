@@ -249,7 +249,7 @@ export default {
           this.salesData = data
 
           if (data == null) {
-            return this.$swal('Error', 'No records found', 'error')
+            return this.$swal.fire('Error', 'No records found', 'error')
           }
 
           this.PopulateSalesData(data)

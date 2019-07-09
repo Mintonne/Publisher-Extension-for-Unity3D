@@ -208,7 +208,7 @@ export default {
           this.downloadsData = data
 
           if (data == null) {
-            return this.$swal('Error', 'No records found', 'error')
+            return this.$swal.fire('Error', 'No records found', 'error')
           }
 
           this.PopulateDownloadsData(data)

@@ -36,7 +36,7 @@ export default {
     let id = this.$store.getters.getPubId
 
     if (id == null) {
-      return this.$swal('Error', 'Publisher ID not found.', 'error')
+      return this.$swal.fire('Error', 'Publisher ID not found.', 'error')
     }
 
     let endpoint = `/publisher-info/revenue/${id}.json`
@@ -190,7 +190,7 @@ export default {
   },
   methods: {
     InitSave () {
-      this.$swal({
+      this.$swal.fire({
         type: 'question',
         title: 'Save Chart',
         text: 'Do you want to hide the Revenue axis?',

@@ -82,7 +82,7 @@ export default {
       if (this.loading) { return }
 
       if (this.invoiceNumber == null || this.invoiceNumber.length <= 5) {
-        return this.$swal('Invalid Invoice', 'The invoice number entered is too short', 'error')
+        return this.$swal.fire('Invalid Invoice', 'The invoice number entered is too short', 'error')
       }
 
       let id = this.$store.getters.getPubId
@@ -96,7 +96,7 @@ export default {
 
           if (data == null || data.length <= 0) {
             this.invoiceData = null
-            this.$swal('Error', 'No record found', 'error')
+            this.$swal.fire('Error', 'No record found', 'error')
           } else {
             this.invoiceData = data[0]
           }

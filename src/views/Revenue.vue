@@ -113,7 +113,7 @@ export default {
           let data = response.data.aaData
 
           if (data == null || data.length <= 0) {
-            return this.$swal('Error', 'No records found', 'error')
+            return this.$swal.fire('Error', 'No records found', 'error')
           }
 
           this.revenueData = data[0]

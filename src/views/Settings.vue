@@ -195,7 +195,7 @@ export default {
         })
     },
     GetReviewsLink () {
-      this.$swal({
+      this.$swal.fire({
         title: 'Get Reviews Link?',
         text: 'Do you want the extension to retrieve and save your reviews feed link?',
         type: 'info',

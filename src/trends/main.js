@@ -1,11 +1,15 @@
 import Vue from 'vue'
 import App from './App.vue'
 import store from '@/store.js'
-import VueSweetalert2 from 'vue-sweetalert2'
+import Swal from 'sweetalert2'
 
-Vue.use(VueSweetalert2, {
-  heightAuto: false
+const swalDefault = Swal.mixin({
+  heightAuto: false,
+  confirmButtonColor: '#1976D2',
+  cancelButtonColor: '#FF5252'
 })
+
+Vue.prototype.$swal = swalDefault
 
 new Vue({
   store,

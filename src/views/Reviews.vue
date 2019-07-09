@@ -107,7 +107,7 @@ export default {
           this.reviewsData = x2js.xml2js(response.data)
 
           if (this.reviewsData == null || this.reviewsData.rss.channel.item == null) {
-            return this.$swal('Error', 'No records found', 'error')
+            return this.$swal.fire('Error', 'No records found', 'error')
           }
 
           const packageNameRegex = /"(.*?)"/g
