@@ -1,22 +1,22 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 1.1.2
+### Fixed
+- Silent errors when loading the Sales and Download pages.
+- Snackbar timeout error.
+
 ## 1.1.1
-### Changed
-- Update packages
+### Fixed
+- Axios vulnerability warning.
 
 ## 1.1.0
-### Removed
-- Vuetify color pack.
-- Roboto .woff font files.
+### Changed
+- Reduced addon size (Removed Vuetify color pack and .woff font files)
 
 ## 1.0.3
-### Added
-- Vuetify loader
-- ESLint standard config
-
 ## Changed
-- Added reviews sidebar icon
+- Added reviews sidebar icon.
 
 ## 1.0.2
 ### Fixed
@@ -32,7 +32,7 @@ All notable changes to this project will be documented in this file.
 ## 1.0.0
 ### Added
 - A red strip on the package tiles if the package has refund/chargeback.
-- Sales tooltip to the packages. (You can toggle it from the settings)
+- Sales tooltip to the package tiles. (You can toggle it from the settings)
 - Scrollable date picker.
 
 ### Changed
@@ -56,10 +56,6 @@ All notable changes to this project will be documented in this file.
 ## 0.9
 ###Added
 - Reviews section and notifications.
-- Gulp build system.
-
-### Changed
-- Minor code formatting.
 
 ### Fixed
 - The sidebar and dashboard are no longer user selectable.
@@ -84,11 +80,6 @@ All notable changes to this project will be documented in this file.
 ## 0.5
 ### Added
 - Trend analysis page.
-- FileSaver.js library.
-- Title tags to HTML files.
-
-### Changed
-- Moved functions from main.js to functions.js.
 
 ### Fixed
 - A bug that caused the date parser to return a null date when parsing the revenue description text.
