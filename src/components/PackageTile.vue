@@ -39,7 +39,7 @@ export default {
   mixins: [SharedMethods],
   props: {
     packageData: {
-      type: String,
+      type: Array,
       required: true
     },
     downloads: {
