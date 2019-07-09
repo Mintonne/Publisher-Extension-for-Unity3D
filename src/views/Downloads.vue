@@ -136,7 +136,7 @@
     <snackbar
       :value="showSnackbar"
       :callback="GetDownloadsData"
-      timeout="5000" />
+      :timeout="5000" />
   </div>
 </template>
 

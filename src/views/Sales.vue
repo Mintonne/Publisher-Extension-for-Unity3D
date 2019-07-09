@@ -170,7 +170,7 @@
     <snackbar
       :value="showSnackbar"
       :callback="GetSalesData"
-      timeout="5000" />
+      :timeout="5000" />
   </div>
 </template>
 
