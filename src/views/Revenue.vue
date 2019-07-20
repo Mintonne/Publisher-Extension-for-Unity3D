@@ -139,14 +139,16 @@ export default {
           let Debit = Number(item[2].replace('$', ''))
           let Credit = Number(item[3].replace('$', ''))
 
-          if (item[1].toLowerCase().includes('revenue for')) {
+          let entryDescription = item[1].toLowerCase()
+
+          if (entryDescription.includes('revenue for')) {
             this.netRevenue += Debit
             this.netRevenue += Credit
 
-            if (!item[1].toLowerCase().includes('fixing')) {
+            if (!entryDescription.includes('fixing')) {
               this.totalMonths++
 
-              entryDate = new Date('01 ' + item[1].toLowerCase().replace('sale', '').replace('revenue', '').replace('for', '').trim())
+              entryDate = new Date('01 ' + entryDescription.replace('sale', '').replace('revenue', '').replace('for', '').trim())
 
               chartData.push(Debit.toFixed(2))
               chartLabels.push(monthsAbbreviations[entryDate.getMonth()] + ' ' + entryDate.getFullYear())
@@ -157,7 +159,7 @@ export default {
             }
           }
 
-          if (item[1].toLowerCase().includes('asset store payout')) {
+          if (entryDescription.includes('asset store payout') || entryDescription.includes('asset store auto payout')) {
             this.totalPayout += Credit * -1
             this.totalPayout += Debit * -1
           }
