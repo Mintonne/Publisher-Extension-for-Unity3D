@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 1.1.3
+### Fixed
+-  Detect auto payout entries (Closes #5)
+
 ## 1.1.2
 ### Fixed
 - Silent errors when loading the Sales and Download pages.
