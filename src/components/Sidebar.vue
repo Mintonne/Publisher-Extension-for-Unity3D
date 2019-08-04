@@ -70,7 +70,7 @@
 </template>
 
 <script>
-import { SharedMethods } from '@/mixins';
+import { SharedMethods } from '@/mixins'
 
 export default {
   mixins: [SharedMethods],
