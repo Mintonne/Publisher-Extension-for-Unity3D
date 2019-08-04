@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@vue/cli-plugin-eslint": "3.9.2",
-    "@vue/cli-service": "3.9.3",
+    "@vue/cli-service": "3.10.0",
     "@vue/eslint-config-standard": "4.0.0",
     "babel-eslint": "10.0.2",
     "content-security-policy-builder": "2.1.0",
