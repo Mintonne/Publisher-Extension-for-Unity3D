@@ -18,7 +18,7 @@ import Api from '@/api'
 import saveAs from 'file-saver'
 import Chart from '@/../node_modules/chart.js/dist/Chart.min.js'
 import Loader from '@/components/Loader.vue'
-import Save from 'vue-mdi/ContentSave.vue'
+import Save from 'vue-material-design-icons/ContentSave.vue'
 import { SharedMethods } from '@/mixins'
 import { monthsNames, chartColors } from '@/constants/chart-options.js'
 

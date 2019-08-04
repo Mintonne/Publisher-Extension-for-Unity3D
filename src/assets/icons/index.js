@@ -1,71 +1,53 @@
-import Bank from 'vue-mdi/Bank.vue'
-import CalendarCheck from 'vue-mdi/CalendarCheck.vue'
-import ChevronLeft from 'vue-mdi/ChevronLeft.vue'
-import ChevronRight from 'vue-mdi/ChevronRight.vue'
-import ContentSave from 'vue-mdi/ContentSave.vue'
-import Close from 'vue-mdi/Close.vue'
-import CurrencyUsd from 'vue-mdi/CurrencyUsd.vue'
-import Download from 'vue-mdi/Download.vue'
-import Email from 'vue-mdi/Email.vue'
-import MessageDraw from 'vue-mdi/MessageDraw.vue'
-import MenuDown from 'vue-mdi/MenuDown.vue'
-import OpenInNew from 'vue-mdi/OpenInNew.vue'
-import Paypal from 'vue-mdi/Paypal.vue'
-import Settings from 'vue-mdi/Settings.vue'
-import ShieldCheck from 'vue-mdi/ShieldCheck.vue'
-import TrendingUp from 'vue-mdi/TrendingUp.vue'
-import ViewDashboard from 'vue-mdi/ViewDashboard.vue'
-
 export default {
   bank: {
-    component: Bank
+    component: () => import('vue-material-design-icons/Bank')
   },
   calendar: {
-    component: CalendarCheck
+    component: () => import('vue-material-design-icons/CalendarCheck')
   },
   clear: {
-    component: Close
+    component: () => import('vue-material-design-icons/Close')
   },
   dashboard: {
-    component: ViewDashboard
+    component: () => import('vue-material-design-icons/ViewDashboard')
   },
   download: {
-    component: Download
+    component: () => import('vue-material-design-icons/Download')
   },
   dropdown: {
-    component: MenuDown
+    component: () => import('vue-material-design-icons/MenuDown')
   },
   email: {
-    component: Email
+    component: () => import('vue-material-design-icons/Email')
   },
   next: {
-    component: ChevronRight
+    component: () => import('vue-material-design-icons/ChevronRight')
   },
   open: {
-    component: OpenInNew
+    component: () => import('vue-material-design-icons/OpenInNew')
   },
   paypal: {
-    component: Paypal
+    component: () => import('vue-material-design-icons/Paypal')
   },
   prev: {
-    component: ChevronLeft
+    component: () => import('vue-material-design-icons/ChevronLeft')
   },
   sales: {
-    component: CurrencyUsd
+    component: () => import('vue-material-design-icons/CurrencyUsd')
   },
   save: {
-    component: ContentSave
+    component: () => import('vue-material-design-icons/ContentSave')
   },
   settings: {
-    component: Settings
+    component: () => import('vue-material-design-icons/Settings')
   },
   review: {
-    component: MessageDraw
+    component: () => import('vue-material-design-icons/MessageDraw')
   },
   trendingUp: {
-    component: TrendingUp
+    component: () => import('vue-material-design-icons/TrendingUp')
   },
   verified: {
-    component: ShieldCheck
+    component: () => import('vue-material-design-icons/ShieldCheck')
   }
 }

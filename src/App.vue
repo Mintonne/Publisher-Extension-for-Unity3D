@@ -174,20 +174,10 @@ body {
       }
     }
   }
-}
 
-.svg-icon {
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  color: inherit;
-  vertical-align: middle;
-  fill: none;
-  stroke: currentColor;
-
-  &.svg-fill {
-    fill: currentColor;
-    stroke: none;
+  .dash-icon .material-design-icon__svg {
+    height: 40px;
+    width: 40px;
   }
 }
 </style>

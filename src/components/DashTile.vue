@@ -8,10 +8,10 @@
       @click="OpenLink(url)">
       <v-card-title>
         <v-icon
-          class="card-icon mx-auto"
+          class="dash-icon mx-auto"
           color="#bbb"
-          width="45"
-          height="45">
+          size="40"
+          title="">
           {{ iconName }}
         </v-icon>
       </v-card-title>
@@ -59,10 +59,6 @@ export default {
     * {
       color: $primary-color !important;
     }
-  }
-
-  .card-icon {
-    height: 45px;
   }
 
   .card-text {
