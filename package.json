@@ -33,7 +33,7 @@
     "content-security-policy-builder": "2.1.0",
     "cross-env": "5.2.0",
     "css-loader": "3.1.0",
-    "eslint": "6.1.0",
+    "eslint": "5.16.0",
     "eslint-plugin-vue": "5.2.3",
     "gulp": "4.0.2",
     "gulp-zip": "5.0.0",
