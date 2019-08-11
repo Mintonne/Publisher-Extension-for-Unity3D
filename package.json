@@ -32,7 +32,7 @@
     "babel-eslint": "10.0.2",
     "content-security-policy-builder": "2.1.0",
     "cross-env": "5.2.0",
-    "css-loader": "3.1.0",
+    "css-loader": "3.2.0",
     "eslint": "5.16.0",
     "eslint-plugin-vue": "5.2.3",
     "gulp": "4.0.2",
