@@ -31,7 +31,7 @@
     "@vue/eslint-config-standard": "4.0.0",
     "babel-eslint": "10.0.3",
     "content-security-policy-builder": "2.1.0",
-    "cross-env": "5.2.0",
+    "cross-env": "5.2.1",
     "css-loader": "3.2.0",
     "eslint": "5.16.0",
     "eslint-plugin-vue": "5.2.3",
