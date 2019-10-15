@@ -18,6 +18,8 @@
   },
   "permissions": [
     "https://publisher.assetstore.unity3d.com/",
+    "webRequest",
+    "webRequestBlocking",
     "notifications",
     "cookies",
     "contextMenus"
