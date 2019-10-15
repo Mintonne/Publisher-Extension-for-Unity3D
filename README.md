@@ -15,9 +15,9 @@ This extension allows you to access your publisher information right from your b
 
 ## Download
 
-- [Firefox][link-amo]  &nbsp; [<img valign="middle" src="https://img.shields.io/amo/users/publisher-dashboard-unity3d.svg">][link-amo]
-
 - [Chrome][link-cws]  &nbsp; [<img valign="middle" src="https://img.shields.io/chrome-web-store/users/ehdmigcaggmfjjoglomaceenckdkacpl.svg">][link-cws]
+
+- Firefox - **Not supported**
 
 ## Highlights
 
