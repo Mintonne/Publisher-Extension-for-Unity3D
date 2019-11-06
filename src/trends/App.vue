@@ -8,7 +8,7 @@
     <save
       v-if="myChart != null"
       id="save-chart-button"
-      size="30"
+      :size="30"
       @click.native="InitSave" />
   </div>
 </template>
