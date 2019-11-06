@@ -20,7 +20,7 @@ export const SharedMethods = {
           Vue.prototype.$swal.fire({
             title: 'Not Logged In!',
             text: 'Sign in to your publisher dashboard to proceed.',
-            type: 'error',
+            icon: 'error',
             footer: '<a href="https://publisher.assetstore.unity3d.com" target="_blank">Go to Dashboard</a>',
             allowOutsideClick: false
           }).then(result => {

@@ -191,7 +191,7 @@ export default {
   methods: {
     InitSave () {
       this.$swal.fire({
-        type: 'question',
+        icon: 'question',
         title: 'Save Chart',
         text: 'Do you want to hide the Revenue axis?',
         showCancelButton: true,

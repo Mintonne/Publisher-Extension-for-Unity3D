@@ -198,7 +198,7 @@ export default {
       this.$swal.fire({
         title: 'Get Reviews Link?',
         text: 'Do you want the extension to retrieve and save your reviews feed link?',
-        type: 'info',
+        icon: 'info',
         showCancelButton: true,
         confirmButtonText: 'Get Reviews Link',
         cancelButtonText: 'Skip',
