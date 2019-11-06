@@ -50,8 +50,8 @@ module.exports = {
   },
   css: {
     loaderOptions: {
-      sass: {
-        data: `@import "@/styles/variables.scss";`
+      scss: {
+        prependData: `@import "@/styles/variables.scss";`
       }
     }
   },
