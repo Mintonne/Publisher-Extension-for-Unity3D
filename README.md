@@ -12,12 +12,11 @@
 
 This extension allows you to access your publisher information right from your browser.
 
-
 ## Download
 
-- [Chrome][link-cws]  &nbsp; [<img valign="middle" src="https://img.shields.io/chrome-web-store/users/ehdmigcaggmfjjoglomaceenckdkacpl.svg">][link-cws]
+- [Firefox][link-amo]  &nbsp; [<img valign="middle" src="https://img.shields.io/amo/users/publisher-dashboard-unity3d.svg">][link-amo]
 
-- Firefox - **Not supported**
+- [Chrome][link-cws]  &nbsp; [<img valign="middle" src="https://img.shields.io/chrome-web-store/users/ehdmigcaggmfjjoglomaceenckdkacpl.svg">][link-cws]
 
 ## Highlights
 
