@@ -44,8 +44,7 @@ module.exports = {
     },
     trends: {
       entry: 'src/trends/main.js',
-      title: 'Trend Analysis',
-      chunks: ['chunk-vendors', 'trends']
+      title: 'Trend Analysis'
     }
   },
   css: {
@@ -117,13 +116,5 @@ module.exports = {
       ]),
       new VuetifyLoaderPlugin()
     ]
-  },
-  chainWebpack: config => {
-    config.plugins.delete('preload-index')
-    config.plugins.delete('prefetch-index')
-    config.plugins.delete('preload-background')
-    config.plugins.delete('prefetch-background')
-    config.plugins.delete('preload-trends')
-    config.plugins.delete('prefetch-trends')
   }
 }
