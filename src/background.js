@@ -59,24 +59,6 @@ function SetupBrowserAction () {
   }
 }
 
-chrome.webRequest.onBeforeSendHeaders.addListener(details => {
-  var newRef = 'https://publisher.assetstore.unity3d.com/'
-  var gotRef = false
-  for (let x in details.requestHeaders) {
-    gotRef = details.requestHeaders[x].name.toLowerCase() === 'referer'
-  }
-  if (!gotRef) {
-    details.requestHeaders.push({ name: 'Referer', value: newRef })
-  }
-  return { requestHeaders: details.requestHeaders }
-}, {
-  urls: ['https://publisher.assetstore.unity3d.com/*']
-}, [
-  'requestHeaders',
-  'blocking',
-  'extraHeaders'
-])
-
 chrome.browserAction.onClicked.addListener(tab => {
   OpenWindow('../index.html?resize')
 })
