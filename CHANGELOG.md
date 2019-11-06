@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 1.2.0
+### Fixed
+- Requests failing on Chrome.
+
 ## 1.1.4
 ### Fixed
 - Requests failing due to server side changes.
