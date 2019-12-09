@@ -15,7 +15,7 @@
     "axios": "0.19.0",
     "chart.js": "2.9.3",
     "file-saver": "2.0.2",
-    "sweetalert2": "9.4.0",
+    "sweetalert2": "9.4.3",
     "vue": "2.6.10",
     "vue-carousel": "0.18.0",
     "vue-material-design-icons": "3.4.0",
@@ -32,7 +32,7 @@
     "babel-eslint": "10.0.3",
     "content-security-policy-builder": "2.1.0",
     "cross-env": "6.0.3",
-    "css-loader": "3.2.0",
+    "css-loader": "3.3.0",
     "eslint": "6.7.2",
     "eslint-plugin-vue": "6.0.1",
     "gulp": "4.0.2",
@@ -43,7 +43,7 @@
     "stylus": "0.54.7",
     "stylus-loader": "3.0.2",
     "vue-template-compiler": "2.6.10",
-    "vuetify-loader": "1.4.2",
+    "vuetify-loader": "1.4.3",
     "webpack-remove-blocks": "1.1.0"
   }
 }
