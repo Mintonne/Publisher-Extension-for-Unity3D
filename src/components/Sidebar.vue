@@ -61,7 +61,7 @@
 
       <li
         class="link"
-        @click="OpenLink('https://www.paypal.me/mintonne/5')">
+        @click="OpenLink('https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=G6UJ5A56KEQX6&currency_code=USD&source=url')">
         <v-icon>$vuetify.icons.paypal</v-icon>
         <p>Donate</p>
       </li>
