@@ -38,7 +38,7 @@
     "gulp": "4.0.2",
     "gulp-zip": "5.0.2",
     "sass": "1.26.9",
-    "sass-loader": "8.0.2",
+    "sass-loader": "9.0.2",
     "style-loader": "1.2.1",
     "stylus": "0.54.7",
     "stylus-loader": "3.0.2",
