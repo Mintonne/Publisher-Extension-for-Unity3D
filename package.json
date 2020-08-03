@@ -40,7 +40,7 @@
     "sass": "1.26.9",
     "sass-loader": "9.0.2",
     "style-loader": "1.2.1",
-    "stylus": "0.54.7",
+    "stylus": "0.54.8",
     "stylus-loader": "3.0.2",
     "vue-template-compiler": "2.6.11",
     "vuetify-loader": "1.5.0",
