@@ -37,7 +37,7 @@
     "eslint-plugin-vue": "6.2.2",
     "gulp": "4.0.2",
     "gulp-zip": "5.0.2",
-    "sass": "1.26.9",
+    "sass": "1.26.10",
     "sass-loader": "9.0.2",
     "style-loader": "1.2.1",
     "stylus": "0.54.7",
