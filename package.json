@@ -16,7 +16,7 @@
     "chart.js": "2.9.3",
     "file-saver": "2.0.2",
     "sweetalert2": "9.17.1",
-    "vue": "2.6.11",
+    "vue": "2.6.12",
     "vue-carousel": "0.18.0",
     "vue-material-design-icons": "3.4.0",
     "vue-router": "3.3.4",
@@ -42,7 +42,7 @@
     "style-loader": "1.2.1",
     "stylus": "0.54.8",
     "stylus-loader": "3.0.2",
-    "vue-template-compiler": "2.6.11",
+    "vue-template-compiler": "2.6.12",
     "vuetify-loader": "1.6.0",
     "webpack-remove-blocks": "1.1.0"
   }
