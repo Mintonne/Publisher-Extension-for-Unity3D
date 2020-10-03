@@ -243,7 +243,8 @@ export default {
 
           this.navbarTitle = new Date(this.salesPeriod).toLocaleString(navigator.language, {
             month: 'long',
-            year: 'numeric'
+            year: 'numeric',
+            timeZone: 'UTC'
           })
 
           this.salesData = data
