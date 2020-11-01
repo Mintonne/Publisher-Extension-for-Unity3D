@@ -32,7 +32,7 @@
     "babel-eslint": "10.1.0",
     "content-security-policy-builder": "2.1.0",
     "cross-env": "7.0.2",
-    "css-loader": "3.6.0",
+    "css-loader": "5.0.0",
     "eslint": "7.10.0",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-node": "11.1.0",
