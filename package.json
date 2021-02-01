@@ -15,7 +15,7 @@
     "axios": "0.21.1",
     "chart.js": "2.9.4",
     "file-saver": "2.0.5",
-    "sweetalert2": "10.13.0",
+    "sweetalert2": "10.14.0",
     "vue": "2.6.12",
     "vue-carousel": "0.18.0",
     "vue-material-design-icons": "3.4.0",
