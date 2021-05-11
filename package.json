@@ -28,7 +28,7 @@
   "devDependencies": {
     "@vue/cli-plugin-eslint": "3.12.1",
     "@vue/cli-service": "3.12.1",
-    "@vue/eslint-config-standard": "5.1.2",
+    "@vue/eslint-config-standard": "6.0.0",
     "babel-eslint": "10.1.0",
     "content-security-policy-builder": "2.1.0",
     "cross-env": "7.0.3",
