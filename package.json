@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "axios": "0.24.0",
-    "chart.js": "2.9.4",
+    "chart.js": "3.6.1",
     "file-saver": "2.0.5",
     "sweetalert2": "10.16.9",
     "vue": "2.6.14",
