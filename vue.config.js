@@ -2,7 +2,7 @@ const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 const cspBuilder = require('content-security-policy-builder')
 const packageJson = require('./package.json')
 
-let blocks = []
+const blocks = []
 
 if (process.env.VENDOR === 'chrome') {
   blocks.push({
@@ -83,7 +83,7 @@ module.exports = {
     plugins: [
       new CopyWebpackPlugin([
         {
-          from: 'node_modules/x2js/dist/x2js.min.js',
+          from: 'node_modules/x2js/x2js.js',
           to: 'vendor/x2js',
           toType: 'dir'
         },

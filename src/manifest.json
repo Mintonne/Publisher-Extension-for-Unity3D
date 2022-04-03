@@ -24,13 +24,13 @@
   ],
   "backgroundProd": {
     "scripts": [
-      "vendor/x2js/x2js.min.js",
+      "vendor/x2js/x2js.js",
       "js/background.js"
     ]
   },
   "backgroundDev": {
     "scripts": [
-      "vendor/x2js/x2js.min.js",
+      "vendor/x2js/x2js.js",
       "background.js"
     ]
   },
