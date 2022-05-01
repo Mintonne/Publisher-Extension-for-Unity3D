@@ -12,7 +12,7 @@
     "build:firefox": "cross-env VENDOR=firefox npm run build && cross-env VENDOR=firefox gulp zip"
   },
   "dependencies": {
-    "axios": "0.26.1",
+    "axios": "0.27.2",
     "chart.js": "2.9.4",
     "file-saver": "2.0.5",
     "sweetalert2": "10.16.9",
