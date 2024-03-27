@@ -173,7 +173,7 @@ export default {
         data.forEach((item, index) => {
           this.myChart.data.datasets.push({
             label: yearsData[index],
-            backgroundColor: chartColors[index],
+            backgroundColor: chartColors[index % chartColors.length],
             data: item
           })
         })
